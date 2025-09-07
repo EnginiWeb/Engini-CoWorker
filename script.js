@@ -42,17 +42,32 @@ chatInput?.addEventListener('input', autoGrow);
  * @param {string} text - The content of the message.
  */
 function addMsg(sender, text) {
-  const wrap = document.createElement('div');
-  wrap.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
-  const bubble = document.createElement('div');
-  bubble.className = `relative p-3 rounded-2xl max-w-[80%] shadow-lg
-    ${sender === 'user'
-      ? 'bg-[#8E7AEF] text-[#0B0C0E] rounded-br-none'
-      : 'bg-[#151618] text-neutral-300 rounded-bl-none'}`;
-  bubble.textContent = text;
-  wrap.appendChild(bubble);
-  chatMsgs.appendChild(wrap);
-  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  const wrap = document.createElement('div');
+  wrap.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+
+  const bubble = document.createElement('div');
+  bubble.className = `relative p-3 rounded-2xl max-w-[80%] shadow-lg whitespace-pre-wrap
+                      ${sender === 'user'
+                          ? 'bg-[#8E7AEF] text-[#0B0C0E] rounded-br-none'
+                          : 'bg-[#151618] text-neutral-300 rounded-bl-none'}`;
+  
+  // Animation for AI messages
+  if (sender === 'ai') {
+    let i = 0;
+    const speed = 15;
+    const interval = setInterval(() => {
+      bubble.textContent = text.substring(0, i);
+      i++;
+      if (i > text.length) clearInterval(interval);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }, speed);
+  } else {
+    bubble.textContent = text;
+  }
+
+  wrap.appendChild(bubble);
+  chatMsgs.appendChild(wrap);
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
 }
 
 /**

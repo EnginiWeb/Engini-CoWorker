@@ -492,4 +492,141 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+/* ----------------- STATE MACHINE FOR COWORKER ----------------- */
+let draftWorker = {
+  department: "",
+  team: "",
+  deliverable: "",
+  workflows: [],
+  tasks: [],
+  systems: [],
+  overview: "",
+  onboarding: ""
+};
+let convoStep = 0;
+
+const steps = [
+  "Great! First, which department is this CoWorker for?",
+  "Nice. Which team inside that department?",
+  "Got it. What is the key deliverable this worker should own?",
+  "List 2–3 workflows this worker should automate (comma separated).",
+  "Perfect. What are the main tasks? (comma separated).",
+  "Which core systems should it integrate with? (comma separated).",
+  "Write a short overview of this worker.",
+  "Finally, describe the onboarding plan briefly."
+];
+
+/* Save finished worker */
+function finalizeWorker() {
+  const worker = {
+    id: 'custom-' + Date.now(),
+    department: draftWorker.department,
+    role: draftWorker.team || "Custom Role",
+    deliverable: draftWorker.deliverable,
+    workflows: draftWorker.workflows,
+    tasks: draftWorker.tasks,
+    systems: draftWorker.systems,
+    overview: draftWorker.overview,
+    onboarding: draftWorker.onboarding,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5 4.5-4.5"/></svg>`
+  };
+  const arr = JSON.parse(localStorage.getItem('customWorkers') || '[]');
+  arr.push(worker);
+  localStorage.setItem('customWorkers', JSON.stringify(arr));
+  addMsg("ai", "✅ Your CoWorker has been created and saved! Check it out under 'My Workers'.");
+  draftWorker = {}; // reset
+  convoStep = 0;
+}
+
+/* Handle chat form */
+chatForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = chatInput.value.trim();
+  if (!text) return;
+  addMsg('user', text);
+  chatInput.value = '';
+  autoGrow();
+
+  setGenerating(true);
+  const dots = typingDots();
+  chatMsgs.appendChild(dots);
+
+  setTimeout(() => {
+    dots.remove();
+    switch (convoStep) {
+      case 0: draftWorker.department = text; break;
+      case 1: draftWorker.team = text; break;
+      case 2: draftWorker.deliverable = text; break;
+      case 3: draftWorker.workflows = text.split(',').map(s => s.trim()); break;
+      case 4: draftWorker.tasks = text.split(',').map(s => s.trim()); break;
+      case 5: draftWorker.systems = text.split(',').map(s => s.trim()); break;
+      case 6: draftWorker.overview = text; break;
+      case 7: draftWorker.onboarding = text; finalizeWorker(); return;
+    }
+    addMsg('ai', steps[convoStep]);
+    convoStep++;
+    setGenerating(false);
+  }, 800);
+});
+
+/* ----------------- DEFAULT WORKERS ----------------- */
+const defaultWorkers = [
+  { id:"it", department:"IT", skills:["Onboarding","IAM","Helpdesk"], overview:"Automates IT ops.", workflows:["Provisioning"], tasks:["Reset password"], onboarding:"1 month", icon:`<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M12 20v-2"/></svg>`},
+  { id:"hr", department:"HR", skills:["Policy Q&A","Leave mgmt"], overview:"Handles repetitive HR tasks.", workflows:["Policy lookup"], tasks:["Answer leave"], onboarding:"2 months", icon:`<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg>`},
+  { id:"sales", department:"Sales", skills:["Lead qual","CRM updates"], overview:"Automates sales admin.", workflows:["CRM sync"], tasks:["Log new lead"], onboarding:"3 months", icon:`<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>`},
+  { id:"create", department:"Create Your Own", overview:"Start from blank template.", isCustom:true, icon:`<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`}
+];
+
+/* ----------------- RENDER ----------------- */
+function loadCustomWorkers(){ try{ return JSON.parse(localStorage.getItem('customWorkers')||'[]'); }catch{return [];} }
+
+function renderCards(workers=null){
+  workerCardsContainer.innerHTML='';
+  const all = workers || [...defaultWorkers, ...loadCustomWorkers()];
+  all.forEach(worker=>{
+    const card = document.createElement('div');
+    card.className="rounded-2xl border border-white/10 bg-[#151618] p-5 flex flex-col shadow-lg";
+    card.innerHTML=`
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 grid place-items-center bg-[#222326] rounded-full">${worker.icon}</div>
+        <h3 class="font-poppins font-semibold text-white">${worker.department}</h3>
+      </div>
+      <p class="text-sm text-neutral-400 mb-3">${worker.overview||''}</p>
+      <button class="mt-auto bg-neutral-200 text-[#0B0C0E] rounded-xl px-3 py-2">${worker.isCustom?'Start':'View'}</button>
+    `;
+    card.addEventListener("click",()=>{
+      if(worker.isCustom){ addMsg("ai","Let's build a new CoWorker together! " + steps[0]); convoStep=0; draftWorker={}; }
+      else{ renderDetailView(worker); }
+    });
+    workerCardsContainer.appendChild(card);
+  });
+}
+
+function renderDetailView(worker){
+  workspaceGrid.classList.add("hidden");
+  workerDetailView.classList.remove("hidden");
+  workerDetailView.innerHTML=`
+    <div class="bg-[#151618] border border-white/10 rounded-2xl p-6 shadow-2xl">
+      <button id="back-button" class="text-neutral-200 hover:text-white mb-4">← Back</button>
+      <h2 class="text-2xl font-poppins text-white mb-2">${worker.department} CoWorker</h2>
+      <p class="text-neutral-400 mb-4">${worker.overview||''}</p>
+      <h3 class="text-white font-semibold">Skills</h3>
+      <ul class="list-disc list-inside text-neutral-300 mb-3">${(worker.skills||[]).map(s=>`<li>${s}</li>`).join('')}</ul>
+      <h3 class="text-white font-semibold">Workflows</h3>
+      <ul class="list-disc list-inside text-neutral-300 mb-3">${(worker.workflows||[]).map(s=>`<li>${s}</li>`).join('')}</ul>
+      <h3 class="text-white font-semibold">Tasks</h3>
+      <ul class="list-disc list-inside text-neutral-300 mb-3">${(worker.tasks||[]).map(s=>`<li>${s}</li>`).join('')}</ul>
+      <h3 class="text-white font-semibold">Onboarding</h3>
+      <p class="text-neutral-400">${worker.onboarding||''}</p>
+    </div>
+  `;
+  qs("#back-button").addEventListener("click",()=>{
+    workerDetailView.classList.add("hidden");
+    workspaceGrid.classList.remove("hidden");
+  });
+}
+
+/* ----------------- INIT ----------------- */
 renderCards();
+
+

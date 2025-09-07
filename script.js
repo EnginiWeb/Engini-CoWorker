@@ -69,7 +69,7 @@ function setGenerating(on) {
  */
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 // Put placeholder here; in production, remove and call your own backend route instead.
-const GEMINI_API_KEY = ''; // <-- Replace via backend proxy or environment, not in client!
+const GEMINI_API_KEY = 'AIzaSyCwGOKtGr5G2NdmRRwwTZeREYVFheQ5Se0'; // <-- Replace via backend proxy or environment, not in client!
 
 async function callGemini(userText) {
   const systemPrompt = `

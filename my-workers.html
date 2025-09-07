@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My CoWorkers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="bg-[#0B0C0E] text-neutral-200 min-h-screen flex flex-col">
+
+<header class="sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
+    <a href="index.html" class="text-xl font-bold font-poppins text-neutral-100"><span class="text-[#8E7AEF]">Engini</span> CoWorker</a>
+    <a href="index.html" class="text-sm font-medium text-neutral-300 hover:text-white">Back to Home</a>
+  </nav>
+</header>
+
+<section class="py-16 px-4 sm:px-8 lg:px-16 flex-grow">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-8">My CoWorkers</h2>
+    <div id="my-workers-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<script>
+  const container = document.getElementById('my-workers-container');
+  const myWorkers = JSON.parse(localStorage.getItem('customWorkers') || '[]');
+  if (!myWorkers.length) {
+    container.innerHTML = "<p class='text-neutral-400'>No custom CoWorkers created yet.</p>";
+  } else {
+    myWorkers.forEach(w => {
+      const card = document.createElement('div');
+      card.className = 'bg-[#151618] border border-white/10 rounded-2xl p-6 shadow-md';
+      card.innerHTML = `
+        <h3 class="text-xl font-semibold text-white mb-2">${w.department} – ${w.role || ''}</h3>
+        <p class="text-sm text-neutral-400 mb-3">${w.overview}</p>
+        <ul class="list-disc list-inside text-neutral-300 text-sm mb-2">${(w.tasks||[]).map(t=>`<li>${t}</li>`).join('')}</ul>
+        <span class="text-xs text-neutral-500">Onboarding: ${w.onboarding||''}</span>
+      `;
+      container.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>

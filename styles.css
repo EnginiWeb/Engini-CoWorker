@@ -1,0 +1,90 @@
+    :root {
+      --light-bg: #151515;
+      --dark-navy: #ffffff;
+      --navy: #ffffff;
+      --soft-gray: #2A2A2A;
+      --dark-purple: #ffffff;
+      --light-purple: #9584CB;
+      --white: #FAFAFA;
+      --text-gray: #A0A0A0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark-navy);
+      background-color: var(--light-bg);
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+    .hover-effect {
+      transition: all 0.3s ease-in-out;
+    }
+    .hover-effect:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .loader {
+      border: 4px solid var(--soft-gray);
+      border-top: 4px solid var(--light-purple);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .placeholder-animation {
+      transition: opacity 0.5s ease-in-out;
+    }
+
+      /* Taller chat box + shimmer */
+  .chat-shell { min-height: 200px; }           /* was ~140px */
+  .gen-shimmer {
+    position:absolute; inset:0; border-radius:1.5rem; pointer-events:none;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
+    transform: translateX(-100%); opacity:0;
+  }
+  .generating .gen-shimmer {
+    animation: shimmer 1.8s ease-in-out infinite;
+    opacity: 1;
+  }
+  @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+
+  /* Typing dots bubble */
+  .typing {
+    display:inline-flex; gap:6px; align-items:center;
+    background: var(--soft-gray); color: var(--light-gray);
+    padding:.6rem .8rem; border-radius:1rem; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  }
+  .dot { width:6px; height:6px; border-radius:9999px; background: #d1d5db; opacity:.4; }
+  .dot:nth-child(1){ animation: pulse 1s infinite .0s }
+  .dot:nth-child(2){ animation: pulse 1s infinite .15s }
+  .dot:nth-child(3){ animation: pulse 1s infinite .3s }
+  @keyframes pulse { 0%,80%,100%{transform:scale(1); opacity:.4} 40%{transform:scale(1.35); opacity:1} }
+
+  /* Button spinner swap */
+  .spin {
+    width:18px; height:18px; border-radius:50%;
+    border:3px solid rgba(255,255,255,.35); border-top-color:#fff;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Disable input look */
+  .disabled { opacity:.6; pointer-events:none; }
+  /* chat height + custom scrollbar */
+.chat-messages {
+  max-height: 22rem;        /* ~352px, adjust if needed */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.chat-messages::-webkit-scrollbar { height: 8px; width: 8px; }
+.chat-messages::-webkit-scrollbar-track { background: rgba(255,255,255,0.06); border-radius: 10px; }
+.chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22); border-radius: 10px; }
+.chat-messages::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.35); }

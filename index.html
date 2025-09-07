@@ -1,168 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Engini CoWorker</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet"/>
+
+  
   <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="styles.css">
+
+  
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
 
-  <!-- Navigation Bar -->
-<header class="sticky top-0 z-50">
-  <nav
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center
-           bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10
-           rounded-2xl mt-3 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-    <a href="#" class="text-xl font-bold font-poppins text-gray-900 dark:text-gray-100">
-      <span class="text-purple-500">Engini</span> CoWorker
-    </a>
-    <a href="#workspace-section"
-       class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-      Explore Workspace
-    </a>
-  </nav>
-</header>
-<!-- Main Hero Section -->
-<section class="relative flex flex-col items-center justify-start pt-28 sm:pt-36 pb-20 bg-gradient-to-b from-dark-navy via-navy to-soft-gray text-white min-h-screen">
-  <!-- Logo -->
-  <div class="mb-8">
-    <img src="image.png" alt="Engini Logo" class="h-14 sm:h-16 mx-auto">
-  </div>
+  
+  <header class="sticky top-0 z-50">
+    <nav
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center
+             bg-white/10 backdrop-blur-md border border-white/10
+             rounded-2xl mt-3 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+      <a href="#" class="text-xl font-bold font-poppins text-neutral-100">
+        <span class="text-[#8E7AEF]">Engini</span> CoWorker
+      </a>
+      <a href="#workspace-section"
+         class="text-sm font-medium text-neutral-300 hover:text-white transition-colors">
+        Explore Workspace
+      </a>
+    </nav>
+  </header>
 
-  <!-- Title & Subtitle -->
-  <div class="text-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-poppins font-semibold mb-3">
-      Build with <span class="text-light-purple">Engini</span> CoWorker
-    </h1>
-    <p class="text-base sm:text-lg text-gray-300">
-      Create custom digital teammates by chatting with AI
-    </p>
-  </div>
-
-<!-- Chat Box -->
-<div class="w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-  <div id="chat-shell" class="relative bg-navy rounded-3xl shadow-2xl p-5 sm:p-6 chat-shell flex flex-col justify-between overflow-hidden">
-    <!-- subtle shimmer during generation -->
-    <div class="gen-shimmer"></div>
-
-    <!-- Messages -->
-<div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4">
-      <div class="flex justify-start chat-bubble-slide-in">
-        <div class="relative p-3 rounded-2xl max-w-[80%] shadow-lg bg-soft-gray text-light-gray rounded-bl-none">
-          Welcome! What kind of CoWorker would you like to create?
-        </div>
-      </div>
+  
+  <section class="relative flex flex-col items-center justify-start pt-28 sm:pt-36 pb-20
+                   bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618] min-h-screen">
+    
+    <div class="mb-8">
+      
+      <img src="image.png" alt="Engini Logo" class="h-14 sm:h-16 mx-auto" />
     </div>
 
-    <!-- Input -->
-    <form id="chat-form" class="relative">
-      <textarea
-        id="chat-input"
-        rows="2"
-        placeholder="Ask Engini to create a CoWorker that..."
-        class="w-full p-4 pr-12 rounded-2xl bg-gray-800 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-light-purple transition-all resize-none"
-      ></textarea>
+    
+    <div class="text-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-poppins font-semibold mb-3 text-white">
+        Build with <span class="text-[#8E7AEF]">Engini</span> CoWorker
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-300">
+        Create custom digital teammates by chatting with AI
+      </p>
+    </div>
 
-      <!-- send / spinner -->
-      <button
-        type="submit"
-        id="send-button"
-        class="absolute right-3 top-1/2 -translate-y-1/2 bg-light-purple text-dark-navy p-2 rounded-xl shadow-md hover:bg-purple-600 transition grid place-items-center"
-        aria-label="Send"
-      >
-        <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13" />
-          <polygon points="22 2 15 22 11 13 2 9 22 2" />
-        </svg>
-        <div id="send-spin" class="spin hidden"></div>
-      </button>
-    </form>
-  </div>
-</div>
+    
+    <div class="w-full max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div id="chat-shell"
+           class="relative rounded-3xl shadow-2xl p-5 sm:p-6 chat-shell flex flex-col justify-between overflow-hidden
+                  border border-white/10 bg-[#0F1012]">
+        
+        <div class="gen-shimmer"></div>
 
+        
+        <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4">
+          <div class="flex justify-start">
+            <div class="relative p-3 rounded-2xl max-w-[80%] shadow-lg bg-[#151618] text-neutral-300 rounded-bl-none">
+              Welcome! What kind of CoWorker would you like to create?
+            </div>
+          </div>
+        </div>
 
+        
+        <form id="chat-form" class="relative">
+          <textarea
+            id="chat-input"
+            rows="2"
+            placeholder="Ask Engini to create a CoWorker that..."
+            class="w-full p-4 pr-12 rounded-2xl bg-[#1B1D22] text-neutral-100 placeholder-neutral-500
+                   focus:outline-none focus:ring-2 focus:ring-[#8E7AEF] transition-all resize-none"
+            autocomplete="off"
+          ></textarea>
 
-  <!-- Workspace Section -->
-  <section id="workspace-section" class="bg-light-bg py-16 px-4 sm:px-8 lg:px-16 flex-grow">
+          <button
+            type="submit"
+            id="send-button"
+            class="absolute right-3 top-1/2 -translate-y-1/2 bg-[#8E7AEF] text-[#0B0C0E]
+                   p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] transition grid place-items-center"
+            aria-label="Send">
+            <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+            <div id="send-spin" class="spin hidden"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="workspace-section" class="py-16 px-4 sm:px-8 lg:px-16 flex-grow bg-[#0B0C0E]">
     <div id="workspace-container" class="max-w-7xl mx-auto">
-      <!-- Main Workspace View -->
+      
       <div id="workspace-grid-view">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-12">
-          <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-dark-navy mb-4 sm:mb-0">
+          <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-4 sm:mb-0">
             Workspace
           </h2>
           <div class="flex-1 max-w-lg sm:ml-8">
             <div class="relative">
               <input
+                id="search-input"
                 type="text"
                 placeholder="Search CoWorkers..."
-                class="w-full p-3 pl-10 rounded-2xl bg-g border border-gray-300 focus:outline-none focus:ring-2 focus:ring-light-purple shadow-sm text-dark-navy"
+                class="w-full p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10
+                       focus:outline-none focus:ring-2 focus:ring-[#8E7AEF] shadow-sm text-neutral-200"
               />
-              <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 h-5 w-5"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
             </div>
           </div>
         </div>
-        <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          <!-- Worker Cards will be injected here by JavaScript -->
+
+        <div id="worker-cards"
+             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          
         </div>
       </div>
+
       
-      <!-- Worker Detail View (initially hidden) -->
       <div id="worker-detail-view" class="hidden">
-        <!-- Detail content will be injected here -->
+        
       </div>
     </div>
   </section>
 
-  <!-- Create Worker Modal -->
-  <div id="create-modal" class="fixed inset-0 z-[100] hidden items-center justify-center modal-overlay">
-    <div class="bg-gray-200 p-8 rounded-2xl shadow-2xl max-w-lg w-full transform scale-95 transition-transform duration-300">
-      <h3 class="text-2xl font-poppins font-semibold text-dark-navy mb-6">Create Your Own CoWorker</h3>
+  
+  <div id="create-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60">
+    <div class="bg-[#151618] border border-white/10 p-8 rounded-2xl shadow-2xl max-w-lg w-full">
+      <h3 class="text-2xl font-poppins font-semibold text-white mb-6">Create Your Own CoWorker</h3>
       <form id="create-form" class="space-y-4">
         <div>
-          <label for="new-department" class="block text-dark-navy font-medium mb-1">Department</label>
-          <input type="text" id="new-department" required class="w-full p-3 rounded-xl bg-gray-100 border border-gray-300 text-dark-navy focus:outline-none focus:ring-2 focus:ring-light-purple">
+          <label for="new-department" class="block text-neutral-200 font-medium mb-1">Department</label>
+          <input type="text" id="new-department"
+                 class="w-full p-3 rounded-xl bg-[#0F1012] border border-white/10 text-neutral-200
+                        focus:outline-none focus:ring-2 focus:ring-neutral-600" required />
         </div>
         <div>
-          <label for="new-skills" class="block text-dark-navy font-medium mb-1">Skills (comma-separated)</label>
-          <input type="text" id="new-skills" required class="w-full p-3 rounded-xl bg-gray-100 border border-gray-300 text-dark-navy focus:outline-none focus:ring-2 focus:ring-light-purple">
+          <label for="new-skills" class="block text-neutral-200 font-medium mb-1">Skills (comma-separated)</label>
+          <input type="text" id="new-skills"
+                 class="w-full p-3 rounded-xl bg-[#0F1012] border border-white/10 text-neutral-200
+                        focus:outline-none focus:ring-2 focus:ring-neutral-600" required />
         </div>
         <div>
-          <label for="new-overview" class="block text-dark-navy font-medium mb-1">Overview</label>
-          <textarea id="new-overview" rows="3" required class="w-full p-3 rounded-xl bg-gray-100 border border-gray-300 text-dark-navy focus:outline-none focus:ring-2 focus:ring-light-purple"></textarea>
+          <label for="new-overview" class="block text-neutral-200 font-medium mb-1">Overview</label>
+          <textarea id="new-overview" rows="3"
+                    class="w-full p-3 rounded-xl bg-[#0F1012] border border-white/10 text-neutral-200
+                           focus:outline-none focus:ring-2 focus:ring-neutral-600" required></textarea>
         </div>
-        <div class="flex justify-end space-x-4 pt-4">
-          <button type="button" id="cancel-create" class="px-4 py-2 text-dark-navy font-medium rounded-xl hover:bg-gray-200 transition-colors">Cancel</button>
-          <button type="submit" id="save-worker" class="px-6 py-2 bg-light-purple text-white font-semibold rounded-xl hover:bg-dark-purple transition-colors">Save CoWorker</button>
+        <div class="flex justify-end gap-3 pt-2">
+          <button type="button" id="cancel-create"
+                  class="px-4 py-2 text-neutral-200 font-medium rounded-xl hover:bg-white/5 transition">
+            Cancel
+          </button>
+          <button type="submit" id="save-worker"
+                  class="px-6 py-2 bg-[#8E7AEF] text-[#0B0C0E] font-semibold rounded-xl
+                         hover:bg-[#7c6ae6] transition">
+            Save CoWorker
+          </button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-navy text-gray-500 py-12 px-4 sm:px-8 mt-auto">
+  
+  <footer class="bg-[#0F1012] border-t border-white/10 text-neutral-400 py-12 px-4 sm:px-8 mt-auto">
     <div class="max-w-7xl mx-auto text-center">
       <p class="text-xl font-poppins font-semibold text-white mb-4">
         Every employee deserves a CoWorker.
       </p>
       <div class="flex justify-center space-x-8 text-sm mb-4">
-        <a href="#" class="hover:text-light-purple transition-colors duration-200">
-          Privacy
-        </a>
-        <a href="#" class="hover:text-light-purple transition-colors duration-200">
-          Security
-        </a>
-        <a href="#" class="hover:text-light-purple transition-colors duration-200">
-          Contact
-        </a>
+        <a href="#" class="hover:text-white transition-colors duration-200">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors duration-200">Security</a>
+        <a href="#" class="hover:text-white transition-colors duration-200">Contact</a>
       </div>
       <p class="text-xs">
         © <span id="current-year"></span> Engini CoWorker. All rights reserved.
@@ -170,87 +195,7 @@
     </div>
   </footer>
 
-<script src="script.js"></script>
-<script>
-  const shell = document.getElementById('chat-shell');
-  const chatMessages = document.getElementById('chat-messages');
-  const chatForm = document.getElementById('chat-form');
-  const chatInput = document.getElementById('chat-input');
-  const sendBtn = document.getElementById('send-button');
-  const sendIcon = document.getElementById('send-icon');
-  const sendSpin = document.getElementById('send-spin');
-
-  // Auto-grow textarea
-  const autoGrow = () => {
-    chatInput.style.height = 'auto';
-    chatInput.style.height = Math.min(chatInput.scrollHeight, 220) + 'px'; // taller but capped
-  };
-  chatInput.addEventListener('input', autoGrow);
-  autoGrow();
-
-  // Add a message bubble
-  const addMsg = (sender, text) => {
-    const wrap = document.createElement('div');
-    wrap.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`
-    const bubble = document.createElement('div');
-    bubble.className = `relative p-3 rounded-2xl max-w-[80%] shadow-lg ${sender === 'user' ? 'bg-light-purple text-dark-navy rounded-br-none' : 'bg-soft-gray text-light-gray rounded-bl-none'}`
-    bubble.textContent = text;
-    wrap.appendChild(bubble);
-    chatMessages.appendChild(wrap);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  };
-
-  // Typing dots element
-  const typingDots = () => {
-    const wrap = document.createElement('div');
-    wrap.className = 'flex justify-start';
-    const bubble = document.createElement('div');
-    bubble.className = 'typing';
-    bubble.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-    wrap.appendChild(bubble);
-    return wrap;
-  };
-
-  // Toggle generating state
-  const setGenerating = (on) => {
-    shell.classList.toggle('generating', on);
-    chatInput.classList.toggle('disabled', on);
-    sendBtn.classList.toggle('disabled', on);
-    sendIcon.classList.toggle('hidden', on);
-    sendSpin.classList.toggle('hidden', !on);
-  };
-
-  chatForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const text = chatInput.value.trim();
-    if (!text) return;
-
-    // user bubble
-    addMsg('user', text);
-    chatInput.value = '';
-    autoGrow();
-
-    // start animation
-    setGenerating(true);
-    const dots = typingDots();
-    chatMessages.appendChild(dots);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    try {
-      // TODO: replace this timeout with your real API call
-      await new Promise(r => setTimeout(r, 1400));
-      // mock model reply
-      const reply = "Great. Which core systems should this CoWorker integrate with (e.g., Salesforce, SAP, Monday, Slack)? List 3–5 repetitive tasks it should take over.";
-      dots.remove();
-      addMsg('ai', reply);
-    } catch (err) {
-      dots.remove();
-      addMsg('ai', 'Something went wrong. Please try again.');
-    } finally {
-      setGenerating(false);
-    }
-  });
-</script>
-
+  
+  <script src="script.js"></script>
 </body>
 </html>

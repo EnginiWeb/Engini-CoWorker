@@ -18,8 +18,7 @@
 </head>
 <body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
 
-  
-  <header class="sticky top-0 z-50 bg-transparent">
+<header class="sticky top-0 z-50 bg-transparent">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
 
     <!-- Logo -->
@@ -30,11 +29,11 @@
     <!-- Nav Center -->
     <div class="flex-grow flex justify-center">
       <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
-        
+
         <!-- Solutions -->
         <div class="relative group">
           <button class="hover:text-white transition-colors">Solutions</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 sm:w-96 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 sm:w-96 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
             <div class="grid grid-cols-2 gap-6">
               <div>
                 <p class="text-xs uppercase text-white/60 mb-2">By Function</p>
@@ -63,7 +62,7 @@
         <!-- Platform -->
         <div class="relative group">
           <button class="hover:text-white transition-colors">Platform</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
             <ul class="space-y-2 text-sm text-white">
               <li><a href="#architecture" class="hover:underline">Architecture</a></li>
               <li><a href="#agent-os" class="hover:underline">Agent Operating System</a></li>
@@ -78,7 +77,7 @@
         <!-- Resources -->
         <div class="relative group">
           <button class="hover:text-white transition-colors">Resources</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
             <ul class="space-y-2 text-sm text-white">
               <li><a href="#docs" class="hover:underline">Documentation</a></li>
               <li><a href="#case-studies" class="hover:underline">Case Studies</a></li>
@@ -93,7 +92,7 @@
         <!-- Partners -->
         <div class="relative group">
           <button class="hover:text-white transition-colors">Partners</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
             <ul class="space-y-2 text-sm text-white">
               <li><a href="#become-partner" class="hover:underline">Become a Partner</a></li>
               <li><a href="#partner-portal" class="hover:underline">Partner Portal</a></li>
@@ -111,6 +110,7 @@
     </div>
   </nav>
 </header>
+
 
 
 
@@ -147,7 +147,7 @@
     <div class="absolute inset-0 bg-white/5 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
     <div class="z-10">
       Enterprise <br />
-      <span class="text-lg font-medium opacity-70">Workers</span>
+      <span class="text-lg font-medium opacity-70">Agentic Workers</span>
     </div>
   </a>
 </div>
@@ -207,51 +207,54 @@
   </div>
 </section>
 
-
-
-
-
 <!-- iPaaS Evolution Section -->
-<section id="ipass-evolution"
-    class="px-4 sm:px-8 lg:px-10 py-12 bg-[#0B0C0E] flex flex-col items-center justify-start">
-
-    <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-10 text-center">
+<section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-16 bg-[#0B0C0E] flex flex-col items-center justify-start">
+    <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-16 text-center">
         The Evolution of Automation & Orchestration
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 max-w-7xl w-full">
-        <!-- 1980–2020: Deterministic Workflow -->
-        <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
-            <h3 class="text-xl font-semibold text-white mb-2">1980–2023</h3>
-            <p class="text-neutral-400 text-sm mb-4">Deterministic workflows ruled enterprise systems — structured, rule-based and hard-coded.</p>
-            <img src="https://placehold.co/400x200/2A2D34/8E7AEF?text=Deterministic+Workflow" alt="Deterministic Workflow" class="w-full h-auto rounded-lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full text-white font-inter">
+        <!-- Card 1: 1980–2023: iPaaS -->
+        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
+            <h3 class="text-2xl font-semibold mb-4">1980–2023</h3>
+            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">iPaaS Era</h4>
+            
+            <img src="ipaas era.png" alt="iPaaS Era Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
+            
+            <p class="text-sm text-neutral-300">Deterministic workflows ruled enterprise systems — structured, rule-based and hard-coded.</p>
         </div>
 
-        <!-- 2024: AI Agents Rise -->
-        <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
-            <h3 class="text-xl font-semibold text-white mb-2">2024</h3>
-            <p class="text-neutral-400 text-sm mb-4">AI Agents introduced adaptive, autonomous decision-making on top of legacy systems.</p>
-            <img src="https://placehold.co/400x200/2A2D34/8E7AEF?text=AI+Agents+Rise" alt="AI Agents" class="w-full h-auto rounded-lg">
+        <!-- Card 2: 2024: AI Agents -->
+        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
+            <h3 class="text-2xl font-semibold mb-4">2024</h3>
+            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">AI Agents</h4>
+            
+            <img src="ai agent.png" alt="AI Agents Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
+            
+            <p class="text-sm text-neutral-300">AI Agents introduced adaptive, autonomous decision-making with tool use on top of legacy systems.</p>
         </div>
-        
-        <!-- 2025: Agentic Orchestration -->
-        <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
-            <h3 class="text-xl font-semibold text-white mb-2">2025</h3>
-            <p class="text-neutral-400 text-sm mb-4">Coordinated orchestration across multiple AI workers and systems, harmonizing execution.</p>
-            <img src="https://placehold.co/400x200/2A2D34/8E7AEF?text=Agentic+Orchestration" alt="Agent Orchestration" class="w-full h-auto rounded-lg">
+
+        <!-- Card 3: 2025: Agentic Workflow -->
+        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
+            <h3 class="text-2xl font-semibold mb-4">2025</h3>
+            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">Agentic Workflow</h4>
+            
+            <img src="agentic workflow.png" alt="Agentic Workflow Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
+            
+            <p class="text-sm text-neutral-300">Sequential intelligent agents execute complex, multi-step processes with dynamic adaptation.</p>
         </div>
-        
-        <!-- 2026: The Future -->
-        <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
-            <h3 class="text-xl font-semibold text-white mb-2">2026 & Beyond</h3>
-            <p class="text-neutral-400 text-sm mb-4">An intelligent, agentic enterprise where workers, tools, and data continuously adapt to business goals in real time.</p>
-            <img src="https://placehold.co/400x200/2A2D34/8E7AEF?text=The+Future+of+Automation" alt="Future of Automation" class="w-full h-auto rounded-lg">
+
+        <!-- Card 4: 2026: Agents Orchestration -->
+        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
+            <h3 class="text-2xl font-semibold mb-4">2026 & Beyond</h3>
+            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">Agent Orchestration</h4>
+            
+            <img src="agent orchestration.png" alt="Agent Orchestration Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
+            
+            <p class="text-sm text-neutral-300">Coordinated orchestration across multiple AI workers, enabling seamless collaboration and harmonized execution.</p>
         </div>
     </div>
 </section>
-
-
-
 
 
   <!-- Template and Create modals are below this point, omitted here for brevity -->

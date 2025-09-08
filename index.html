@@ -97,12 +97,12 @@
           <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
           <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
-              <li><a href="#architecture" class="hover:underline">Architecture</a></li>
-              <li><a href="#agent-os" class="hover:underline">Agent Operating System</a></li>
-              <li><a href="#security" class="hover:underline">Security</a></li>
-              <li><a href="#connectors" class="hover:underline">Connectors</a></li>
-              <li><a href="#workflows" class="hover:underline">Workflow Builder</a></li>
-              <li><a href="#playbooks" class="hover:underline">AI Playbooks</a></li>
+              <li><a href="platform.html" class="hover:underline">Architecture</a></li>
+              <li><a href="platform.html" class="hover:underline">Agent Operating System</a></li>
+              <li><a href="platform.html" class="hover:underline">Security</a></li>
+              <li><a href="platform.html" class="hover:underline">Connectors</a></li>
+              <li><a href="platform.html" class="hover:underline">Workflow Builder</a></li>
+              <li><a href="platform.html" class="hover:underline">AI Playbooks</a></li>
             </ul>
           </div>
         </div>
@@ -232,56 +232,204 @@
     <div id="worker-detail-view" class="hidden"></div>
   </div>
 </section>
-
-<!-- iPaaS Evolution Section -->
-<section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-16 bg-[#0B0C0E] flex flex-col items-center justify-start">
-    <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-16 text-center">
+<!-- Evolution of Automation & Orchestration (DROP-IN REPLACEMENT) -->
+<section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-20 bg-[#0B0C0E]">
+  <div class="max-w-7xl mx-auto">
+    <header class="text-center mb-14">
+      <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">
         The Evolution of Automation & Orchestration
-    </h2>
+      </h2>
+      <p class="text-white/70 max-w-3xl mx-auto mt-3">
+        From rigid, rule-based workflows to adaptive, multi-agent orchestration. Each step unlocks more autonomy, context, and business impact.
+      </p>
+    </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full text-white font-inter">
-        <!-- Card 1: 1980–2023: iPaaS -->
-        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
-            <h3 class="text-2xl font-semibold mb-4">1980–2023</h3>
-            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">iPaaS Era</h4>
-            
-            <img src="ipaas era.png" alt="iPaaS Era Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
-            
-            <p class="text-sm text-neutral-300">Deterministic workflows ruled enterprise systems — structured, rule-based and hard-coded.</p>
-        </div>
-
-        <!-- Card 2: 2024: AI Agents -->
-        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
-            <h3 class="text-2xl font-semibold mb-4">2024</h3>
-            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">AI Agents</h4>
-            
-            <img src="ai agent.png" alt="AI Agents Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
-            
-            <p class="text-sm text-neutral-300">AI Agents introduced adaptive, autonomous decision-making with tool use on top of legacy systems.</p>
-        </div>
-
-        <!-- Card 3: 2025: Agentic Workflow -->
-        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
-            <h3 class="text-2xl font-semibold mb-4">2025</h3>
-            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">Agentic Workflow</h4>
-            
-            <img src="agentic workflow.png" alt="Agentic Workflow Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
-            
-            <p class="text-sm text-neutral-300">Sequential intelligent agents execute complex, multi-step processes with dynamic adaptation.</p>
-        </div>
-
-        <!-- Card 4: 2026: Agents Orchestration -->
-        <div class="bg-[#1C1E22] p-6 rounded-2xl border border-white/10 shadow-md flex flex-col items-center text-center">
-            <h3 class="text-2xl font-semibold mb-4">2026 & Beyond</h3>
-            <h4 class="text-xl font-semibold mb-6 text-[#8E7AEF]">Agent Orchestration</h4>
-            
-            <img src="agent orchestration.png" alt="Agent Orchestration Diagram" class="w-full h-auto rounded-lg mb-6 aspect-[4/3] object-contain">
-            
-            <p class="text-sm text-neutral-300">Coordinated orchestration across multiple AI workers, enabling seamless collaboration and harmonized execution.</p>
-        </div>
+    <!-- Desktop stepper rail -->
+    <div class="relative hidden md:block mb-10">
+      <div class="absolute inset-x-0 top-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      <div class="grid grid-cols-4 gap-6">
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+      </div>
     </div>
+
+    <!-- Era cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 text-white">
+      <!-- 1) iPaaS Era -->
+      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-semibold">1980–2023</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
+        </div>
+
+        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">iPaaS Era</h4>
+
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
+          <img
+            src="ipaas era.png"
+            alt="Deterministic iPaaS style integration diagram"
+            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
+            loading="lazy" decoding="async">
+        </figure>
+
+        <p class="text-sm text-neutral-300">
+          Rule-based flows connect systems with fixed logic and strict schemas. Reliable but brittle when requirements change.
+        </p>
+
+        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
+          <li>• Triggers & pipes; manual exception handling</li>
+          <li>• Heavy upfront mapping & maintenance</li>
+          <li>• Limited adaptability to unstructured inputs</li>
+        </ul>
+      </article>
+
+      <!-- 2) AI Agents -->
+      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-semibold">2024</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
+        </div>
+
+        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">AI Agents</h4>
+
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
+          <img
+            src="ai agent.png"
+            alt="Single AI agent using tools over existing systems"
+            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
+            loading="lazy" decoding="async">
+        </figure>
+
+        <p class="text-sm text-neutral-300">
+          Single agents plan, decide, and use tools. Great for unstructured inputs and adaptive routing—within a single-agent scope.
+        </p>
+
+        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
+          <li>• Perceive → plan → act loops</li>
+          <li>• Tool use on top of legacy systems</li>
+          <li>• Early guardrails & policy enforcement</li>
+        </ul>
+      </article>
+
+      <!-- 3) Agentic Workflow -->
+      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-semibold">2025</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential</span>
+        </div>
+
+        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">Agentic Workflow</h4>
+
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
+          <img
+            src="agentic workflow.png"
+            alt="Sequential chain of intelligent agents performing a multi-step process"
+            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
+            loading="lazy" decoding="async">
+        </figure>
+
+        <p class="text-sm text-neutral-300">
+          Multiple agents linked in steps to execute complex, multi-stage journeys—each step reasons, then hands off.
+        </p>
+
+        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
+          <li>• Step-level memory & evaluation</li>
+          <li>• Human-in-the-loop approvals</li>
+          <li>• Better resilience with retries & rollbacks</li>
+        </ul>
+      </article>
+
+      <!-- 4) Agent Orchestration -->
+      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-semibold">2026 & Beyond</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
+        </div>
+
+        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">Agent Orchestration</h4>
+
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
+          <img
+            src="agent orchestration.png"
+            alt="Coordinated orchestration across multiple AI workers and systems"
+            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
+            loading="lazy" decoding="async">
+        </figure>
+
+        <p class="text-sm text-neutral-300">
+          Coordinated teams of specialized agents share context, negotiate tasks, and collaborate—governed by policies and SLOs.
+        </p>
+
+        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
+          <li>• Multi-agent planning & role assignment</li>
+          <li>• Shared memory, SLAs, & global guardrails</li>
+          <li>• Cross-system, cross-function execution</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Key shifts summary -->
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5">
+        <p class="text-sm font-semibold mb-1">From Rules → Reasoning</p>
+        <p class="text-sm text-neutral-300">Static mappings give way to contextual reasoning, enabling robust handling of ambiguity.</p>
+      </div>
+      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5">
+        <p class="text-sm font-semibold mb-1">From Single → Multi-agent</p>
+        <p class="text-sm text-neutral-300">Specialized agents coordinate, parallelize work, and escalate when needed.</p>
+      </div>
+      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5">
+        <p class="text-sm font-semibold mb-1">From Pipes → Orchestration</p>
+        <p class="text-sm text-neutral-300">Global guardrails, shared memory, and SLOs drive reliable, end-to-end outcomes.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center">
+      <a href="platform.html#workflows" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#8E7AEF] text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6] transition">
+        See how workflows evolve →
+      </a>
+    </div>
+  </div>
 </section>
 
+  <!-- Footer -->
+  <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+      <div class="text-center md:text-left">
+        <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
+        <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
+        <div>
+          <p class="font-semibold text-white mb-2">Platform</p>
+          <ul class="space-y-1">
+            <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
+            <li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li>
+            <li><a href="platform.html#security" class="hover:underline">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Build</p>
+          <ul class="space-y-1">
+            <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
+            <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
+            <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Resources</p>
+          <ul class="space-y-1">
+            <li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li>
+            <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+            <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Template and Create modals are below this point, omitted here for brevity -->
 

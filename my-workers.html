@@ -3,18 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My CoWorkers</title>
+  <title>My CoWorkers · Engini</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Poppins', sans-serif; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; }
+    .font-poppins { font-family: Poppins, Inter, ui-sans-serif, system-ui; }
+    html { scroll-behavior: smooth; }
+
+    /* Menu animation + a11y */
+    .menu-panel { transform: translateY(8px) scale(.98); opacity: 0; pointer-events: none; }
+    .group:hover .menu-panel,
+    .group:focus-within .menu-panel { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+
+    /* Card hover */
+    .card-hover { transition: transform .18s ease, box-shadow .18s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+
+    /* Pretty scrollbar for code/long text (if used) */
+    pre { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; }
+    pre::-webkit-scrollbar{height:8px} pre::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:9999px}
+
+    .pill { display:inline-flex; align-items:center; gap:.5rem; padding:.25rem .6rem; border-radius:9999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.06); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.7) }
   </style>
 </head>
 <body class="bg-[#0B0C0E] text-neutral-200 min-h-screen flex flex-col">
 
-<!-- Header -->
-
-  <header class="sticky top-0 z-50 bg-transparent">
+ 
+<header class="sticky top-0 z-50 bg-transparent">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
 
     <!-- Logo -->
@@ -25,30 +48,63 @@
     <!-- Nav Center -->
     <div class="flex-grow flex justify-center">
       <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
-        
+
         <!-- Solutions -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Solutions</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 sm:w-96 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
-            <div class="grid grid-cols-2 gap-6">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Solutions</button>
+          <div class="absolute left-1/2 -translate-x-1/3 top-full mt-0 pt-2 w-[1000px] p-6 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+            <div class="grid grid-cols-4 gap-8 text-white text-sm">
+              <!-- App Integrations -->
               <div>
-                <p class="text-xs uppercase text-white/60 mb-2">By Function</p>
-                <ul class="space-y-1 text-sm text-white">
-                  <li><a href="#it" class="hover:underline">IT</a></li>
-                  <li><a href="#finance" class="hover:underline">Finance</a></li>
-                  <li><a href="#support" class="hover:underline">Support</a></li>
-                  <li><a href="#hr" class="hover:underline">HR</a></li>
-                  <li><a href="#marketing" class="hover:underline">Marketing</a></li>
-                  <li><a href="#sales" class="hover:underline">Sales</a></li>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">App Integrations</p>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Salesforce</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Slack</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Marketo</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">NetSuite</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">ServiceNow</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/workday.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Workday</a></li>
+                  <li><a href="https://engini.io/engini-connectors/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
                 </ul>
               </div>
+              <!-- By Function -->
               <div>
-                <p class="text-xs uppercase text-white/60 mb-2">By Use Case</p>
-                <ul class="space-y-1 text-sm text-white">
-                  <li><a href="#order-to-cash" class="hover:underline">Order-to-Cash</a></li>
-                  <li><a href="#onboarding" class="hover:underline">Employee Onboarding</a></li>
-                  <li><a href="#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
-                  <li><a href="#ipaas" class="hover:underline">iPaaS Automation</a></li>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Function</p>
+                <ul class="space-y-2">
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">IT</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Finance</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Support</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">HR</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Marketing</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Sales</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Revenue Operations</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product (Embed)</a></li>
+                </ul>
+              </div>
+              <!-- By Use Case -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
+                <ul class="space-y-2">
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Order-to-cash</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Employee onboarding</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Enterprise iPaaS</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product-led sales</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Embedded Integrations</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                </ul>
+              </div>
+              <!-- By Industry -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
+                <ul class="space-y-2">
+                  <li><a href="#" class="hover:underline">Manufacturing</a></li>
+                  <li><a href="#" class="hover:underline">Financial services</a></li>
+                  <li><a href="#" class="hover:underline">Retail</a></li>
+                  <li><a href="#" class="hover:underline">Logistics</a></li>
+                  <li><a href="#" class="hover:underline">Healthcare</a></li>
+                  <li><a href="#" class="hover:underline">Media</a></li>
+                  <li><a href="#" class="hover:underline">BPO</a></li>
+                  <li><a href="#" class="hover:underline">Non-profit</a></li>
                 </ul>
               </div>
             </div>
@@ -57,108 +113,528 @@
 
         <!-- Platform -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Platform</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
-              <li><a href="#architecture" class="hover:underline">Architecture</a></li>
-              <li><a href="#agent-os" class="hover:underline">Agent Operating System</a></li>
-              <li><a href="#security" class="hover:underline">Security</a></li>
-              <li><a href="#connectors" class="hover:underline">Connectors</a></li>
-              <li><a href="#workflows" class="hover:underline">Workflow Builder</a></li>
-              <li><a href="#playbooks" class="hover:underline">AI Playbooks</a></li>
+              <li><a href="platform.html" class="hover:underline">Architecture</a></li>
+              <li><a href="platform.html" class="hover:underline">Agent Operating System</a></li>
+              <li><a href="platform.html" class="hover:underline">Security</a></li>
+              <li><a href="platform.html" class="hover:underline">Connectors</a></li>
+              <li><a href="platform.html" class="hover:underline">Workflow Builder</a></li>
+              <li><a href="platform.html" class="hover:underline">AI Playbooks</a></li>
             </ul>
           </div>
         </div>
 
         <!-- Resources -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Resources</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Resources</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
-              <li><a href="#docs" class="hover:underline">Documentation</a></li>
-              <li><a href="#case-studies" class="hover:underline">Case Studies</a></li>
-              <li><a href="#whitepapers" class="hover:underline">Whitepapers</a></li>
-              <li><a href="#blog" class="hover:underline">Blog</a></li>
-              <li><a href="#product-tour" class="hover:underline">Product Tour</a></li>
-              <li><a href="#webinars" class="hover:underline">Webinars</a></li>
+              <li><a href="https://engini.io/help/" class="hover:underline">Documentation</a></li>
+              <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+              <li><a href="https://www.youtube.com/watch?v=EWs_WZCnUT8&list=PL7Z1lkK9TitWIeOkB6GN8f1h7cfsb1CVz" class="hover:underline">Webinars</a></li>
             </ul>
           </div>
         </div>
 
         <!-- Partners -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Partners</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Partners</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
-              <li><a href="#become-partner" class="hover:underline">Become a Partner</a></li>
-              <li><a href="#partner-portal" class="hover:underline">Partner Portal</a></li>
-              <li><a href="#partner-academy" class="hover:underline">Partner Academy</a></li>
-              <li><a href="#certifications" class="hover:underline">Certifications</a></li>
-              <li><a href="#tech-partners" class="hover:underline">Technology Partners</a></li>
+              <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Become a Partner</a></li>
+              <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Technology Partners</a></li>
             </ul>
           </div>
         </div>
 
         <!-- Static Links -->
-        <a href="#workspace-section" class="hover:text-white transition-colors">Workspace</a>
-        <a href="my-workers.html" class="hover:text-white transition-colors">My Workers</a>
+        <a href="#workspace-section" class="hover:text-white transition-colors px-3 py-3">Workspace</a>
+        <a href="my-workers.html" class="hover:text-white transition-colors px-3 py-3">My Workers</a>
       </div>
     </div>
   </nav>
 </header>
 
+  <!-- Hero / Title -->
+  <section class="pt-16 sm:pt-24 pb-6 px-4 sm:px-8 lg:px-16 bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">
+    <div class="max-w-6xl mx-auto">
+      <span class="pill">Workspace</span>
+      <h1 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mt-3">My CoWorkers</h1>
+      <p class="text-neutral-400 mt-2">Create, organize, and manage your digital CoWorkers—search, filter, sort, and export.</p>
 
-<!-- Main Content -->
-<section class="pt-20 sm:pt-28 pb-10 px-4 sm:px-8 lg:px-16 flex-grow bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl sm:text-4xl font-semibold text-white mb-8">My CoWorkers</h2>
-    <div id="my-workers-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-  </div>
-</section>
+      <!-- Toolbar -->
+      <div class="mt-6 flex flex-col lg:flex-row gap-3 lg:items-center lg:justify-between">
+        <div class="flex flex-1 flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <input id="searchInput" type="text" placeholder="Search by role, department, overview…"
+                   class="w-full px-10 py-3 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 focus:ring-2 focus:ring-[#8E7AEF] placeholder-neutral-500">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <select id="deptFilter" class="px-4 py-3 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 focus:ring-2 focus:ring-[#8E7AEF]">
+            <option value="">All departments</option>
+          </select>
+          <select id="sortSelect" class="px-4 py-3 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 focus:ring-2 focus:ring-[#8E7AEF]">
+            <option value="pinned">Pinned first</option>
+            <option value="newest">Newest</option>
+            <option value="alpha">Alphabetical</option>
+          </select>
+        </div>
 
-<!-- Script -->
-<script>
-  const container = document.getElementById('my-workers-container');
-  let myWorkers = JSON.parse(localStorage.getItem('customWorkers') || '[]');
+        <div class="flex gap-3">
+          <button id="importBtn" class="px-4 py-3 rounded-2xl border border-white/15 hover:bg-white/10 transition">Import</button>
+          <button id="exportBtn" class="px-4 py-3 rounded-2xl border border-white/15 hover:bg-white/10 transition">Export</button>
+          <button id="newBtn" class="px-4 py-3 rounded-2xl bg-[#8E7AEF] text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6] transition">New CoWorker</button>
+          <input type="file" id="importFile" accept="application/json" class="hidden">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  function renderMyWorkers() {
-    container.innerHTML = '';
-    if (!myWorkers.length) {
-      container.innerHTML = "<p class='text-neutral-400 text-sm'>You haven't created any digital CoWorkers yet. Try crafting one using the assistant or a template!</p>";
-      return;
+  <!-- Grid -->
+  <section class="pb-14 px-4 sm:px-8 lg:px-16 flex-grow bg-gradient-to-b from-[#151618] to-[#151618]">
+    <div class="max-w-6xl mx-auto">
+      <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <!-- Empty state -->
+      <template id="emptyTpl">
+        <div class="text-center py-16 border border-dashed border-white/15 rounded-3xl bg-white/5">
+          <svg width="80" height="80" viewBox="0 0 24 24" class="mx-auto mb-4 text-white/40" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect>
+            <path d="M8 10h8M8 14h5"></path>
+          </svg>
+          <p class="text-neutral-300">No CoWorkers yet.</p>
+          <p class="text-neutral-500 text-sm mt-1">Click <span class="font-semibold text-white">New CoWorker</span> to create your first one, or import a JSON file.</p>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- Create / Edit Modal -->
+  <dialog id="workerModal" class="backdrop:bg-black/60 rounded-2xl w-[min(680px,95vw)] bg-[#101114] border border-white/10 text-neutral-200 p-0">
+    <form id="workerForm" class="p-6">
+      <div class="flex items-start justify-between">
+        <h3 id="modalTitle" class="text-xl font-poppins font-semibold">New CoWorker</h3>
+        <button type="button" class="px-3 py-1 rounded-xl hover:bg-white/10" data-close>✕</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <div>
+          <label class="text-sm text-neutral-400">Role</label>
+          <input name="role" required class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]">
+        </div>
+        <div>
+          <label class="text-sm text-neutral-400">Department</label>
+          <input name="department" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="e.g., Finance, Support">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="text-sm text-neutral-400">Overview</label>
+          <textarea name="overview" rows="3" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="What this CoWorker does…"></textarea>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="text-sm text-neutral-400">Tasks (one per line)</label>
+          <textarea name="tasks" rows="3" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="Create case in Salesforce&#10;Notify Slack&#10;Generate invoice in NetSuite"></textarea>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="text-sm text-neutral-400">Onboarding Notes</label>
+          <input name="onboarding" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="Credentials, docs, SLAs…">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="text-sm text-neutral-400">Tags (comma separated)</label>
+          <input name="tags" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="billing, triage, urgent">
+        </div>
+      </div>
+
+      <div class="mt-6 flex items-center justify-between">
+        <label class="inline-flex items-center gap-2 text-sm text-neutral-300">
+          <input type="checkbox" name="pinned" class="rounded-md border-white/20 bg-transparent"> Pin to top
+        </label>
+        <div class="flex gap-3">
+          <button type="button" class="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10" data-close>Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-[#8E7AEF] text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6]">Save</button>
+        </div>
+      </div>
+      <input type="hidden" name="id">
+    </form>
+  </dialog>
+
+  <!-- Delete Confirm Modal -->
+  <dialog id="confirmModal" class="backdrop:bg-black/60 rounded-2xl w-[min(460px,95vw)] bg-[#101114] border border-white/10 text-neutral-200 p-0">
+    <div class="p-6">
+      <h4 class="text-lg font-poppins font-semibold">Delete CoWorker?</h4>
+      <p class="text-sm text-neutral-400 mt-2">This action can’t be undone.</p>
+      <div class="mt-5 flex justify-end gap-3">
+        <button class="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10" data-cancel>Cancel</button>
+        <button class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700" data-confirm>Delete</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+      <div class="text-center md:text-left">
+        <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
+        <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
+        <div>
+          <p class="font-semibold text-white mb-2">Platform</p>
+          <ul class="space-y-1">
+            <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
+            <li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li>
+            <li><a href="platform.html#security" class="hover:underline">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Build</p>
+          <ul class="space-y-1">
+            <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
+            <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
+            <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Resources</p>
+          <ul class="space-y-1">
+            <li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li>
+            <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+            <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // --- Header dropdown aria-expanded handling ---
+    document.querySelectorAll('.nav-group').forEach(group => {
+      const btn = group.querySelector('button[aria-haspopup="menu"]');
+      const set = v => btn && btn.setAttribute('aria-expanded', v ? 'true' : 'false');
+      group.addEventListener('mouseenter', () => set(true));
+      group.addEventListener('mouseleave', () => set(false));
+      group.addEventListener('focusin',  () => set(true));
+      group.addEventListener('focusout', () => set(false));
+    });
+
+    // --- LocalStorage & Data helpers ---
+    const STORAGE_KEY = 'customWorkers';
+    const UI_KEY = 'myWorkersUI';
+
+    const $ = sel => document.querySelector(sel);
+    const grid = $('#cardsGrid');
+    const searchInput = $('#searchInput');
+    const deptFilter = $('#deptFilter');
+    const sortSelect = $('#sortSelect');
+    const newBtn = $('#newBtn');
+    const importBtn = $('#importBtn');
+    const importFile = $('#importFile');
+    const exportBtn = $('#exportBtn');
+
+    const workerModal = $('#workerModal');
+    const workerForm = $('#workerForm');
+    const modalTitle = $('#modalTitle');
+
+    const confirmModal = $('#confirmModal');
+
+    let workers = [];
+    let pendingDeleteId = null;
+
+    function loadWorkers() {
+      try { workers = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+      catch { workers = []; }
+      // Normalize
+      workers = workers.map(w => ({
+        id: w.id || crypto.randomUUID(),
+        role: w.role || 'Untitled Role',
+        department: w.department || '',
+        overview: w.overview || '',
+        tasks: Array.isArray(w.tasks) ? w.tasks : (w.tasks ? String(w.tasks).split('\n').filter(Boolean) : []),
+        onboarding: w.onboarding || '',
+        tags: Array.isArray(w.tags) ? w.tags : (w.tags ? String(w.tags).split(',').map(s => s.trim()).filter(Boolean) : []),
+        pinned: !!w.pinned,
+        createdAt: w.createdAt || Date.now()
+      }));
+      saveWorkers();
     }
 
-    myWorkers.forEach(w => {
-      const card = document.createElement('div');
-      card.className = 'bg-[#1a1b1e] border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col transition-transform hover:scale-[1.02]';
+    function saveWorkers() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(workers));
+      buildDeptFilter();
+    }
 
-      card.innerHTML = `
-        <div class="mb-4">
-          <h3 class="text-xl font-semibold text-white mb-1">${w.role || 'Unnamed Role'}</h3>
-          <span class="text-sm text-[#8E7AEF]">${w.department || 'No Department'}</span>
-        </div>
-        <p class="text-sm text-neutral-300 mb-4">${w.overview || 'No overview provided.'}</p>
-        ${w.tasks?.length ? `
-          <div class="mb-4">
-            <h4 class="text-sm font-semibold text-neutral-400 mb-1">Tasks:</h4>
-            <ul class="list-disc list-inside text-sm text-neutral-200 space-y-1">${w.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
-          </div>` : ''}
-        ${w.onboarding ? `<p class="text-xs text-neutral-400 mb-4">📘 Onboarding: ${w.onboarding}</p>` : ''}
-        <button class="delete-btn bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-1 rounded-xl self-start">Delete</button>
-      `;
+    function readUI() {
+      try { return JSON.parse(localStorage.getItem(UI_KEY) || '{}'); }
+      catch { return {}; }
+    }
+    function saveUI(state) {
+      localStorage.setItem(UI_KEY, JSON.stringify(state));
+    }
 
-      card.querySelector('.delete-btn').addEventListener('click', () => {
-        myWorkers = myWorkers.filter(x => x.id !== w.id);
-        localStorage.setItem('customWorkers', JSON.stringify(myWorkers));
-        renderMyWorkers();
+    // --- Filters / Sort ---
+    function buildDeptFilter() {
+      const cur = deptFilter.value;
+      const depts = Array.from(new Set(workers.map(w => w.department).filter(Boolean))).sort();
+      deptFilter.innerHTML = '<option value="">All departments</option>' + depts.map(d => `<option>${d}</option>`).join('');
+      if (depts.includes(cur)) deptFilter.value = cur;
+    }
+
+    function getFilteredSorted() {
+      const q = searchInput.value.trim().toLowerCase();
+      const dept = deptFilter.value.trim().toLowerCase();
+      const mode = sortSelect.value;
+
+      let list = workers.filter(w => {
+        const matchesDept = !dept || (w.department || '').toLowerCase() === dept;
+        const text = [w.role, w.department, w.overview, ...(w.tasks||[]), ...(w.tags||[])].join(' ').toLowerCase();
+        const matchesQ = !q || text.includes(q);
+        return matchesDept && matchesQ;
       });
 
-      container.appendChild(card);
+      // Sort
+      if (mode === 'alpha') {
+        list.sort((a,b) => a.role.localeCompare(b.role));
+      } else if (mode === 'newest') {
+        list.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+      } else {
+        // pinned first (default), then newest
+        list.sort((a,b) => (b.pinned - a.pinned) || ((b.createdAt||0) - (a.createdAt||0)));
+      }
+      return list;
+    }
+
+    // --- Rendering ---
+    function initialsFrom(text='?') {
+      return text.split(/\s+/).slice(0,2).map(s => s[0]||'').join('').toUpperCase() || '?';
+    }
+
+    function render() {
+      const list = getFilteredSorted();
+      grid.innerHTML = '';
+      if (!list.length) {
+        const tpl = document.getElementById('emptyTpl');
+        grid.appendChild(tpl.content.cloneNode(true));
+        return;
+      }
+
+      list.forEach(w => {
+        const card = document.createElement('article');
+        card.className = 'card-hover bg-[#1a1b1e] border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col gap-4';
+        card.dataset.id = w.id;
+
+        const tagChips = (w.tags||[]).slice(0,4).map(t => `<span class="px-2 py-0.5 rounded-lg bg-white/10 border border-white/10 text-xs">${t}</span>`).join(' ');
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="h-11 w-11 rounded-xl border border-white/10 bg-white/10 grid place-content-center text-white font-semibold">${initialsFrom(w.role)}</div>
+              <div>
+                <h3 class="text-lg font-semibold text-white leading-tight">${w.role}</h3>
+                <div class="text-xs text-[#8E7AEF]">${w.department || '—'}</div>
+              </div>
+            </div>
+            <button class="pin-btn px-2 py-1 rounded-lg border border-white/10 hover:bg-white/10 text-xs">${w.pinned ? '★ Pinned' : '☆ Pin'}</button>
+          </div>
+
+          <p class="text-sm text-neutral-300">${w.overview || 'No overview provided.'}</p>
+
+          ${(w.tasks && w.tasks.length) ? `
+            <div>
+              <h4 class="text-xs font-semibold text-neutral-400 mb-1">Tasks</h4>
+              <ul class="text-sm text-neutral-200 space-y-1 list-disc pl-5">
+                ${w.tasks.slice(0,4).map(t => `<li>${t}</li>`).join('')}
+                ${w.tasks.length > 4 ? `<li class="text-neutral-500">+${w.tasks.length - 4} more…</li>` : ''}
+              </ul>
+            </div>` : ''}
+
+          ${w.tags?.length ? `<div class="flex flex-wrap gap-2">${tagChips}</div>` : ''}
+
+          ${w.onboarding ? `<p class="text-xs text-neutral-400">📘 ${w.onboarding}</p>` : ''}
+
+          <div class="flex items-center justify-between pt-2">
+            <div class="text-xs text-neutral-500">Created ${new Date(w.createdAt || Date.now()).toLocaleDateString()}</div>
+            <div class="flex gap-2">
+              <button class="edit-btn px-3 py-1.5 rounded-xl border border-white/10 hover:bg-white/10 text-sm">Edit</button>
+              <button class="delete-btn px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-sm">Delete</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // --- CRUD ---
+    function openCreate() {
+      modalTitle.textContent = 'New CoWorker';
+      workerForm.reset();
+      workerForm.id.value = '';
+      workerModal.showModal();
+    }
+
+    function openEdit(id) {
+      const w = workers.find(x => x.id === id);
+      if (!w) return;
+      modalTitle.textContent = 'Edit CoWorker';
+      workerForm.role.value = w.role || '';
+      workerForm.department.value = w.department || '';
+      workerForm.overview.value = w.overview || '';
+      workerForm.tasks.value = (w.tasks||[]).join('\n');
+      workerForm.onboarding.value = w.onboarding || '';
+      workerForm.tags.value = (w.tags||[]).join(', ');
+      workerForm.pinned.checked = !!w.pinned;
+      workerForm.id.value = w.id;
+      workerModal.showModal();
+    }
+
+    workerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(workerForm);
+      const id = data.get('id') || crypto.randomUUID();
+      const isNew = !data.get('id');
+      const now = Date.now();
+
+      const obj = {
+        id,
+        role: (data.get('role')||'').trim() || 'Untitled Role',
+        department: (data.get('department')||'').trim(),
+        overview: (data.get('overview')||'').trim(),
+        tasks: (data.get('tasks')||'').split('\n').map(s => s.trim()).filter(Boolean),
+        onboarding: (data.get('onboarding')||'').trim(),
+        tags: (data.get('tags')||'').split(',').map(s => s.trim()).filter(Boolean),
+        pinned: !!data.get('pinned'),
+      };
+
+      const idx = workers.findIndex(w => w.id === id);
+      if (idx >= 0) {
+        obj.createdAt = workers[idx].createdAt || now;
+        workers[idx] = obj;
+      } else {
+        obj.createdAt = now;
+        workers.push(obj);
+      }
+      saveWorkers();
+      workerModal.close();
+      render();
     });
-  }
 
-  renderMyWorkers();
-</script>
+    // Close modal actions
+    workerModal.addEventListener('click', (e) => {
+      if (e.target.hasAttribute('data-close')) workerModal.close();
+      if (e.target === workerModal) workerModal.close();
+    });
 
+    // Delete flow
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('[data-id]');
+      if (!card) return;
+      const id = card.dataset.id;
+
+      if (e.target.classList.contains('delete-btn')) {
+        pendingDeleteId = id;
+        confirmModal.showModal();
+      }
+      if (e.target.classList.contains('edit-btn')) {
+        openEdit(id);
+      }
+      if (e.target.classList.contains('pin-btn')) {
+        const w = workers.find(x => x.id === id);
+        if (w) {
+          w.pinned = !w.pinned;
+          saveWorkers();
+          render();
+        }
+      }
+    });
+
+    confirmModal.addEventListener('click', (e) => {
+      if (e.target.hasAttribute('data-cancel') || e.target === confirmModal) {
+        confirmModal.close();
+      }
+      if (e.target.hasAttribute('data-confirm')) {
+        if (pendingDeleteId) {
+          workers = workers.filter(w => w.id !== pendingDeleteId);
+          saveWorkers();
+          render();
+        }
+        pendingDeleteId = null;
+        confirmModal.close();
+      }
+    });
+
+    // Toolbar events
+    searchInput.addEventListener('input', () => { persistUI(); render(); });
+    deptFilter.addEventListener('change', () => { persistUI(); render(); });
+    sortSelect.addEventListener('change', () => { persistUI(); render(); });
+
+    function persistUI() {
+      saveUI({
+        q: searchInput.value,
+        dept: deptFilter.value,
+        sort: sortSelect.value
+      });
+    }
+
+    function restoreUI() {
+      const s = readUI();
+      if (s.q) searchInput.value = s.q;
+      if (s.sort) sortSelect.value = s.sort;
+      // dept is built after load -> applied in buildDeptFilter()
+      // we'll set it after initial build in loadWorkers()
+      setTimeout(() => { if (s.dept) deptFilter.value = s.dept; render(); }, 0);
+    }
+
+    // Import / Export
+    exportBtn.addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(workers, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'coworkers.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    importBtn.addEventListener('click', () => importFile.click());
+    importFile.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const arr = JSON.parse(text);
+        if (!Array.isArray(arr)) throw new Error('Invalid file');
+        // merge + de-dupe by id (or role+dept fallback)
+        arr.forEach(raw => {
+          const w = {
+            id: raw.id || crypto.randomUUID(),
+            role: (raw.role||'').trim() || 'Untitled Role',
+            department: (raw.department||'').trim(),
+            overview: (raw.overview||'').trim(),
+            tasks: Array.isArray(raw.tasks) ? raw.tasks : (raw.tasks ? String(raw.tasks).split('\n').filter(Boolean) : []),
+            onboarding: (raw.onboarding||'').trim(),
+            tags: Array.isArray(raw.tags) ? raw.tags : (raw.tags ? String(raw.tags).split(',').map(s => s.trim()).filter(Boolean) : []),
+            pinned: !!raw.pinned,
+            createdAt: raw.createdAt || Date.now()
+          };
+          const idx = workers.findIndex(x => x.id === w.id || (x.role === w.role && x.department === w.department));
+          if (idx >= 0) workers[idx] = w; else workers.push(w);
+        });
+        saveWorkers();
+        render();
+      } catch {
+        alert('Could not import file. Please provide a valid JSON array.');
+      } finally {
+        importFile.value = '';
+      }
+    });
+
+    // New
+    newBtn.addEventListener('click', openCreate);
+
+    // Boot
+    loadWorkers();
+    restoreUI();
+    render();
+  </script>
 </body>
 </html>

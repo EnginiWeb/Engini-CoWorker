@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"/>
+  <title>Engini Platform</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Site Styles (optional) -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Typography & smooth scroll */
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; }
+    .font-poppins { font-family: Poppins, Inter, ui-sans-serif, system-ui; }
+    html { scroll-behavior: smooth; }
+
+    /* Focus rings for accessibility */
+    .focus-ring { outline: none; box-shadow: 0 0 0 2px rgba(255,255,255,.2); }
+
+    /* Tiny utility for pill headings */
+    .pill { display:inline-flex; align-items:center; gap:.5rem; padding:.25rem .6rem; border-radius:9999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.06); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.7) }
+
+    /* Better code block scroll */
+    pre { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; }
+    pre::-webkit-scrollbar { height: 8px; }
+    pre::-webkit-scrollbar-thumb { background: rgba(255,255,255,.25); border-radius: 9999px; }
+
+    /* Animate dropdowns slightly */
+    .menu-panel { transform: translateY(8px) scale(.98); opacity: 0; pointer-events: none; }
+    .group:hover .menu-panel,
+    .group:focus-within .menu-panel { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+
+    /* Active link styling from scrollspy */
+    .toc-active { background: rgba(255,255,255,.12); color:#fff; }
+
+    /* Floating Top button hidden by default */
+    #toTop.hidden { display: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
+
+
+<header class="sticky top-0 z-50 bg-transparent">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <img src="image.png" alt="Engini-logo" class="w-24 sm:w-28 h-auto" />
+    </a>
+
+    <!-- Nav Center -->
+    <div class="flex-grow flex justify-center">
+      <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
+
+        <!-- Solutions -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Solutions</button>
+          <div class="absolute left-1/2 -translate-x-1/3 top-full mt-0 pt-2 w-[1000px] p-6 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+            <div class="grid grid-cols-4 gap-8 text-white text-sm">
+              <!-- App Integrations -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">App Integrations</p>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Salesforce</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Slack</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Marketo</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">NetSuite</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">ServiceNow</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/workday.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Workday</a></li>
+                  <li><a href="https://engini.io/engini-connectors/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                </ul>
+              </div>
+              <!-- By Function -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Function</p>
+                <ul class="space-y-2">
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">IT</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Finance</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Support</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">HR</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Marketing</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Sales</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Revenue Operations</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product (Embed)</a></li>
+                </ul>
+              </div>
+              <!-- By Use Case -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
+                <ul class="space-y-2">
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Order-to-cash</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Employee onboarding</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Enterprise iPaaS</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product-led sales</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Embedded Integrations</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                </ul>
+              </div>
+              <!-- By Industry -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
+                <ul class="space-y-2">
+                  <li><a href="#" class="hover:underline">Manufacturing</a></li>
+                  <li><a href="#" class="hover:underline">Financial services</a></li>
+                  <li><a href="#" class="hover:underline">Retail</a></li>
+                  <li><a href="#" class="hover:underline">Logistics</a></li>
+                  <li><a href="#" class="hover:underline">Healthcare</a></li>
+                  <li><a href="#" class="hover:underline">Media</a></li>
+                  <li><a href="#" class="hover:underline">BPO</a></li>
+                  <li><a href="#" class="hover:underline">Non-profit</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="platform.html" class="hover:underline">Architecture</a></li>
+              <li><a href="platform.html" class="hover:underline">Agent Operating System</a></li>
+              <li><a href="platform.html" class="hover:underline">Security</a></li>
+              <li><a href="platform.html" class="hover:underline">Connectors</a></li>
+              <li><a href="platform.html" class="hover:underline">Workflow Builder</a></li>
+              <li><a href="platform.html" class="hover:underline">AI Playbooks</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Resources</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="https://engini.io/help/" class="hover:underline">Documentation</a></li>
+              <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+              <li><a href="https://www.youtube.com/watch?v=EWs_WZCnUT8&list=PL7Z1lkK9TitWIeOkB6GN8f1h7cfsb1CVz" class="hover:underline">Webinars</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Partners -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Partners</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Become a Partner</a></li>
+              <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Technology Partners</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Static Links -->
+        <a href="#workspace-section" class="hover:text-white transition-colors px-3 py-3">Workspace</a>
+        <a href="my-workers.html" class="hover:text-white transition-colors px-3 py-3">My Workers</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <!-- Sticky local TOC -->
+  <nav class="sticky top-20 z-40 bg-[#0F1012]/70 backdrop-blur-md border-y border-white/10" aria-label="Section navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
+      <ul class="flex gap-2 sm:gap-4 text-sm whitespace-nowrap">
+        <li><a href="#architecture" class="px-3 py-2 rounded-xl hover:bg-white/10">Architecture</a></li>
+        <li><a href="#agent-os" class="px-3 py-2 rounded-xl hover:bg-white/10">Agent OS</a></li>
+        <li><a href="#security" class="px-3 py-2 rounded-xl hover:bg-white/10">Security</a></li>
+        <li><a href="#connectors" class="px-3 py-2 rounded-xl hover:bg-white/10">Connectors</a></li>
+        <li><a href="#workflows" class="px-3 py-2 rounded-xl hover:bg-white/10">Workflow Builder</a></li>
+        <li><a href="#playbooks" class="px-3 py-2 rounded-xl hover:bg-white/10">AI Playbooks</a></li>
+        <li><a href="#api" class="px-3 py-2 rounded-xl hover:bg-white/10">API</a></li>
+        <li><a href="#faq" class="px-3 py-2 rounded-xl hover:bg-white/10">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sections -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-28">
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="scroll-mt-28" aria-labelledby="h-architecture">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="pill">Platform Foundation</span>
+          <h2 id="h-architecture" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">Architecture</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Cloud-native microservices with a clear separation of concerns: a <span class="font-semibold">control plane</span> for policy and orchestration,
+            and a <span class="font-semibold">data plane</span> for high-throughput execution. Everything is <span class="font-semibold">API-first</span>, observable by default, and horizontally scalable.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Core Principles</p>
+              <ul class="mt-3 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Stateless services, horizontal scale</li>
+                <li>Event-driven, idempotent operations</li>
+                <li>Versioned API contracts</li>
+                <li>First-class observability</li>
+              </ul>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Deployment Options</p>
+              <ul class="mt-3 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Engini Cloud (multi-tenant)</li>
+                <li>Private Cloud (VPC)</li>
+                <li>On-Prem / Air-gapped (Helm)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 420" class="w-full h-auto" role="img" aria-label="Engini architecture diagram">
+            <defs>
+              <linearGradient id="gradBox" x1="0" x2="1">
+                <stop offset="0%" stop-color="#2A2D34"/>
+                <stop offset="100%" stop-color="#1B1D22"/>
+              </linearGradient>
+              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#8E7AEF"></path>
+              </marker>
+            </defs>
+
+            <!-- Control Plane -->
+            <rect x="30" y="20" width="740" height="120" rx="16" fill="url(#gradBox)" stroke="rgba(255,255,255,0.15)" />
+            <text x="50" y="50" fill="#A0AEC0" font-size="14">Control Plane</text>
+            <rect x="50" y="65" width="200" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)" />
+            <text x="70" y="95" fill="#E5E7EB" font-size="14">API Gateway</text>
+            <rect x="280" y="65" width="200" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+            <text x="300" y="95" fill="#E5E7EB" font-size="14">Orchestrator</text>
+            <rect x="510" y="65" width="240" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+            <text x="530" y="95" fill="#E5E7EB" font-size="14">Policy & Guardrails</text>
+
+            <!-- Data Plane -->
+            <rect x="30" y="170" width="740" height="220" rx="16" fill="url(#gradBox)" stroke="rgba(255,255,255,0.15)" />
+            <text x="50" y="200" fill="#A0AEC0" font-size="14">Data Plane</text>
+            <rect x="50" y="220" width="250" height="140" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+            <text x="70" y="250" fill="#E5E7EB" font-size="14">Agent OS</text>
+            <text x="70" y="270" fill="#A0AEC0" font-size="12">Planner • Tools • Memory</text>
+            <rect x="330" y="220" width="200" height="140" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)" />
+            <text x="350" y="250" fill="#E5E7EB" font-size="14">Workflow Engine</text>
+            <text x="350" y="270" fill="#A0AEC0" font-size="12">Triggers • Branching • HITL</text>
+            <rect x="560" y="220" width="190" height="140" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)" />
+            <text x="580" y="250" fill="#E5E7EB" font-size="14">Connectors</text>
+            <text x="580" y="270" fill="#A0AEC0" font-size="12">SaaS • DB • Files • Webhooks</text>
+
+            <!-- Arrows -->
+            <line x1="150" y1="125" x2="150" y2="220" stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="380" y1="125" x2="380" y2="220" stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="630" y1="125" x2="630" y2="220" stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)"/>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Control plane → data plane separation for scale, safety, and speed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENT OS -->
+    <section id="agent-os" class="scroll-mt-28" aria-labelledby="h-agentos">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="pill">Runtime</span>
+          <h2 id="h-agentos" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">Agent Operating System</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            The Agent OS is the execution substrate for intelligent agents: <span class="font-semibold">perceive → plan → act → evaluate</span>,
+            with tools, memory, and guardrails built in.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Planner</p>
+              <p class="text-sm text-neutral-300 mt-2">Break complex work into steps and pick the right tool, grounded in context.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Tools Adapter</p>
+              <p class="text-sm text-neutral-300 mt-2">Unified interface for REST/GraphQL, DB queries, RPA, SDKs, and webhooks.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Memory</p>
+              <p class="text-sm text-neutral-300 mt-2">Short-term context plus long-term vector/relational memory with TTL.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Guardrails</p>
+              <p class="text-sm text-neutral-300 mt-2">Policies, safety filters, and schema validators for safe, consistent output.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loop Diagram -->
+<div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+  <svg viewBox="0 0 800 360" class="w-full h-auto" role="img" aria-label="Agent OS loop diagram">
+    <title>Agent OS closed loop: Perception → Planner → Tool Calls → Policies → Memory → Planner, with Evaluate loop</title>
+    <defs>
+      <linearGradient id="g2" x1="0" x2="1">
+        <stop offset="0%" stop-color="#2A2D34"/>
+        <stop offset="100%" stop-color="#1B1D22"/>
+      </linearGradient>
+      <!-- Crisper arrowhead + better alignment -->
+      <marker id="arrow2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#8E7AEF"></path>
+      </marker>
+    </defs>
+
+    <!-- Canvas -->
+    <rect x="20" y="20" width="760" height="320" rx="16" fill="url(#g2)" stroke="rgba(255,255,255,0.15)"/>
+
+    <!-- Boxes (positions kept the same as your original) -->
+    <!-- Perception -->
+    <rect x="60"  y="80" width="160" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+    <!-- Planner -->
+    <rect x="260" y="80" width="160" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+    <!-- Tool Calls -->
+    <rect x="460" y="80" width="160" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+    <!-- Memory -->
+    <rect x="260" y="200" width="160" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+    <!-- Policies -->
+    <rect x="460" y="200" width="160" height="60" rx="12" fill="#0F1012" stroke="rgba(255,255,255,0.15)"/>
+
+    <!-- Centered labels -->
+    <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+      <text x="140" y="110">Perception</text>           <!-- 60+80, 80+30 -->
+      <text x="340" y="110">Planner</text>              <!-- 260+80 -->
+      <text x="540" y="110">Tool Calls</text>           <!-- 460+80 -->
+      <text x="340" y="230">Memory</text>               <!-- 200+30 -->
+      <text x="540" y="230">Policies</text>
+    </g>
+
+    <!-- Connections (edge-to-edge centers, rounded caps/joins) -->
+    <g stroke="#8E7AEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <!-- Perception → Planner -->
+      <line x1="220" y1="110" x2="260" y2="110" marker-end="url(#arrow2)"/>
+      <!-- Planner → Tool Calls -->
+      <line x1="420" y1="110" x2="460" y2="110" marker-end="url(#arrow2)"/>
+      <!-- Tool Calls → Policies (down) -->
+      <line x1="540" y1="140" x2="540" y2="200" marker-end="url(#arrow2)"/>
+      <!-- Policies → Memory (left) -->
+      <line x1="460" y1="230" x2="420" y2="230" marker-end="url(#arrow2)"/>
+      <!-- Memory → Planner (up) -->
+      <line x1="340" y1="200" x2="340" y2="140" marker-end="url(#arrow2)"/>
+
+      <!-- Evaluate loop (dashed): Tool Calls (right edge) → Perception (left edge) -->
+      <!-- Starts at (620,110), curves around bottom, returns to (60,110) -->
+      <path d="
+        M 620 110
+        C 760 110 760 300 620 300
+        C 360 300 180 260 80 180
+        C 60 165 60 135 60 110
+      " stroke-dasharray="6 6" marker-end="url(#arrow2)"/>
+    </g>
+
+    <!-- Loop label -->
+    <text x="660" y="220" fill="#A0AEC0" font-size="12">Evaluate ↺</text>
+  </svg>
+  <p class="text-xs text-white/60 mt-3">A closed loop with explicit memory & policy checks, plus an external evaluate cycle returning to Perception.</p>
+</div>
+
+    </section>
+
+    <!-- SECURITY -->
+    <section id="security" class="scroll-mt-28" aria-labelledby="h-security">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="pill">Trust</span>
+          <h2 id="h-security" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">Security</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Defense-in-depth across identity, data, network, runtime, and audit. Enforce least-privilege access and verify every action end-to-end.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">AuthN & AuthZ</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>SSO / SAML, OAuth2 / OIDC</li>
+                <li>RBAC, scoped tokens</li>
+                <li>mTLS for service identity</li>
+              </ul>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Data Protection</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>TLS in transit, AES-256 at rest</li>
+                <li>Secrets vault & key rotation</li>
+                <li>PII masking & tagging</li>
+              </ul>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Auditability</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Structured audit logs</li>
+                <li>Agent action replay</li>
+                <li>Export & SIEM forwarding</li>
+              </ul>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Compliance</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>SOC 2 (process-ready)</li>
+                <li>GDPR tooling (DPA, DSR)</li>
+                <li>ISO 27001 aligned controls</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security matrix -->
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead class="text-white/70">
+                <tr class="text-left">
+                  <th class="py-2 pr-4">Layer</th>
+                  <th class="py-2 pr-4">Controls</th>
+                  <th class="py-2 pr-4">Notes</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/10">
+                <tr>
+                  <td class="py-3 pr-4">Identity</td>
+                  <td class="py-3 pr-4">SSO, OAuth2, OIDC, mTLS</td>
+                  <td class="py-3 pr-4">Service & user identity, SCIM optional</td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4">Authorization</td>
+                  <td class="py-3 pr-4">RBAC, per-connector scopes</td>
+                  <td class="py-3 pr-4">Least-privilege policies, API tokens</td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4">Data</td>
+                  <td class="py-3 pr-4">TLS, AES-256, vault</td>
+                  <td class="py-3 pr-4">PII masking with lineage</td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4">Runtime</td>
+                  <td class="py-3 pr-4">Isolation, quotas, rate limits</td>
+                  <td class="py-3 pr-4">Per-tenant governance</td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4">Audit</td>
+                  <td class="py-3 pr-4">Immutable logs, exports</td>
+                  <td class="py-3 pr-4">SIEM forwarding</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-white/60 mt-3">Enterprise controls to meet modern compliance and zero-trust standards.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECTORS -->
+    <section id="connectors" class="scroll-mt-28" aria-labelledby="h-connectors">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="pill">Integrations</span>
+          <h2 id="h-connectors" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">Connectors</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Ship faster with prebuilt, resilient connectors for SaaS, data, and infrastructure.
+            Each connector exposes typed inputs/outputs, normalized auth, and built-in retries.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Auth & Secrets</p>
+              <p class="text-sm text-neutral-300 mt-2">OAuth2/OIDC, API keys, service accounts—secured in a vault.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Resilience</p>
+              <p class="text-sm text-neutral-300 mt-2">Retries with exponential backoff, circuit breakers, and jitter.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Webhooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Managed endpoints with signature verification and replay protection.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Observability</p>
+              <p class="text-sm text-neutral-300 mt-2">Metrics, traces, and logs per connector with rate-limit insights.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular logos -->
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <p class="text-sm font-semibold mb-4">Popular connectors</p>
+          <div class="grid grid-cols-3 sm:grid-cols-6 gap-5 items-center">
+            <img src="icons/salesforce.png" alt="Salesforce" class="h-10 w-10 object-contain mx-auto" loading="lazy" decoding="async">
+            <img src="icons/slack.png" alt="Slack" class="h-10 w-10 object-contain mx-auto" loading="lazy" decoding="async">
+            <img src="icons/marketo.png" alt="Marketo" class="h-10 w-10 object-contain mx-auto" loading="lazy" decoding="async">
+            <img src="icons/netsuite.png" alt="NetSuite" class="h-10 w-10 object-contain mx-auto" loading="lazy" decoding="async">
+            <img src="icons/servicenow.png" alt="ServiceNow" class="h-10 w-10 object-contain mx-auto" loading="lazy" decoding="async">
+            <img src="icons/workday.png" alt="Workday" class="h-10 w-10 object-contain mx-auto" loading="lazy" decoding="async">
+          </div>
+          <a href="https://engini.io/engini-connectors/" class="inline-flex items-center gap-2 text-sm mt-6 underline hover:no-underline">Browse all connectors <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW BUILDER -->
+    <section id="workflows" class="scroll-mt-28" aria-labelledby="h-workflows">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="pill">Automation</span>
+          <h2 id="h-workflows" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">Workflow Builder</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Design complex, multi-system processes visually. Triggers, branching, loops, parallelization, error handling, and human-in-the-loop—no code required.
+          </p>
+
+          <ul class="mt-6 text-sm text-neutral-300 space-y-2 list-disc pl-5">
+            <li><span class="font-semibold">Triggers:</span> webhooks, schedules, event bus, file drops, DB changes</li>
+            <li><span class="font-semibold">Logic:</span> if/else, switch, foreach, parallel fan-out/fan-in</li>
+            <li><span class="font-semibold">HITL:</span> approvals with SLAs & escalations</li>
+            <li><span class="font-semibold">Testing:</span> versioning, dry-runs, step-through debugger</li>
+            <li><span class="font-semibold">Reliability:</span> retries, DLQs, compensating transactions</li>
+          </ul>
+        </div>
+
+ <!-- Canvas mock (clear, logical split + fan-in) -->
+<div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+  <svg viewBox="0 0 800 320" class="w-full h-auto" role="img" aria-label="Workflow canvas mock" shape-rendering="geometricPrecision">
+    <title>Trigger → Branch → US/EU Actions → Merge → Approval</title>
+
+    <!-- Background board -->
+    <defs>
+      <linearGradient id="board" x1="0" x2="1">
+        <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="0.04"/>
+        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.02"/>
+      </linearGradient>
+
+      <!-- Crisp arrowhead aligned at path ends -->
+      <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#8E7AEF"></path>
+      </marker>
+    </defs>
+
+    <!-- Board -->
+    <rect x="0" y="0" width="800" height="320" rx="16" fill="url(#board)" stroke="rgba(255,255,255,0.1)"></rect>
+
+    <!-- Node geometry (consistent, readable layout)
+         Trigger:   x=40,  y=24,  w=220, h=48  -> center(150,48), bottom(150,72)
+         Branch:    x=40,  y=120, w=220, h=48  -> center(150,144), top(150,120), right(260,144)
+         US:        x=320, y=76,  w=260, h=48  -> left(320,100), right(580,100)
+         EU:        x=320, y=168, w=260, h=48  -> left(320,192), right(580,192)
+         Merge:     x=620, y=132, w=140, h=48  -> left(620,156), bottom(690,180)
+         Approval:  x=620, y=222, w=140, h=48  -> top(690,222)
+    -->
+
+    <!-- Nodes -->
+    <g fill="#1B1D22" stroke="rgba(255,255,255,0.1)">
+      <rect x="40"  y="24"  width="220" height="48" rx="12"></rect>  <!-- Trigger -->
+      <rect x="40"  y="120" width="220" height="48" rx="12"></rect>  <!-- Branch -->
+      <rect x="320" y="76"  width="260" height="48" rx="12"></rect>  <!-- US -->
+      <rect x="320" y="168" width="260" height="48" rx="12"></rect>  <!-- EU -->
+      <rect x="620" y="132" width="140" height="48" rx="12"></rect>  <!-- Merge -->
+      <rect x="620" y="222" width="140" height="48" rx="12"></rect>  <!-- Approval -->
+    </g>
+
+    <!-- Labels (centered) -->
+    <g fill="#E5E7EB" font-size="14" font-family="Inter, ui-sans-serif, system-ui, -apple-system" text-anchor="middle" dominant-baseline="middle">
+      <text x="150" y="48">Trigger: Webhook</text>
+      <text x="150" y="144">Branch: Country</text>
+      <text x="450" y="100">US • Create Case (SFDC)</text>
+      <text x="450" y="192">EU • Create Ticket (SNOW)</text>
+      <text x="690" y="156">Merge</text>
+      <text x="690" y="246">Approval → Notify Slack</text>
+    </g>
+
+    <!-- Split dot at the branch (visual clarity) -->
+    <circle cx="300" cy="144" r="3.5" fill="#8E7AEF" opacity="0.9"></circle>
+
+    <!-- Edges (orthogonal, edge-to-edge). Non-scaling stroke = crisp at any size -->
+    <g stroke="#8E7AEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke">
+      <!-- Trigger ↓ Branch -->
+      <path d="M 150 72 L 150 120" marker-end="url(#arrow3)"/>
+
+      <!-- Branch → US (right, up) -->
+      <path d="M 260 144 L 300 144 L 300 100 L 320 100" marker-end="url(#arrow3)"/>
+
+      <!-- Branch → EU (right, down) -->
+      <path d="M 260 144 L 300 144 L 300 192 L 320 192" marker-end="url(#arrow3)"/>
+
+      <!-- US → Merge (right to bus, down to merge) -->
+      <path d="M 580 100 L 600 100 L 600 156 L 620 156" marker-end="url(#arrow3)"/>
+
+      <!-- EU → Merge (right to bus, up to merge) -->
+      <path d="M 580 192 L 600 192 L 600 156 L 620 156" marker-end="url(#arrow3)"/>
+
+      <!-- Merge ↓ Approval -->
+      <path d="M 690 180 L 690 222" marker-end="url(#arrow3)"/>
+    </g>
+
+    <!-- Optional: soft connector glow (comment out to go ultra-flat) -->
+    <g opacity="0.2" stroke="#8E7AEF" stroke-width="8" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke">
+      <path d="M 150 72 L 150 120"/>
+      <path d="M 260 144 L 300 144 L 300 100 L 320 100"/>
+      <path d="M 260 144 L 300 144 L 300 192 L 320 192"/>
+      <path d="M 580 100 L 600 100 L 600 156 L 620 156"/>
+      <path d="M 580 192 L 600 192 L 600 156 L 620 156"/>
+      <path d="M 690 180 L 690 222"/>
+    </g>
+  </svg>
+
+  <p class="text-xs text-white/60 mt-3">Trigger → Branch → US/EU actions → Merge → Approval (clean split and fan-in).</p>
+</div>
+
+    </section>
+
+    <!-- AI PLAYBOOKS -->
+    <section id="playbooks" class="scroll-mt-28" aria-labelledby="h-playbooks">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="pill">Intelligence</span>
+          <h2 id="h-playbooks" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">AI Playbooks</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Playbooks encode repeatable, auditable AI procedures—prompts, tools, guardrails, and handoffs. They ground every step in your data and policies for verifiable results.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Grounding</p>
+              <p class="text-sm text-neutral-300 mt-2">RAG with metadata filters, semantic caches, freshness rules.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Evaluation</p>
+              <p class="text-sm text-neutral-300 mt-2">Golden sets, online/offline evals, regression gates in CI.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Policies</p>
+              <p class="text-sm text-neutral-300 mt-2">Safety classifiers, PII masking, JSON schema validation.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Handoffs</p>
+              <p class="text-sm text-neutral-300 mt-2">Agent → human with summaries, approvals, and tickets.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example Playbook -->
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <p class="text-sm font-semibold mb-3">Example: Order-to-Cash Triage</p>
+          <pre class="text-xs leading-relaxed overflow-auto bg-[#0F1012] border border-white/10 rounded-xl p-4"><code>name: order_to_cash_triage
+description: |
+  Route incoming emails to billing, fulfillment, or support and kick off the right workflow.
+inputs:
+  - email_subject: string
+  - email_body: string
+  - attachments: file[]
+grounding:
+  sources:
+    - type: vector_store
+      index: "policy_docs"
+      filters: { region: "US", product_line: ["A","B"] }
+policies:
+  - pii_masking: true
+  - allow_tools:
+      - salesforce.create_case
+      - netsuite.create_invoice
+      - slack.post_message
+steps:
+  - analyze_intent:
+      tool: llm.classify
+      schema:
+        intent: ["billing","fulfillment","support"]
+        urgency: ["low","normal","high"]
+  - branch_on_intent:
+      switch: intent
+      cases:
+        billing: netsuite.create_invoice
+        fulfillment: workflow.kickoff("fulfillment_pipeline")
+        support: salesforce.create_case
+  - notify:
+      tool: slack.post_message
+      channel: "#order-intake"
+outputs:
+  - case_id
+  - invoice_id</code></pre>
+          <p class="text-xs text-white/60 mt-3">Declarative pipeline: grounding → policies → steps → verifiable outputs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- API-FIRST -->
+    <section id="api" class="scroll-mt-28" aria-labelledby="h-api">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span class="pill">Developers</span>
+          <h2 id="h-api" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">API-First by Design</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Everything you can do in the UI, you can automate via API. Use webhooks, typed payloads, and idempotent endpoints
+            to integrate Engini into CI/CD, service workflows, and internal tools.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Idempotent Endpoints</p>
+              <p class="text-sm text-neutral-300 mt-2">Safely retry requests without duplicating work.</p>
+            </div>
+            <div class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+              <p class="text-sm font-semibold">Webhooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Subscribe to events with signed callbacks and replay protection.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- API example -->
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <p class="text-sm font-semibold mb-3">Create a workflow (cURL)</p>
+          <pre class="text-xs leading-relaxed overflow-auto bg-[#0F1012] border border-white/10 rounded-xl p-4"><code>curl -X POST https://api.engini.example/workflows \ 
+  -H "Authorization: Bearer &lt;token&gt;" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "fulfillment_pipeline",
+    "triggers": [{ "type": "webhook" }],
+    "steps": [
+      { "type": "branch", "on": "region", "cases": {
+        "US":   { "action": "salesforce.create_case" },
+        "EU":   { "action": "servicenow.create_ticket" }
+      }},
+      { "type": "hitl_approval", "sla_hours": 8 },
+      { "type": "slack.notify", "channel": "#fulfillment" }
+    ]
+  }'</code></pre>
+          <p class="text-xs text-white/60 mt-3">Programmable from day one—no lock-in, no black boxes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="scroll-mt-28" aria-labelledby="h-faq">
+      <div class="max-w-3xl">
+        <span class="pill">Answers</span>
+        <h2 id="h-faq" class="text-3xl md:text-4xl font-poppins font-semibold mt-3 mb-4">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <details class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+            <summary class="cursor-pointer font-semibold">Can we deploy Engini in an air-gapped environment?</summary>
+            <p class="text-sm text-neutral-300 mt-2">Yes. We provide Helm charts for on-prem / air-gapped deployments with offline images and documented dependencies.</p>
+          </details>
+          <details class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+            <summary class="cursor-pointer font-semibold">How do you handle PII and data residency?</summary>
+            <p class="text-sm text-neutral-300 mt-2">PII masking, region-scoped storage, and field-level encryption are supported. Data residency is configurable per tenant.</p>
+          </details>
+          <details class="bg-[#151618] border border-white/10 rounded-2xl p-5">
+            <summary class="cursor-pointer font-semibold">What’s the difference between Workflows and AI Playbooks?</summary>
+            <p class="text-sm text-neutral-300 mt-2">Workflows orchestrate systems and steps. Playbooks add AI reasoning, grounding, and policies to produce verifiable outputs.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+      <div class="text-center md:text-left">
+        <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
+        <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
+        <div>
+          <p class="font-semibold text-white mb-2">Platform</p>
+          <ul class="space-y-1">
+            <li><a href="#architecture" class="hover:underline">Architecture</a></li>
+            <li><a href="#agent-os" class="hover:underline">Agent OS</a></li>
+            <li><a href="#security" class="hover:underline">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Build</p>
+          <ul class="space-y-1">
+            <li><a href="#connectors" class="hover:underline">Connectors</a></li>
+            <li><a href="#workflows" class="hover:underline">Workflow Builder</a></li>
+            <li><a href="#playbooks" class="hover:underline">AI Playbooks</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Resources</p>
+          <ul class="space-y-1">
+            <li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li>
+            <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+            <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="toTop"
+    class="fixed bottom-6 right-6 hidden px-3 py-2 rounded-xl bg-white/10 border border-white/10
+           backdrop-blur-md hover:bg-white/20 transition text-sm"
+    aria-label="Back to top">
+    ↑ Top
+  </button>
+
+  <!-- Small Enhancements: dropdown a11y + scrollspy + back-to-top -->
+  <script>
+    // Dropdown aria-expanded handling (hover & focus)
+    document.querySelectorAll('.nav-group').forEach(group => {
+      const btn = group.querySelector('button[aria-haspopup="menu"]');
+      const set = v => btn && btn.setAttribute('aria-expanded', v ? 'true' : 'false');
+      group.addEventListener('mouseenter', () => set(true));
+      group.addEventListener('mouseleave', () => set(false));
+      group.addEventListener('focusin',  () => set(true));
+      group.addEventListener('focusout', () => set(false));
+    });
+
+    // Scrollspy: highlight active link in sticky TOC
+    (function () {
+      const tocLinks = Array.from(document.querySelectorAll('nav[aria-label="Section navigation"] a[href^="#"]'));
+      const sections = tocLinks
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+
+      const activate = (id) => {
+        tocLinks.forEach(a => a.classList.remove('toc-active'));
+        const link = tocLinks.find(a => a.getAttribute('href') === '#' + id);
+        if (link) link.classList.add('toc-active');
+      };
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) activate(e.target.id);
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 1] });
+
+      sections.forEach(s => obs.observe(s));
+    })();
+
+    // Back to top
+    (function () {
+      const btn = document.getElementById('toTop');
+      const toggle = () => (window.scrollY > 480 ? btn.classList.remove('hidden') : btn.classList.add('hidden'));
+      window.addEventListener('scroll', toggle, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      toggle();
+    })();
+  </script>
+</body>
+</html>

@@ -18,35 +18,144 @@
 </head>
 <body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
 
-  <!-- Navbar -->
-  <header class="sticky top-0 z-50">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center
-                bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
-      <a href="index.html" class="text-xl font-bold font-poppins text-neutral-100">
-        <span class="text-[#8E7AEF]">Engini</span> CoWorker
-      </a>
-      <div class="flex space-x-6">
-        <a href="#workspace-section" class="text-sm font-medium text-neutral-300 hover:text-white transition-colors">Workspace</a>
-        <a href="my-workers.html" class="text-sm font-medium text-neutral-300 hover:text-white transition-colors">My Workers</a>
+  
+  <header class="sticky top-0 z-50 bg-transparent">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <img src="image.png" alt="Engini-logo" class="w-24 sm:w-28 h-auto" />
+    </a>
+
+    <!-- Nav Center -->
+    <div class="flex-grow flex justify-center">
+      <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
+        
+        <!-- Solutions -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Solutions</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 sm:w-96 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <p class="text-xs uppercase text-white/60 mb-2">By Function</p>
+                <ul class="space-y-1 text-sm text-white">
+                  <li><a href="#it" class="hover:underline">IT</a></li>
+                  <li><a href="#finance" class="hover:underline">Finance</a></li>
+                  <li><a href="#support" class="hover:underline">Support</a></li>
+                  <li><a href="#hr" class="hover:underline">HR</a></li>
+                  <li><a href="#marketing" class="hover:underline">Marketing</a></li>
+                  <li><a href="#sales" class="hover:underline">Sales</a></li>
+                </ul>
+              </div>
+              <div>
+                <p class="text-xs uppercase text-white/60 mb-2">By Use Case</p>
+                <ul class="space-y-1 text-sm text-white">
+                  <li><a href="#order-to-cash" class="hover:underline">Order-to-Cash</a></li>
+                  <li><a href="#onboarding" class="hover:underline">Employee Onboarding</a></li>
+                  <li><a href="#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
+                  <li><a href="#ipaas" class="hover:underline">iPaaS Automation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Platform</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="#architecture" class="hover:underline">Architecture</a></li>
+              <li><a href="#agent-os" class="hover:underline">Agent Operating System</a></li>
+              <li><a href="#security" class="hover:underline">Security</a></li>
+              <li><a href="#connectors" class="hover:underline">Connectors</a></li>
+              <li><a href="#workflows" class="hover:underline">Workflow Builder</a></li>
+              <li><a href="#playbooks" class="hover:underline">AI Playbooks</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Resources</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="#docs" class="hover:underline">Documentation</a></li>
+              <li><a href="#case-studies" class="hover:underline">Case Studies</a></li>
+              <li><a href="#whitepapers" class="hover:underline">Whitepapers</a></li>
+              <li><a href="#blog" class="hover:underline">Blog</a></li>
+              <li><a href="#product-tour" class="hover:underline">Product Tour</a></li>
+              <li><a href="#webinars" class="hover:underline">Webinars</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Partners -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Partners</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="#become-partner" class="hover:underline">Become a Partner</a></li>
+              <li><a href="#partner-portal" class="hover:underline">Partner Portal</a></li>
+              <li><a href="#partner-academy" class="hover:underline">Partner Academy</a></li>
+              <li><a href="#certifications" class="hover:underline">Certifications</a></li>
+              <li><a href="#tech-partners" class="hover:underline">Technology Partners</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Static Links -->
+        <a href="#workspace-section" class="hover:text-white transition-colors">Workspace</a>
+        <a href="my-workers.html" class="hover:text-white transition-colors">My Workers</a>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
+
+
 
 <!-- Hero + Chat -->
 <section class="relative flex flex-col items-center justify-start pt-12 sm:pt-20 pb-4 sm:pb-6 bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">
-  <div class="mb-4">
-    <img src="image.png" alt="Engini Logo" class="h-10 sm:h-16 mx-auto" />
+  <div class="text-center max-w-3xl mx-auto px-4 mb-6">
+ <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
+  AI Agent Orchestration. Agentic Workforce Ready.
+</h1>
+
+    <p class="text-base sm:text-lg text-neutral-300">
+    Integrate AI Agents Seamlessly Across Legacy, Cloud, and SaaS Systems.
+    </p>
   </div>
 
-  <div class="text-center max-w-3xl mx-auto px-4 mb-6">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-poppins font-semibold mb-2 text-white">
-      Enterprise CoWorker
-    </h1>
-    <p class="text-base sm:text-lg text-neutral-300">Define role and tasks in chat — your digital teammate, onboarded in weeks, embedded securely into your core systems, and built to amplify every employee 10×.</p>
-  </div>
+
+  
+<!-- Big Buttons Row -->
+<div class="flex flex-wrap gap-12 justify-center items-center my-16 px-4 relative">
+  <!-- AI Agents Orchestration Button -->
+  <a href="#ipass-evolution" class="w-64 h-56 bg-gradient-to-br from-[#2A2D34] to-[#1B1D22] text-white rounded-3xl shadow-[0_16px_40px_rgba(0,0,0,0.6)] border border-white/10 hover:border-white/20 text-2xl font-semibold transform hover:-translate-y-2 hover:scale-[1.05] hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden text-center group"> 
+    <div class="absolute inset-0 bg-white/5 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+    <div class="flex flex-col items-center justify-center h-full z-10 relative">
+      AI Agents
+      <span class="text-lg font-medium opacity-70">Orchestration</span>
+    </div>
+  </a>
+
+  <!-- Vertical Divider with subtle glow -->
+  <div class="hidden md:block w-0.5 h-60 bg-gradient-to-b from-transparent via-white/20 to-transparent rounded"></div>
+
+  <!-- Enterprise Workers Button -->
+  <a href="#workspace-section" class="w-64 h-56 bg-gradient-to-br from-[#2A2D34] to-[#1B1D22] text-white rounded-3xl shadow-[0_16px_40px_rgba(0,0,0,0.6)] border border-white/10 hover:border-white/20 text-2xl font-semibold transform hover:-translate-y-2 hover:scale-[1.05] hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden text-center group">
+    <div class="absolute inset-0 bg-white/5 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+    <div class="z-10">
+      Enterprise <br />
+      <span class="text-lg font-medium opacity-70">Workers</span>
+    </div>
+  </a>
+</div>
+
+
 
   <!-- Chat Shell -->
-  <div class="w-full max-w-3xl px-4">
+  <div class="w-full max-w-3xl px-4" id="chat-block">
     <div id="chat-shell" class="relative rounded-3xl shadow-2xl p-6 mt-2 sm:mt-3 flex flex-col justify-between border border-white/10 bg-[#0F1012]">
       <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4">
         <div class="flex justify-start">
@@ -75,7 +184,6 @@
 </section>
 
 
-
 <!-- Workspace -->
 <section id="workspace-section" 
   class="pt-6 sm:pt-10 pb-6 px-4 sm:px-8 lg:px-10 flex-grow bg-[#0B0C0E] relative flex flex-col items-center justify-start">
@@ -99,10 +207,57 @@
   </div>
 </section>
 
+<!-- iPaaS Evolution Section -->
+<section id="ipass-evolution"
+  class="px-4 sm:px-8 lg:px-10 py-12 bg-[#0B0C0E] flex flex-col items-center justify-start">
+
+  <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-10 text-center">
+    The Evolution of Automation & Orchestration
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 max-w-7xl w-full">
+    <!-- 1980–2020: Deterministic Workflow -->
+    <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
+     
+      <h3 class="text-xl font-semibold text-white mb-2">1980–2020</h3>
+      <p class="text-neutral-400 text-sm">Deterministic workflows ruled enterprise systems — structured, rule-based and hard-coded.</p> 
+      <img src="/deterministic-workflow.png" alt="Deterministic Workflow" class="w-full h-auto rounded-lg mb-4">
+    </div>
+
+    <!-- 2024: AI Agents Rise -->
+    <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
+      <img src="/images/ai-agents.png" alt="AI Agents" class="w-full h-auto rounded-lg mb-4">
+      <h3 class="text-xl font-semibold text-white mb-2">2024</h3>
+      <p class="text-neutral-400 text-sm">AI Agents introduced adaptive, autonomous decision-making on top of legacy systems.</p>
+    </div>
+
+    <!-- 2025: Agentic Orchestration -->
+    <div class="flex flex-col items-center text-center bg-[#151618] p-6 rounded-2xl border border-white/10">
+      <img src="/images/orchestration.png" alt="Agent Orchestration" class="w-full h-auto rounded-lg mb-4">
+      <h3 class="text-xl font-semibold text-white mb-2">2025</h3>
+      <p class="text-neutral-400 text-sm">Coordinated orchestration across multiple AI workers and systems, harmonizing execution.</p>
+    </div>
+  </div>
+
+  <!-- 2026: The Future -->
+  <div class="grid grid-cols-1 max-w-5xl w-full">
+    <div class="flex flex-col items-center text-center bg-[#151618] p-8 rounded-2xl border border-white/10">
+      <img src="/images/future.png" alt="Future of Automation" class="w-full h-auto rounded-lg mb-4">
+      <h3 class="text-2xl font-semibold text-white mb-2">2026 & Beyond</h3>
+      <p class="text-neutral-400 text-sm">An intelligent, agentic enterprise where workers, tools, and data continuously adapt to business goals in real time.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
   <!-- Template and Create modals are below this point, omitted here for brevity -->
 
   <script src="script.js"></script>
 </body>
 </html>
-

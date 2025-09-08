@@ -13,12 +13,100 @@
 <body class="bg-[#0B0C0E] text-neutral-200 min-h-screen flex flex-col">
 
 <!-- Header -->
-<header class="sticky top-0 z-50">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
-    <a href="index.html" class="text-xl font-bold text-neutral-100"><span class="text-[#8E7AEF]">Engini</span> CoWorker</a>
-    <a href="index.html" class="text-sm font-medium text-neutral-300 hover:text-white">Back to Home</a>
+
+  <header class="sticky top-0 z-50 bg-transparent">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <img src="image.png" alt="Engini-logo" class="w-24 sm:w-28 h-auto" />
+    </a>
+
+    <!-- Nav Center -->
+    <div class="flex-grow flex justify-center">
+      <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
+        
+        <!-- Solutions -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Solutions</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 sm:w-96 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <p class="text-xs uppercase text-white/60 mb-2">By Function</p>
+                <ul class="space-y-1 text-sm text-white">
+                  <li><a href="#it" class="hover:underline">IT</a></li>
+                  <li><a href="#finance" class="hover:underline">Finance</a></li>
+                  <li><a href="#support" class="hover:underline">Support</a></li>
+                  <li><a href="#hr" class="hover:underline">HR</a></li>
+                  <li><a href="#marketing" class="hover:underline">Marketing</a></li>
+                  <li><a href="#sales" class="hover:underline">Sales</a></li>
+                </ul>
+              </div>
+              <div>
+                <p class="text-xs uppercase text-white/60 mb-2">By Use Case</p>
+                <ul class="space-y-1 text-sm text-white">
+                  <li><a href="#order-to-cash" class="hover:underline">Order-to-Cash</a></li>
+                  <li><a href="#onboarding" class="hover:underline">Employee Onboarding</a></li>
+                  <li><a href="#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
+                  <li><a href="#ipaas" class="hover:underline">iPaaS Automation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Platform</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="#architecture" class="hover:underline">Architecture</a></li>
+              <li><a href="#agent-os" class="hover:underline">Agent Operating System</a></li>
+              <li><a href="#security" class="hover:underline">Security</a></li>
+              <li><a href="#connectors" class="hover:underline">Connectors</a></li>
+              <li><a href="#workflows" class="hover:underline">Workflow Builder</a></li>
+              <li><a href="#playbooks" class="hover:underline">AI Playbooks</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Resources</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="#docs" class="hover:underline">Documentation</a></li>
+              <li><a href="#case-studies" class="hover:underline">Case Studies</a></li>
+              <li><a href="#whitepapers" class="hover:underline">Whitepapers</a></li>
+              <li><a href="#blog" class="hover:underline">Blog</a></li>
+              <li><a href="#product-tour" class="hover:underline">Product Tour</a></li>
+              <li><a href="#webinars" class="hover:underline">Webinars</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Partners -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors">Partners</button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 hidden group-hover:block shadow-xl z-50">
+            <ul class="space-y-2 text-sm text-white">
+              <li><a href="#become-partner" class="hover:underline">Become a Partner</a></li>
+              <li><a href="#partner-portal" class="hover:underline">Partner Portal</a></li>
+              <li><a href="#partner-academy" class="hover:underline">Partner Academy</a></li>
+              <li><a href="#certifications" class="hover:underline">Certifications</a></li>
+              <li><a href="#tech-partners" class="hover:underline">Technology Partners</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Static Links -->
+        <a href="#workspace-section" class="hover:text-white transition-colors">Workspace</a>
+        <a href="my-workers.html" class="hover:text-white transition-colors">My Workers</a>
+      </div>
+    </div>
   </nav>
 </header>
+
 
 <!-- Main Content -->
 <section class="pt-20 sm:pt-28 pb-10 px-4 sm:px-8 lg:px-16 flex-grow bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">

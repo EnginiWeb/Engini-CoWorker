@@ -27,3 +27,11 @@ h1,h2,h3 { font-family: 'Poppins', sans-serif; }
 @keyframes pulse{0%,80%,100%{transform:scale(1);opacity:.4;}40%{transform:scale(1.35);opacity:1;}}
 .spin { width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;animation:spin .8s linear infinite; }
 @keyframes spin{to{transform:rotate(360deg)}}
+/* Ensure dropdowns stay visible on hover */
+.group:hover .group-hover\:block {
+  display: block;
+}
+
+nav .group .group-hover\:block {
+  pointer-events: auto;
+}

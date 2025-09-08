@@ -32,27 +32,60 @@
 
         <!-- Solutions -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Solutions</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 sm:w-96 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
-            <div class="grid grid-cols-2 gap-6">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Solutions</button>
+          <div class="absolute left-1/2 -translate-x-1/3 top-full mt-0 pt-2 w-[1000px] p-6 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+            <div class="grid grid-cols-4 gap-8 text-white text-sm">
+              <!-- App Integrations -->
               <div>
-                <p class="text-xs uppercase text-white/60 mb-2">By Function</p>
-                <ul class="space-y-1 text-sm text-white">
-                  <li><a href="#it" class="hover:underline">IT</a></li>
-                  <li><a href="#finance" class="hover:underline">Finance</a></li>
-                  <li><a href="#support" class="hover:underline">Support</a></li>
-                  <li><a href="#hr" class="hover:underline">HR</a></li>
-                  <li><a href="#marketing" class="hover:underline">Marketing</a></li>
-                  <li><a href="#sales" class="hover:underline">Sales</a></li>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">App Integrations</p>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Salesforce</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Slack</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Marketo</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">NetSuite</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">ServiceNow</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/workday.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Workday</a></li>
+                  <li><a href="https://engini.io/engini-connectors/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
                 </ul>
               </div>
+              <!-- By Function -->
               <div>
-                <p class="text-xs uppercase text-white/60 mb-2">By Use Case</p>
-                <ul class="space-y-1 text-sm text-white">
-                  <li><a href="#order-to-cash" class="hover:underline">Order-to-Cash</a></li>
-                  <li><a href="#onboarding" class="hover:underline">Employee Onboarding</a></li>
-                  <li><a href="#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
-                  <li><a href="#ipaas" class="hover:underline">iPaaS Automation</a></li>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Function</p>
+                <ul class="space-y-2">
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">IT</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Finance</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Support</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">HR</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Marketing</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Sales</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Revenue Operations</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product (Embed)</a></li>
+                </ul>
+              </div>
+              <!-- By Use Case -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
+                <ul class="space-y-2">
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Order-to-cash</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Employee onboarding</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Enterprise iPaaS</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product-led sales</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Embedded Integrations</a></li>
+                  <li><a href="https://engini.io/engini-agents/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                </ul>
+              </div>
+              <!-- By Industry -->
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
+                <ul class="space-y-2">
+                  <li><a href="#" class="hover:underline">Manufacturing</a></li>
+                  <li><a href="#" class="hover:underline">Financial services</a></li>
+                  <li><a href="#" class="hover:underline">Retail</a></li>
+                  <li><a href="#" class="hover:underline">Logistics</a></li>
+                  <li><a href="#" class="hover:underline">Healthcare</a></li>
+                  <li><a href="#" class="hover:underline">Media</a></li>
+                  <li><a href="#" class="hover:underline">BPO</a></li>
+                  <li><a href="#" class="hover:underline">Non-profit</a></li>
                 </ul>
               </div>
             </div>
@@ -61,8 +94,8 @@
 
         <!-- Platform -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Platform</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
               <li><a href="#architecture" class="hover:underline">Architecture</a></li>
               <li><a href="#agent-os" class="hover:underline">Agent Operating System</a></li>
@@ -76,41 +109,34 @@
 
         <!-- Resources -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Resources</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Resources</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
-              <li><a href="#docs" class="hover:underline">Documentation</a></li>
-              <li><a href="#case-studies" class="hover:underline">Case Studies</a></li>
-              <li><a href="#whitepapers" class="hover:underline">Whitepapers</a></li>
-              <li><a href="#blog" class="hover:underline">Blog</a></li>
-              <li><a href="#product-tour" class="hover:underline">Product Tour</a></li>
-              <li><a href="#webinars" class="hover:underline">Webinars</a></li>
+              <li><a href="https://engini.io/help/" class="hover:underline">Documentation</a></li>
+              <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+              <li><a href="https://www.youtube.com/watch?v=EWs_WZCnUT8&list=PL7Z1lkK9TitWIeOkB6GN8f1h7cfsb1CVz" class="hover:underline">Webinars</a></li>
             </ul>
           </div>
         </div>
 
         <!-- Partners -->
         <div class="relative group">
-          <button class="hover:text-white transition-colors">Partners</button>
-          <div class="absolute left-1/2 -translate-x-1/2 mt-3 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition duration-200 z-50">
+          <button class="hover:text-white transition-colors peer px-4 py-3">Partners</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <ul class="space-y-2 text-sm text-white">
-              <li><a href="#become-partner" class="hover:underline">Become a Partner</a></li>
-              <li><a href="#partner-portal" class="hover:underline">Partner Portal</a></li>
-              <li><a href="#partner-academy" class="hover:underline">Partner Academy</a></li>
-              <li><a href="#certifications" class="hover:underline">Certifications</a></li>
-              <li><a href="#tech-partners" class="hover:underline">Technology Partners</a></li>
+              <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Become a Partner</a></li>
+              <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Technology Partners</a></li>
             </ul>
           </div>
         </div>
 
         <!-- Static Links -->
-        <a href="#workspace-section" class="hover:text-white transition-colors">Workspace</a>
-        <a href="my-workers.html" class="hover:text-white transition-colors">My Workers</a>
+        <a href="#workspace-section" class="hover:text-white transition-colors px-3 py-3">Workspace</a>
+        <a href="my-workers.html" class="hover:text-white transition-colors px-3 py-3">My Workers</a>
       </div>
     </div>
   </nav>
 </header>
-
 
 
 

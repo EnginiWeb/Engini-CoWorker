@@ -13,6 +13,56 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <style>
+    /* ======= Monochrome theme (no color accents) ======= */
+    :root{
+      --bg:#0B0C0E; --bg2:#0F1012; --card:#151618; --ink:#E7E7EA;
+      --muted:#9CA3AF; --line:rgba(255,255,255,.10); --line-strong:rgba(255,255,255,.18);
+      --shadow:0 16px 40px rgba(0,0,0,.45);
+    }
+    html,body{background:var(--bg);color:var(--ink)}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica Neue,Arial}
+    .font-poppins{font-family:Poppins,Inter,ui-sans-serif,system-ui}
+
+    /* ======= Card micro styles ======= */
+    .wc-card{
+      background:var(--card); border:1px solid var(--line); border-radius:1.5rem;
+      padding:1.25rem; box-shadow:var(--shadow);
+      transition:transform .2s ease, border-color .2s ease;
+    }
+    .wc-card:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+    .wc-avatar{
+      width:48px;height:48px;border-radius:999px;display:grid;place-items:center;
+      border:2px solid rgba(255,255,255,.85); box-shadow:0 0 0 4px rgba(255,255,255,.10) inset;
+    }
+    .wc-badge{letter-spacing:.16em;color:rgba(255,255,255,.55)}
+    .wc-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+    .wc-pill{
+      padding:.48rem .85rem;border-radius:9999px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06); font-size:.92rem; line-height:1; color:#E5E7EB; white-space:nowrap;
+    }
+    .wc-pill.dim{opacity:.6}
+    .wc-app img{width:22px;height:22px;border-radius:6px;display:block}
+    .wc-app .fallback{
+      width:22px;height:22px;border-radius:6px;display:grid;place-items:center;
+      background:#0F1012;border:1px solid rgba(255,255,255,.15);font-size:.7rem;color:#fff
+    }
+   
+    .wc-chev{transition:transform .24s ease}
+    .wc-card[aria-expanded="true"] .wc-chev{transform:rotate(180deg)}
+    .wc-label{color:var(--muted)}
+    .nav-chip{border:1px solid var(--line);background:rgba(255,255,255,.05)}
+    :focus{outline:none}
+
+    /* Smooth expandable section */
+    .wc-more{
+      height:0; overflow:hidden; opacity:0;
+      transition: height .34s ease, opacity .24s ease;
+      will-change: height;
+    }
+    .wc-card[aria-expanded="true"] .wc-more{opacity:1}
+  </style>
+
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -39,12 +89,12 @@
               <div>
                 <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">App Integrations</p>
                 <ul class="space-y-3">
-                  <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Salesforce</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Slack</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Marketo</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">NetSuite</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">ServiceNow</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/workday.png" class="w-8 h-8" /><a href="https://engini.io/engini-connectors/">Workday</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-6 h-5" /><a href="https://engini.io/engini-connectors/">Salesforce</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-6 h-6" /><a href="https://engini.io/engini-connectors/">Slack</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-6 h-6" /><a href="https://engini.io/engini-connectors/">Marketo</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-6 h-6" /><a href="https://engini.io/engini-connectors/">NetSuite</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-6 h-6" /><a href="https://engini.io/engini-connectors/">ServiceNow</a></li>
+                  <li class="flex items-center gap-2"><img src="icons/workday.png" class="w- h-6" /><a href="https://engini.io/engini-connectors/">Workday</a></li>
                   <li><a href="https://engini.io/engini-connectors/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
                 </ul>
               </div>
@@ -76,22 +126,21 @@
               </div>
               <!-- By Industry -->
               <div>
-                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
-                <ul class="space-y-2">
-                  <li><a href="#" class="hover:underline">Manufacturing</a></li>
-                  <li><a href="#" class="hover:underline">Financial services</a></li>
-                  <li><a href="#" class="hover:underline">Retail</a></li>
-                  <li><a href="#" class="hover:underline">Logistics</a></li>
-                  <li><a href="#" class="hover:underline">Healthcare</a></li>
-                  <li><a href="#" class="hover:underline">Media</a></li>
-                  <li><a href="#" class="hover:underline">BPO</a></li>
-                  <li><a href="#" class="hover:underline">Non-profit</a></li>
-                </ul>
+                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
+                  <ul class="space-y-2">
+                    <li><a href="industries.html#manufacturing" class="hover:underline">Manufacturing</a></li>
+                    <li><a href="industries.html#financial-services" class="hover:underline">Financial services</a></li>
+                    <li><a href="industries.html#retail" class="hover:underline">Retail</a></li>
+                    <li><a href="industries.html#logistics" class="hover:underline">Logistics</a></li>
+                    <li><a href="industries.html#healthcare" class="hover:underline">Healthcare</a></li>
+                    <li><a href="industries.html#media" class="hover:underline">Media</a></li>
+                    <li><a href="industries.html#bpo" class="hover:underline">BPO</a></li>
+                    <li><a href="industries.html#nonprofit" class="hover:underline">Non-profit</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
         <!-- Platform -->
         <div class="relative group">
           <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
@@ -196,7 +245,7 @@
           class="w-full p-4 pr-12 rounded-2xl bg-[#1B1D22] text-neutral-100 placeholder-neutral-500
                  focus:outline-none focus:ring-2 focus:ring-[#8E7AEF] transition resize-none"></textarea>
         <button type="submit" id="send-button"
-          class="absolute right-3 top-1/2 -translate-y-1/2 bg-[#8E7AEF] text-[#0B0C0E] p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] transition">
+          class="absolute right-3 top-1/2 -translate-y-1/2 bg-white text-[#0B0C0E] p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] transition">
           <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13" />
@@ -210,28 +259,24 @@
 </section>
 
 
-<!-- Workspace -->
-<section id="workspace-section" 
-  class="pt-6 sm:pt-10 pb-6 px-4 sm:px-8 lg:px-10 flex-grow bg-[#0B0C0E] relative flex flex-col items-center justify-start">
-
-  <div id="workspace-container" class="max-w-7xl mx-auto">
-    <div id="workspace-grid-view">
-      <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
-        <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mb-4 sm:mb-0">Workspace</h2>
-        <div class="flex gap-4 sm:ml-8">
-          <div class="relative flex-1 max-w-lg">
-            <input id="search-input" type="text" placeholder="Search CoWorkers..."
-              class="w-full p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 focus:ring-2 focus:ring-[#8E7AEF]"/>
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 h-5 w-5" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
+  <!-- Workspace -->
+  <section id="workspace-section" class="pt-6 sm:pt-10 pb-12 px-4 sm:px-8 lg:px-10 flex-grow">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">Workspace</h2>
+        <div class="relative">
+          <input id="search-input" class="w-72 max-w-[76vw] p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 placeholder-white/40"
+                 placeholder="Search CoWorkers...">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
         </div>
       </div>
+
+      <!-- Cards -->
       <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
     </div>
-    <div id="worker-detail-view" class="hidden"></div>
-  </div>
-</section>
+  </section>
 <!-- Evolution of Automation & Orchestration (DROP-IN REPLACEMENT) -->
 <section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-20 bg-[#0B0C0E]">
   <div class="max-w-7xl mx-auto">
@@ -248,10 +293,10 @@
     <div class="relative hidden md:block mb-10">
       <div class="absolute inset-x-0 top-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div class="grid grid-cols-4 gap-6">
-        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
-        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
-        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
-        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-[#8E7AEF] shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-white shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-white shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-white shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
+        <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-white shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
       </div>
     </div>
 
@@ -264,7 +309,7 @@
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
         </div>
 
-        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">iPaaS Era</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">iPaaS Era</h4>
 
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
           <img
@@ -292,7 +337,7 @@
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
         </div>
 
-        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">AI Agents</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">AI Agents</h4>
 
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
           <img
@@ -320,7 +365,7 @@
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential</span>
         </div>
 
-        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">Agentic Workflow</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Agentic Workflow</h4>
 
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
           <img
@@ -348,7 +393,7 @@
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
         </div>
 
-        <h4 class="text-lg font-semibold text-[#8E7AEF] mb-4">Agent Orchestration</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Agent Orchestration</h4>
 
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
           <img
@@ -386,13 +431,7 @@
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="mt-12 text-center">
-      <a href="platform.html#workflows" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#8E7AEF] text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6] transition">
-        See how workflows evolve →
-      </a>
-    </div>
-  </div>
+
 </section>
 
   <!-- Footer -->
@@ -434,5 +473,197 @@
   <!-- Template and Create modals are below this point, omitted here for brevity -->
 
   <script src="script.js"></script>
+ <script>
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+  /* Icons map -> /icons/*.png */
+  const ICONS = {
+    servicenow:"icons/servicenow.png", okta:"icons/okta.png", google:"icons/google.png",
+    slack:"icons/slack.png", microsoft:"icons/microsoft.png", quickbooks:"icons/quickbooks.png",
+    netsuite:"icons/netsuite.png", jira:"icons/jira.png", workday:"icons/workday.png",
+    salesforce:"icons/salesforce.png", hubspot:"icons/hubspot.png",
+    zendesk:"icons/zendesk.png", intercom:"icons/intercom.png",
+    mailchimp:"icons/mailchimp.png", marketo:"icons/marketo.png", outreach:"icons/outreach.png"
+  };
+
+  /* Workers (8 total) */
+  const WORKERS = [
+    {
+      id:"it", title:"IT", subtitle:"AI Worker",
+      skills:["Onboarding/Offboarding","Identity and Access","Account unlock and password"],
+      extraSkills:["SaaS license audit","Device lifecycle","Helpdesk Q&A"],
+      apps:["servicenow","okta","google","slack","microsoft"],
+      more:{ summary:"Automates JML, identity and Tier-0/1 helpdesk with safe approvals.",
+        playbooks:["Joiner/Mover/Leaver","Zero-touch provisioning","Access reviews","Software requests"] }
+    },
+    {
+      id:"procurement", title:"Procurement", subtitle:"AI Worker",
+      skills:["Vendor onboarding","Purchase request","PO tracking","Supplier finder"],
+      extraSkills:["3-way match exceptions","Sourcing intake","Contract reminders"],
+      apps:["quickbooks","netsuite","slack"],
+      more:{ summary:"Guides requesters, validates suppliers, syncs PR→PO→Receipt.",
+        playbooks:["PR intake","Supplier due diligence","Catalog request"] }
+    },
+    {
+      id:"officeops", title:"Office Ops", subtitle:"AI Worker",
+      skills:["Parental leave","Onboarding new employee","Gift package","Office parking"],
+      extraSkills:["Visitor mgmt","Room bookings","Facilities tickets"],
+      apps:["jira","google","slack"],
+      more:{ summary:"Coordinates people ops actions across facilities, IT, and HR.",
+        playbooks:["New hire day-one","Leave of absence","Visitor flow"] }
+    },
+    {
+      id:"hr", title:"HR", subtitle:"AI Worker",
+      skills:["Employee onboarding","HR policy and benefits","Time off & leave"],
+      extraSkills:["Comp letters","Performance cycle","People analytics"],
+      apps:["workday","slack","google"],
+      more:{ summary:"Runs compliant HR workflows and answers policy questions.",
+        playbooks:["Offer→Onboard","PTO / LOA","Policy assistant"] }
+    },
+    /* New 4 */
+    {
+      id:"finance", title:"Finance", subtitle:"AI Worker",
+      skills:["Invoice processing","Expense review","Cash application","Close checklist"],
+      extraSkills:["Variance analysis","PO match","Aging follow-ups"],
+      apps:["quickbooks","netsuite","google","slack"],
+      more:{ summary:"Speeds AP/AR with smart matching, flags anomalies, and drives close tasks.",
+        playbooks:["3-way match","Monthly close","Expense policy enforcement"] }
+    },
+    {
+      id:"sales", title:"Sales", subtitle:"AI Worker",
+      skills:["Lead qualification","CRM hygiene","Forecast rollup","Follow-up nudges"],
+      extraSkills:["Battlecards","Call summaries","Territory routing"],
+      apps:["salesforce","hubspot","outreach","slack"],
+      more:{ summary:"Keeps pipeline clean, surfaces next actions, and drafts outreach.",
+        playbooks:["MQL→SQL triage","Next-best action","Renewal alerts"] }
+    },
+    {
+      id:"support", title:"Support", subtitle:"AI Worker",
+      skills:["Ticket triage","Self-serve answers","SLA alerts","Bug reproduction steps"],
+      extraSkills:["CSAT analysis","Deflection reports"],
+      apps:["zendesk","intercom","slack","jira"],
+      more:{ summary:"Routes issues, suggests replies, and syncs product tasks to engineering.",
+        playbooks:["Auto-triage","Macro suggestion","Escalation policy"] }
+    },
+    {
+      id:"marketing", title:"Marketing", subtitle:"AI Worker",
+      skills:["Campaign calendar","Asset tagging","UTM guardrails","Attribution sanity-checks"],
+      extraSkills:["Audience sync","Creative variants"],
+      apps:["marketo","hubspot","mailchimp","slack"],
+      more:{ summary:"Orchestrates launches, keeps taxonomy clean, and reports what moved the needle.",
+        playbooks:["Launch checklist","Audience orchestration","Weekly performance digest"] }
+    }
+  ];
+
+  /* Render helpers */
+  const pill = (t, dim=false) => `<span class="wc-pill ${dim?'dim':''}">${t}</span>`;
+  const appIcon = (k) => ICONS[k]
+    ? `<img src="${ICONS[k]}" alt="${k}" loading="lazy" decoding="async"/>`
+    : `<div class="fallback">${(k||'?').slice(0,2).toUpperCase()}</div>`;
+
+  function cardTemplate(w){
+    const primary = w.skills.map(s=>pill(s)).join("");
+    const extra   = (w.extraSkills||[]).map(s=>pill(s,true)).join("");
+    const apps    = (w.apps||[]).map(k=>`<span class="wc-app">${appIcon(k)}</span>`).join("");
+    const id = `${w.id}-more`;
+
+    return `
+    <article class="wc-card" data-id="${w.id}" aria-expanded="false">
+      <header class="wc-toggle flex items-start gap-3 cursor-pointer select-none">
+        <div class="wc-avatar"><div class="w-2 h-2 rounded-full bg-white/80"></div></div>
+        <div class="pt-0.5">
+          <h3 class="text-xl font-semibold text-white">${w.title}</h3>
+          <p class="text-white/60 -mt-0.5">${w.subtitle}</p>
+        </div>
+        <div class="ml-auto flex items-center gap-2 text-white/70">
+          <span class="wc-plus" aria-hidden="true">+</span>
+          <svg class="wc-chev h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.5 7.5l4.5 4.5 4.5-4.5"/></svg>
+        </div>
+      </header>
+
+      <div class="mt-6 wc-badge text-xs">AI SKILLS</div>
+      <div class="wc-divider my-2"></div>
+      <div class="flex flex-wrap gap-2">${primary}</div>
+      ${extra ? `<div class="mt-2 flex flex-wrap gap-2">${extra}</div>` : ""}
+
+      <div class="wc-divider my-4"></div>
+      <div class="text-xs wc-badge mb-2">APPS</div>
+      <div class="flex items-center gap-2">${apps}</div>
+
+      <section id="${id}" class="wc-more mt-5 pt-4 border-t border-white/10">
+        <p class="text-sm text-white/80">${w.more?.summary||""}</p>
+        ${(w.more?.playbooks?.length?`
+        <div class="mt-3">
+          <p class="text-xs wc-badge mb-2">Playbooks</p>
+          <div class="flex flex-wrap gap-2">${w.more.playbooks.map(pill).join("")}</div>
+        </div>`:"")}
+      </section>
+    </article>`;
+  }
+
+  function renderCards(list=WORKERS){
+    $("#worker-cards").innerHTML = list.map(cardTemplate).join("");
+
+    // Smooth expand handlers (header click only)
+    $$("#worker-cards .wc-card").forEach(card=>{
+      const section = card.querySelector(".wc-more");
+      const header  = card.querySelector(".wc-toggle");
+
+      // Ensure closed state styles
+      section.style.height = "0px";
+      section.style.opacity = "0";
+
+      header.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        toggleExpand(card, section);
+      });
+    });
+  }
+
+  function toggleExpand(card, section){
+    const isOpen = card.getAttribute("aria-expanded")==="true";
+
+    if(isOpen){
+      // Collapse: lock to current height then animate to 0
+      section.style.height = section.scrollHeight + "px";
+      section.getBoundingClientRect(); // force reflow
+      section.style.height = "0px";
+      section.style.opacity = "0";
+      card.setAttribute("aria-expanded","false");
+    }else{
+      // Expand: from 0 to content height, then set to auto
+      section.style.height = "0px";
+      section.style.opacity = "1";
+      card.setAttribute("aria-expanded","true");
+      const target = section.scrollHeight;
+      section.style.height = target + "px";
+      const onEnd = (ev)=>{
+        if(ev.propertyName!=="height") return;
+        section.style.height = "auto";
+        section.removeEventListener("transitionend", onEnd);
+      };
+      section.addEventListener("transitionend", onEnd);
+    }
+  }
+
+  // Search
+  $("#search-input").addEventListener("input", (e)=>{
+    const q = e.target.value.toLowerCase().trim();
+    if(!q){renderCards();return;}
+    const filtered = WORKERS.filter(w=>{
+      const hay = [
+        w.title, w.subtitle,
+        ...(w.skills||[]), ...(w.extraSkills||[]),
+        (w.more?.summary||""), ...(w.more?.playbooks||[])
+      ].join(" ").toLowerCase();
+      return hay.includes(q);
+    });
+    renderCards(filtered);
+  });
+
+  renderCards();
+  </script>
+
 </body>
 </html>

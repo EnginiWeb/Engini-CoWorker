@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My CoWorkers · Engini</title>
+  <title>My Workers · Engini</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -161,8 +161,8 @@
   <section class="pt-16 sm:pt-24 pb-6 px-4 sm:px-8 lg:px-16 bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">
     <div class="max-w-6xl mx-auto">
       <span class="pill">Workspace</span>
-      <h1 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mt-3">My CoWorkers</h1>
-      <p class="text-neutral-400 mt-2">Create, organize, and manage your digital CoWorkers—search, filter, sort, and export.</p>
+      <h1 class="text-3xl sm:text-4xl font-poppins font-semibold text-white mt-3">My Workers</h1>
+      <p class="text-neutral-400 mt-2">Create, organize, and manage your digital Workers—search, filter, sort, and export.</p>
 
       <!-- Toolbar -->
       <div class="mt-6 flex flex-col lg:flex-row gap-3 lg:items-center lg:justify-between">
@@ -185,7 +185,7 @@
         <div class="flex gap-3">
           <button id="importBtn" class="px-4 py-3 rounded-2xl border border-white/15 hover:bg-white/10 transition">Import</button>
           <button id="exportBtn" class="px-4 py-3 rounded-2xl border border-white/15 hover:bg-white/10 transition">Export</button>
-          <button id="newBtn" class="px-4 py-3 rounded-2xl bg-white text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6] transition">New CoWorker</button>
+          <button id="newBtn" class="px-4 py-3 rounded-2xl bg-white text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6] transition">New Worker</button>
           <input type="file" id="importFile" accept="application/json" class="hidden">
         </div>
       </div>
@@ -204,8 +204,8 @@
             <rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect>
             <path d="M8 10h8M8 14h5"></path>
           </svg>
-          <p class="text-neutral-300">No CoWorkers yet.</p>
-          <p class="text-neutral-500 text-sm mt-1">Click <span class="font-semibold text-white">New CoWorker</span> to create your first one, or import a JSON file.</p>
+          <p class="text-neutral-300">No Workers yet.</p>
+          <p class="text-neutral-500 text-sm mt-1">Click <span class="font-semibold text-white">New Worker</span> to create your first one, or import a JSON file.</p>
         </div>
       </template>
     </div>
@@ -215,7 +215,7 @@
   <dialog id="workerModal" class="backdrop:bg-black/60 rounded-2xl w-[min(680px,95vw)] bg-[#101114] border border-white/10 text-neutral-200 p-0">
     <form id="workerForm" class="p-6">
       <div class="flex items-start justify-between">
-        <h3 id="modalTitle" class="text-xl font-poppins font-semibold">New CoWorker</h3>
+        <h3 id="modalTitle" class="text-xl font-poppins font-semibold">New Worker</h3>
         <button type="button" class="px-3 py-1 rounded-xl hover:bg-white/10" data-close>✕</button>
       </div>
 
@@ -230,7 +230,7 @@
         </div>
         <div class="sm:col-span-2">
           <label class="text-sm text-neutral-400">Overview</label>
-          <textarea name="overview" rows="3" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="What this CoWorker does…"></textarea>
+          <textarea name="overview" rows="3" class="mt-1 w-full px-3 py-2 rounded-xl bg-[#151618] border border-white/10 focus:ring-2 focus:ring-[#8E7AEF]" placeholder="What this Worker does…"></textarea>
         </div>
         <div class="sm:col-span-2">
           <label class="text-sm text-neutral-400">Tasks (one per line)</label>
@@ -262,7 +262,7 @@
   <!-- Delete Confirm Modal -->
   <dialog id="confirmModal" class="backdrop:bg-black/60 rounded-2xl w-[min(460px,95vw)] bg-[#101114] border border-white/10 text-neutral-200 p-0">
     <div class="p-6">
-      <h4 class="text-lg font-poppins font-semibold">Delete CoWorker?</h4>
+      <h4 class="text-lg font-poppins font-semibold">Delete Worker?</h4>
       <p class="text-sm text-neutral-400 mt-2">This action can’t be undone.</p>
       <div class="mt-5 flex justify-end gap-3">
         <button class="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10" data-cancel>Cancel</button>
@@ -467,7 +467,7 @@
 
     // --- CRUD ---
     function openCreate() {
-      modalTitle.textContent = 'New CoWorker';
+      modalTitle.textContent = 'New Worker';
       workerForm.reset();
       workerForm.id.value = '';
       workerModal.showModal();
@@ -476,7 +476,7 @@
     function openEdit(id) {
       const w = workers.find(x => x.id === id);
       if (!w) return;
-      modalTitle.textContent = 'Edit CoWorker';
+      modalTitle.textContent = 'Edit Worker';
       workerForm.role.value = w.role || '';
       workerForm.department.value = w.department || '';
       workerForm.overview.value = w.overview || '';

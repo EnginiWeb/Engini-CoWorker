@@ -111,7 +111,7 @@ let draftWorker = {
 let convoStep = 0;
 
 const steps = [
-  "Great! First, which department is this CoWorker for?",
+  "Great! First, which department is this Worker for?",
   "Nice. Which team inside that department?",
   "Got it. What is the key deliverable this worker should own?",
   "List 2–3 workflows this worker should automate (comma separated).",
@@ -141,7 +141,7 @@ function finalizeWorker() {
   const arr = JSON.parse(localStorage.getItem('customWorkers') || '[]');
   arr.push(worker);
   localStorage.setItem('customWorkers', JSON.stringify(arr));
-  addMsg("ai", "✅ Your CoWorker has been created and saved! Check it out under 'My Workers'.");
+  addMsg("ai", "✅ Your Worker has been created and saved! Check it out under 'My Workers'.");
   draftWorker = {}; // reset
   convoStep = 0;
 }
@@ -301,7 +301,7 @@ function renderCards(workers = null) {
         chatMsgs.innerHTML = '';
         draftWorker = {};
         convoStep = 0;
-        addMsg("ai", "Let's build a new CoWorker together! " + steps[0]);
+        addMsg("ai", "Let's build a new Worker together! " + steps[0]);
       } else {
         // If it's a default worker, show the detail view
         renderDetailView(worker);
@@ -326,7 +326,7 @@ function renderDetailView(worker) {
                 </svg>
                 Back to Workspace
             </button>
-            <h2 class="text-2xl font-poppins text-white mb-2">${worker.department} CoWorker</h2>
+            <h2 class="text-2xl font-poppins text-white mb-2">${worker.department} Worker</h2>
             <p class="text-neutral-400 mb-4">${worker.overview || ''}</p>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
@@ -344,7 +344,7 @@ function renderDetailView(worker) {
                 </div>
             </div>
             
-            <button id="customize-button" class="bg-[#8E7AEF] text-[#0B0C0E] font-semibold px-6 py-2 rounded-xl hover:bg-[#7c6ae6]">Customize this CoWorker</button>
+            <button id="customize-button" class="bg-[#8E7AEF] text-[#0B0C0E] font-semibold px-6 py-2 rounded-xl hover:bg-[#7c6ae6]">Customize this Worker</button>
         </div>
     `;
 
@@ -359,7 +359,7 @@ function renderDetailView(worker) {
         // Pre-populate the draft worker with the template data
         Object.assign(draftWorker, worker);
         chatMsgs.innerHTML = ''; // Clear chat history for a clean start
-        addMsg("ai", `Starting a new CoWorker based on the ${worker.department} template. ` + steps[0]);
+        addMsg("ai", `Starting a new Worker based on the ${worker.department} template. ` + steps[0]);
         convoStep = 0;
         workerDetailView.classList.add("hidden");
         workspaceGrid.classList.remove("hidden");
@@ -374,7 +374,7 @@ function renderMyWorkers() {
   const myWorkers = loadCustomWorkers();
   myWorkersContainer.innerHTML = '';
   if (!myWorkers.length) {
-    myWorkersContainer.innerHTML = "<p class='text-neutral-400 text-sm'>You haven't created any digital CoWorkers yet. Try crafting one using the assistant or a template!</p>";
+    myWorkersContainer.innerHTML = "<p class='text-neutral-400 text-sm'>You haven't created any digital Workers yet. Try crafting one using the assistant or a template!</p>";
     return;
   }
   myWorkers.forEach(w => {

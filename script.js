@@ -404,6 +404,9 @@ function renderMyWorkers() {
 /* ----------------- INIT ----------------- */
 document.addEventListener("DOMContentLoaded", () => {
   // Initial render of the main workspace cards
+
+
+
   renderCards();
 });
 

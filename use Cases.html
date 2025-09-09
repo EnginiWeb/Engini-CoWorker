@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engini · Use Cases</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Page Styles -->
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; }
+    .font-poppins { font-family: Poppins, Inter, ui-sans-serif, system-ui; }
+    html { scroll-behavior: smooth; }
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); }
+    .toc a.active { background: rgba(255,255,255,.12); color: #fff; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-transparent">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-2" aria-label="Engini Home">
+        <img src="image.png" alt="Engini logo" class="w-24 sm:w-28 h-auto" />
+      </a>
+
+      <!-- Center nav -->
+      <div class="flex-grow flex justify-center">
+        <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
+
+          <!-- Solutions -->
+          <div class="relative group">
+            <button class="hover:text-white transition-colors peer px-4 py-3">Solutions</button>
+            <div class="absolute left-1/2 -translate-x-1/3 top-full mt-0 pt-2 w-[1000px] p-6 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+              <div class="grid grid-cols-4 gap-8 text-white text-sm">
+                <!-- App Integrations -->
+                <div>
+                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">App Integrations</p>
+                  <ul class="space-y-3">
+                    <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-8 h-8 object-contain" alt="Salesforce" /><a href="https://engini.io/engini-connectors/">Salesforce</a></li>
+                    <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-8 h-8 object-contain" alt="Slack" /><a href="https://engini.io/engini-connectors/">Slack</a></li>
+                    <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-8 h-8 object-contain" alt="Marketo" /><a href="https://engini.io/engini-connectors/">Marketo</a></li>
+                    <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-8 h-8 object-contain" alt="NetSuite" /><a href="https://engini.io/engini-connectors/">NetSuite</a></li>
+                    <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-8 h-8 object-contain" alt="ServiceNow" /><a href="https://engini.io/engini-connectors/">ServiceNow</a></li>
+                    <li class="flex items-center gap-2"><img src="icons/workday.png" class="w-8 h-8 object-contain" alt="Workday" /><a href="https://engini.io/engini-connectors/">Workday</a></li>
+                    <li><a href="https://engini.io/engini-connectors/" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                  </ul>
+                </div>
+
+                <!-- By Function -->
+                <div>
+                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Function</p>
+                  <ul class="space-y-2">
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">IT</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">Finance</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">Support</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">HR</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">Marketing</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">Sales</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">Revenue Operations</a></li>
+                    <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product (Embed)</a></li>
+                  </ul>
+                </div>
+
+                <!-- By Use Case (this page) -->
+                <div>
+                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
+                  <ul class="space-y-2">
+                    <li><a href="#order-to-cash" class="hover:underline">Order-to-cash</a></li>
+                    <li><a href="#employee-onboarding" class="hover:underline">Employee onboarding</a></li>
+                    <li><a href="#enterprise-ipaas" class="hover:underline">Enterprise iPaaS</a></li>
+                    <li><a href="#product-led-sales" class="hover:underline">Product-led sales</a></li>
+                    <li><a href="#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
+                    <li><a href="#all" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                  </ul>
+                </div>
+
+                <!-- By Industry -->
+              <div>
+                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
+                  <ul class="space-y-2">
+                    <li><a href="industries.html" class="hover:underline">Manufacturing</a></li>
+                    <li><a href="industries.html" class="hover:underline">Financial services</a></li>
+                    <li><a href="industries.html" class="hover:underline">Retail</a></li>
+                    <li><a href="industries.html" class="hover:underline">Logistics</a></li>
+                    <li><a href="industries.html" class="hover:underline">Healthcare</a></li>
+                    <li><a href="industries.html" class="hover:underline">Media</a></li>
+                    <li><a href="industries.html" class="hover:underline">BPO</a></li>
+                    <li><a href="industries.html" class="hover:underline">Non-profit</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platform -->
+          <div class="relative group">
+            <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+              <ul class="space-y-2 text-sm text-white">
+                <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
+                <li><a href="platform.html#agent-os" class="hover:underline">Agent Operating System</a></li>
+                <li><a href="platform.html#security" class="hover:underline">Security</a></li>
+                <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
+                <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
+                <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Resources -->
+          <div class="relative group">
+            <button class="hover:text-white transition-colors peer px-4 py-3">Resources</button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+              <ul class="space-y-2 text-sm text-white">
+                <li><a href="https://engini.io/help/" class="hover:underline">Documentation</a></li>
+                <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+                <li><a href="https://www.youtube.com/watch?v=EWs_WZCnUT8&list=PL7Z1lkK9TitWIeOkB6GN8f1h7cfsb1CVz" class="hover:underline">Webinars</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Partners -->
+          <div class="relative group">
+            <button class="hover:text-white transition-colors peer px-4 py-3">Partners</button>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 pt-2 w-72 p-4 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
+              <ul class="space-y-2 text-sm text-white">
+                <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Become a Partner</a></li>
+                <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Technology Partners</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Static Links -->
+          <a href="index.html#workspace-section" class="hover:text-white transition-colors px-3 py-3">Workspace</a>
+          <a href="my-workers.html" class="hover:text-white transition-colors px-3 py-3">My Workers</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <!-- Local TOC -->
+  <nav class="toc sticky top-20 z-40 bg-[#0F1012]/70 backdrop-blur-md border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
+      <ul class="flex gap-3 text-sm whitespace-nowrap">
+        <li><a href="#order-to-cash" class="px-3 py-2 rounded-xl hover:bg-white/10">Order-to-cash</a></li>
+        <li><a href="#employee-onboarding" class="px-3 py-2 rounded-xl hover:bg-white/10">Employee onboarding</a></li>
+        <li><a href="#enterprise-ipaas" class="px-3 py-2 rounded-xl hover:bg-white/10">Enterprise iPaaS</a></li>
+        <li><a href="#product-led-sales" class="px-3 py-2 rounded-xl hover:bg-white/10">Product-led sales</a></li>
+        <li><a href="#embedded-integrations" class="px-3 py-2 rounded-xl hover:bg-white/10">Embedded Integrations</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main id="all" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+    <!-- Helper defs for diagrams -->
+    <svg width="0" height="0" class="absolute">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"></path>
+        </marker>
+      </defs>
+    </svg>
+
+    <!-- ORDER TO CASH -->
+    <section id="order-to-cash" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <!-- Copy -->
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">Revenue</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Order-to-Cash</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Close the loop from quote to cash with agents that validate orders, sync contracts, generate invoices, and chase collections—while keeping CRM, ERP, and Support fully aligned.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Quote/CPQ → Order creation & entitlement checks</li>
+                <li>Invoice generation, dunning & payment reconciliation</li>
+                <li>Revenue recognition schedule & case escalation</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>DSO ↓, Cash conversion cycle ↓</li>
+                <li>Order accuracy ↑, Disputes ↓</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Salesforce/HubSpot, NetSuite/SAP, Stripe/Adyen, ServiceNow/Zendesk.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Order validation, invoice & dunning, dispute triage, rev-rec.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 820 360" class="w-full h-auto" aria-label="Order-to-cash flow">
+            <rect x="10" y="10" width="800" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="40"  y="70"  width="180" height="54" rx="12"/><!-- CRM -->
+              <rect x="260" y="70"  width="200" height="54" rx="12"/><!-- ERP Order -->
+              <rect x="500" y="70"  width="200" height="54" rx="12"/><!-- Invoicing -->
+              <rect x="260" y="180" width="200" height="54" rx="12"/><!-- RevRec -->
+              <rect x="500" y="180" width="200" height="54" rx="12"/><!-- Support -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="130" y="97">CRM / CPQ</text>
+              <text x="360" y="97">ERP: Order</text>
+              <text x="600" y="97">Invoice & Payments</text>
+              <text x="360" y="207">Revenue Recognition</text>
+              <text x="600" y="207">Disputes / Cases</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-linecap="round">
+              <line x1="220" y1="97" x2="260" y2="97"/>
+              <line x1="460" y1="97" x2="500" y2="97"/>
+              <line x1="360" y1="124" x2="360" y2="180"/>
+              <line x1="600" y1="124" x2="600" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">CPQ → Order → Invoice, with RevRec and Case side-flows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPLOYEE ONBOARDING -->
+    <section id="employee-onboarding" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">HR & IT</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Employee Onboarding</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Give new hires day-one productivity. Agents coordinate HRIS, identity, device provisioning, app access, payroll, and orientations—with approvals and audit trails baked in.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Offer acceptance → HRIS profile → directory user</li>
+                <li>Laptop & SaaS provisioning by role</li>
+                <li>Payroll & benefits enrollment, welcome tasks</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Time-to-productive ↓, Provisioning errors ↓</li>
+                <li>Compliance coverage ↑</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Workday/BambooHR, Okta/AAD, Jamf/Intune, Slack/Google/MS 365, payroll/benefits.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Day-0 → Day-1 provisioning, role access, compliance tasks, offboarding.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 820 360" class="w-full h-auto" aria-label="Employee onboarding flow">
+            <rect x="10" y="10" width="800" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- HRIS -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- IDaaS -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- Provision -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Payroll -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="160" y="97">HRIS Profile</text>
+              <text x="400" y="97">Identity & SSO</text>
+              <text x="640" y="97">Devices & Apps</text>
+              <text x="400" y="207">Payroll / Benefits</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-linecap="round">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">HRIS → Identity → Provisioning, with Payroll & Benefits handoff.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTERPRISE IPAAS -->
+    <section id="enterprise-ipaas" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">Integration Layer</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Enterprise iPaaS</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Replace brittle point-to-point scripts with governed, observable pipelines. Use triggers, transformations, and agentic steps to unify data and orchestrate processes across your stack.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>CRM ↔ ERP account/contact/product sync</li>
+                <li>Ticket & incident mirroring across ITSMs</li>
+                <li>File drops → ETL → warehouse loads</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Time-to-integrate ↓, Break/fix incidents ↓</li>
+                <li>Data freshness ↑, Coverage ↑</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Salesforce/HubSpot, NetSuite/SAP, ServiceNow/Jira, S3/Blob, BigQuery/Snowflake.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Master data sync, case mirroring, ETL pipelines, webhook relays.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 820 360" class="w-full h-auto" aria-label="iPaaS pipeline">
+            <rect x="10" y="10" width="800" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="50"  y="70"  width="200" height="54" rx="12"/><!-- Source A -->
+              <rect x="290" y="70"  width="200" height="54" rx="12"/><!-- Transform -->
+              <rect x="530" y="70"  width="240" height="54" rx="12"/><!-- Target A/B -->
+              <rect x="290" y="180" width="200" height="54" rx="12"/><!-- Agent -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="150" y="97">Sources</text>
+              <text x="390" y="97">Transform / Map</text>
+              <text x="650" y="97">Targets</text>
+              <text x="390" y="207">Agent Step (enrich/resolve)</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-linecap="round">
+              <line x1="250" y1="97" x2="290" y2="97"/>
+              <line x1="490" y1="97" x2="530" y2="97"/>
+              <line x1="390" y1="124" x2="390" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Event in → transform → write out; optional agentic enrichment loop.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT-LED SALES -->
+    <section id="product-led-sales" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">Revenue</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Product-led Sales</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Turn product usage into pipeline. Agents score accounts, surface PQLs, draft outreach, and open the right opportunities—using feature telemetry, CRM, and marketing tools.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Usage thresholds → PQL creation & routing</li>
+                <li>Expansion signals (seats/limits) → opp</li>
+                <li>Personalized email/slack outreach drafts</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>PQL-to-SQL ↑, Time-to-touch ↓</li>
+                <li>Expansion ARR ↑</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Segment/Rudder, Snowflake, Salesforce/HubSpot, Outreach/Salesloft, Slack.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">PQL generation, seat-limit alerts, expansion risk & churn save.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 820 360" class="w-full h-auto" aria-label="PLG flow">
+            <rect x="10" y="10" width="800" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- Telemetry -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- Scoring -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- CRM -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Outreach -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="160" y="97">Product Usage</text>
+              <text x="400" y="97">PQL Scoring</text>
+              <text x="640" y="97">CRM & Opportunity</text>
+              <text x="400" y="207">Email/Slack Draft</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-linecap="round">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Usage → score → CRM opp, with auto-drafted outreach.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMBEDDED INTEGRATIONS -->
+    <section id="embedded-integrations" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">Product</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Embedded Integrations</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Ship a native integrations marketplace in weeks. Let Engini handle auth, rate limits, retries, and monitoring while your customers connect their stack—securely and reliably.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>OAuth flows, token rotation & secret vaulting</li>
+                <li>Prebuilt actions & triggers for common apps</li>
+                <li>In-product logs, alerts, and self-service tests</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Time-to-ship ↓, Integration adoption ↑</li>
+                <li>Support tickets ↓</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Your app, Engini connectors, customer SaaS (CRM, ERP, files, comms).</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Customer data syncs, event webhooks, workflow starters, audit exports.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 820 360" class="w-full h-auto" aria-label="Embedded integrations marketplace">
+            <rect x="10" y="10" width="800" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="220" height="54" rx="12"/><!-- Your App -->
+              <rect x="320" y="70"  width="220" height="54" rx="12"/><!-- Engini -->
+              <rect x="580" y="70"  width="200" height="54" rx="12"/><!-- Connectors -->
+              <rect x="320" y="180" width="220" height="54" rx="12"/><!-- Observability -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="170" y="97">Your Product</text>
+              <text x="430" y="97">Engini Runtime</text>
+              <text x="680" y="97">Connectors</text>
+              <text x="430" y="207">Logs / Alerts / Tests</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-linecap="round">
+              <line x1="280" y1="97" x2="320" y2="97"/>
+              <line x1="540" y1="97" x2="580" y2="97"/>
+              <line x1="430" y1="124" x2="430" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Your app ↔ Engini runtime ↔ connectors, with in-product observability.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-[#2A2D34] to-[#1B1D22] border border-white/10 rounded-2xl p-8 md:p-10 text-center">
+        <h3 class="text-2xl md:text-3xl font-poppins font-semibold mb-3">Ready to launch your first use case?</h3>
+        <p class="text-neutral-300 max-w-2xl mx-auto">
+          Start with a connector, compose a workflow, add an AI playbook, and ship to production with guardrails and auditability.
+        </p>
+        <div class="mt-6 flex items-center justify-center gap-4">
+          <a href="https://engini.io/engini-connectors/" class="px-5 py-3 rounded-xl bg-[#8E7AEF] text-[#0B0C0E] font-semibold hover:bg-[#7c6ae6] transition">Browse Connectors</a>
+          <a href="platform.html#workflows" class="px-5 py-3 rounded-xl border border-white/20 hover:bg-white/10 transition">See Workflow Builder</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+      <div class="text-center md:text-left">
+        <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
+        <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
+        <div>
+          <p class="font-semibold text-white mb-2">Platform</p>
+          <ul class="space-y-1">
+            <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
+            <li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li>
+            <li><a href="platform.html#security" class="hover:underline">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Build</p>
+          <ul class="space-y-1">
+            <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
+            <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
+            <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white mb-2">Explore</p>
+          <ul class="space-y-1">
+            <li><a href="industries.html" class="hover:underline">Industries</a></li>
+            <li><a href="#all" class="hover:underline">Use Cases</a></li>
+            <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Active TOC highlighting -->
+  <script>
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const byId = id => tocLinks.find(a => a.getAttribute('href') === '#' + id);
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const link = byId(e.target.id);
+        if (!link) return;
+        if (e.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '0px 0px -60% 0px', threshold: 0.25 });
+
+    sections.forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>

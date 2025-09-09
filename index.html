@@ -47,7 +47,6 @@
       width:22px;height:22px;border-radius:6px;display:grid;place-items:center;
       background:#0F1012;border:1px solid rgba(255,255,255,.15);font-size:.7rem;color:#fff
     }
-   
     .wc-chev{transition:transform .24s ease}
     .wc-card[aria-expanded="true"] .wc-chev{transform:rotate(180deg)}
     .wc-label{color:var(--muted)}
@@ -61,7 +60,20 @@
       will-change: height;
     }
     .wc-card[aria-expanded="true"] .wc-more{opacity:1}
+
+    /* ======= Robot spotlight + loader (inline, no card) ======= */
+    .spotlight{
+      position:absolute; width:280px; height:280px; border-radius:9999px; pointer-events:none;
+      background:radial-gradient(circle at center, rgba(255,255,255,.26), rgba(255,255,255,0) 60%);
+      filter:blur(40px); opacity:0; transition:opacity .2s ease;
+      left:-9999px; top:-9999px;
+    }
+    
+    .spline-loader{ position:absolute; inset:0; display:grid; place-items:center; color:#A3A3A3; font-size:.9rem }
   </style>
+
+  <!-- Spline web component -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
@@ -70,7 +82,6 @@
 
 <header class="sticky top-0 z-50 bg-transparent">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
-
     <!-- Logo -->
     <a href="index.html" class="flex items-center space-x-2">
       <img src="image.png" alt="Engini-logo" class="w-24 sm:w-28 h-auto" />
@@ -79,7 +90,6 @@
     <!-- Nav Center -->
     <div class="flex-grow flex justify-center">
       <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
-
         <!-- Solutions -->
         <div class="relative group">
           <button class="hover:text-white transition-colors peer px-4 py-3">Solutions</button>
@@ -113,35 +123,35 @@
                 </ul>
               </div>
               <!-- By Use Case -->
- <div>
-                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
-                  <ul class="space-y-2">
-                    <li><a href="use Cases.html#order-to-cash" class="hover:underline">Order-to-cash</a></li>
-                    <li><a href="use Cases.html#employee-onboarding" class="hover:underline">Employee onboarding</a></li>
-                    <li><a href="use Cases.html#enterprise-ipaas" class="hover:underline">Enterprise iPaaS</a></li>
-                    <li><a href="use Cases.html#product-led-sales" class="hover:underline">Product-led sales</a></li>
-                    <li><a href="use Cases.html#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
-                    <li><a href="use Cases.html#all" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
-                  </ul>
-                </div>
-
+              <div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
+                <ul class="space-y-2">
+                  <li><a href="use Cases.html#order-to-cash" class="hover:underline">Order-to-cash</a></li>
+                  <li><a href="use Cases.html#employee-onboarding" class="hover:underline">Employee onboarding</a></li>
+                  <li><a href="use Cases.html#enterprise-ipaas" class="hover:underline">Enterprise iPaaS</a></li>
+                  <li><a href="use Cases.html#product-led-sales" class="hover:underline">Product-led sales</a></li>
+                  <li><a href="use Cases.html#embedded-integrations" class="hover:underline">Embedded Integrations</a></li>
+                  <li><a href="use Cases.html#all" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
+                </ul>
+              </div>
               <!-- By Industry -->
               <div>
-                  <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
-                  <ul class="space-y-2">
-                    <li><a href="industries.html" class="hover:underline">Manufacturing</a></li>
-                    <li><a href="industries.html" class="hover:underline">Financial services</a></li>
-                    <li><a href="industries.html" class="hover:underline">Retail</a></li>
-                    <li><a href="industries.html" class="hover:underline">Logistics</a></li>
-                    <li><a href="industries.html" class="hover:underline">Healthcare</a></li>
-                    <li><a href="industries.html" class="hover:underline">Media</a></li>
-                    <li><a href="industries.html" class="hover:underline">BPO</a></li>
-                    <li><a href="industries.html" class="hover:underline">Non-profit</a></li>
-                  </ul>
-                </div>
+                <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
+                <ul class="space-y-2">
+                  <li><a href="industries.html" class="hover:underline">Manufacturing</a></li>
+                  <li><a href="industries.html" class="hover:underline">Financial services</a></li>
+                  <li><a href="industries.html" class="hover:underline">Retail</a></li>
+                  <li><a href="industries.html" class="hover:underline">Logistics</a></li>
+                  <li><a href="industries.html" class="hover:underline">Healthcare</a></li>
+                  <li><a href="industries.html" class="hover:underline">Media</a></li>
+                  <li><a href="industries.html" class="hover:underline">BPO</a></li>
+                  <li><a href="industries.html" class="hover:underline">Non-profit</a></li>
+                </ul>
               </div>
             </div>
           </div>
+        </div>
+
         <!-- Platform -->
         <div class="relative group">
           <button class="hover:text-white transition-colors peer px-4 py-3">Platform</button>
@@ -188,86 +198,89 @@
   </nav>
 </header>
 
-
-
 <!-- Hero + Chat -->
 <section class="relative flex flex-col items-center justify-start pt-12 sm:pt-20 pb-4 sm:pb-6 bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">
   <div class="text-center max-w-3xl mx-auto px-4 mb-6">
- <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
-  AI Agent Orchestration.
-</h1><br>
- <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
-  Agentic Workforce Ready.
-</h1>
-<br>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
+      AI Agent Orchestration.
+    </h1><br>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
+      Agentic Workforce Ready.
+    </h1>
+    <br>
     <p class="text-base sm:text-lg text-neutral-300">
-    Integrate AI Agents Seamlessly Across Legacy, Cloud, and SaaS Systems.
+      Integrate AI Agents Seamlessly Across Legacy, Cloud, and SaaS Systems.
     </p>
   </div>
 
+  <!-- Buttons + Robot (same row) -->
+  <div class="flex flex-wrap lg:flex-nowrap gap-12 justify-center items-center my-16 px-4 relative">
+    <!-- AI Agents Orchestration Button -->
+    <a href="#ipass-evolution" 
+       class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] 
+              text-white rounded-3xl 
+              shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] 
+              border border-white/10 
+              hover:border-white/30 
+              text-2xl font-semibold 
+              transform hover:-translate-y-3 hover:scale-[1.07] 
+              hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] 
+              transition-all duration-300 ease-in-out 
+              flex items-center justify-center relative overflow-hidden text-center group"> 
+      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
+      <div class="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-12 opacity-0 group-hover:opacity-40 group-hover:translate-x-16 transition-all duration-500"></div>
+      <div class="flex flex-col items-center justify-center h-full z-10 relative">
+        AI Agents
+        <span class="text-lg font-medium opacity-70">Orchestration</span>
+      </div>
+    </a>
 
-  
-<!-- Big Buttons Row -->
-<div class="flex flex-wrap gap-12 justify-center items-center my-16 px-4 relative">
-  <!-- AI Agents Orchestration Button -->
-  <a href="#ipass-evolution" 
-     class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] 
-            text-white rounded-3xl 
-            shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] 
-            border border-white/10 
-            hover:border-white/30 
-            text-2xl font-semibold 
-            transform hover:-translate-y-3 hover:scale-[1.07] 
-            hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] 
-            transition-all duration-300 ease-in-out 
-            flex items-center justify-center relative overflow-hidden text-center group"> 
-    <!-- Inner glow overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
-    <!-- Shine streak -->
-    <div class="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-12 opacity-0 group-hover:opacity-40 group-hover:translate-x-16 transition-all duration-500"></div>
-    <!-- Text -->
-    <div class="flex flex-col items-center justify-center h-full z-10 relative">
-      AI Agents
-      <span class="text-lg font-medium opacity-70">Orchestration</span>
+    <!-- Vertical Divider with subtle glow -->
+    <div class="hidden md:block w-0.5 h-60 bg-gradient-to-b from-transparent via-white/30 to-transparent rounded"></div>
+
+    <!-- Enterprise Workers Button -->
+    <a href="#workspace-section" 
+       class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] 
+              text-white rounded-3xl 
+              shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] 
+              border border-white/10 
+              hover:border-white/30 
+              text-2xl font-semibold 
+              transform hover:-translate-y-3 hover:scale-[1.07] 
+              hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] 
+              transition-all duration-300 ease-in-out 
+              flex items-center justify-center relative overflow-hidden text-center group">
+      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
+      <div class="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-12 opacity-0 group-hover:opacity-40 group-hover:translate-x-16 transition-all duration-500"></div>
+      <div class="z-10 text-center">
+        Enterprise <br />
+        <span class="text-lg font-medium opacity-70">Agentic Workers</span>
+      </div>
+    </a>
+
+    <!-- Robot (inline, no card) -->
+    <div class="relative w-[360px] h-[360px] md:w-[420px] md:h-[420px] lg:w-[520px] lg:h-[520px] shrink-0 rounded-3xl overflow-hidden" data-spotlight>
+      <div class="spotlight" aria-hidden="true"></div>
+      <div class="spline-loader" data-spline-loader>Loading 3D…</div>
+      <spline-viewer
+        url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+        class="absolute inset-0 w-full h-full"
+        events-target="global"
+      ></spline-viewer>
+
+      <!-- Name + caption -->
+      <div class="absolute left-4 bottom-4 px-3 py-2 rounded-xl border border-white/15 bg-white/10 backdrop-blur-md">
+        <div class="text-white text-sm font-semibold">ARIA - Orchestration Bot</div>
+        <div class="text-white/80 text-xs">Understands your stack. Plans. Executes. Reports.</div>
+      </div>
     </div>
-  </a>
-
-  <!-- Vertical Divider with subtle glow -->
-  <div class="hidden md:block w-0.5 h-60 bg-gradient-to-b from-transparent via-white/30 to-transparent rounded"></div>
-
-  <!-- Enterprise Workers Button -->
-  <a href="#workspace-section" 
-     class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] 
-            text-white rounded-3xl 
-            shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] 
-            border border-white/10 
-            hover:border-white/30 
-            text-2xl font-semibold 
-            transform hover:-translate-y-3 hover:scale-[1.07] 
-            hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] 
-            transition-all duration-300 ease-in-out 
-            flex items-center justify-center relative overflow-hidden text-center group">
-    <!-- Inner glow overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
-    <!-- Shine streak -->
-    <div class="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-12 opacity-0 group-hover:opacity-40 group-hover:translate-x-16 transition-all duration-500"></div>
-    <!-- Text -->
-    <div class="z-10 text-center">
-      Enterprise <br />
-      <span class="text-lg font-medium opacity-70">Agentic Workers</span>
-    </div>
-  </a>
-</div>
-
-
-
+  </div>
 
   <!-- Chat Shell -->
   <div class="w-full max-w-3xl px-4" id="chat-block">
     <div id="chat-shell" class="relative rounded-3xl shadow-2xl p-6 mt-2 sm:mt-3 flex flex-col justify-between border border-white/10 bg-[#0F1012]">
       <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4">
-        <div class="flex justify-start">
-        </div>
+        <div class="flex justify-start"></div>
       </div>
 
       <form id="chat-form" class="relative">
@@ -288,26 +301,26 @@
   </div>
 </section>
 
-
-  <!-- Workspace -->
-  <section id="workspace-section" class="pt-6 sm:pt-10 pb-12 px-4 sm:px-8 lg:px-10 flex-grow">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">Workspace</h2>
-        <div class="relative">
-          <input id="search-input" class="w-72 max-w-[76vw] p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 placeholder-white/40"
-                 placeholder="Search Workers...">
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-        </div>
+<!-- Workspace -->
+<section id="workspace-section" class="pt-6 sm:pt-10 pb-12 px-4 sm:px-8 lg:px-10 flex-grow">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">Workspace</h2>
+      <div class="relative">
+        <input id="search-input" class="w-72 max-w-[76vw] p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 placeholder-white/40"
+               placeholder="Search Workers...">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
       </div>
-
-      <!-- Cards -->
-      <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
     </div>
-  </section>
-<!-- Evolution of Automation & Orchestration (DROP-IN REPLACEMENT) -->
+
+    <!-- Cards -->
+    <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+  </div>
+</section>
+
+<!-- Evolution of Automation & Orchestration -->
 <section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-20 bg-[#0B0C0E]">
   <div class="max-w-7xl mx-auto">
     <header class="text-center mb-14">
@@ -332,27 +345,18 @@
 
     <!-- Era cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 text-white">
-      <!-- 1) iPaaS Era -->
+      <!-- Cards ... (unchanged) -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">1980–2023</h3>
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
         </div>
-
         <h4 class="text-lg font-semibold text-white mb-4">iPaaS Era</h4>
-
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img
-            src="ipaas era.png"
-            alt="Deterministic iPaaS style integration diagram"
-            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
-            loading="lazy" decoding="async">
+          <img src="ipaas era.png" alt="Deterministic iPaaS style integration diagram"
+               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
         </figure>
-
-        <p class="text-sm text-neutral-300">
-          Rule-based flows connect systems with fixed logic and strict schemas. Reliable but brittle when requirements change.
-        </p>
-
+        <p class="text-sm text-neutral-300">Rule-based flows connect systems with fixed logic and strict schemas. Reliable but brittle when requirements change.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
           <li>• Triggers & pipes; manual exception handling</li>
           <li>• Heavy upfront mapping & maintenance</li>
@@ -360,27 +364,17 @@
         </ul>
       </article>
 
-      <!-- 2) AI Agents -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">2024</h3>
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
         </div>
-
         <h4 class="text-lg font-semibold text-white mb-4">AI Agents</h4>
-
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img
-            src="ai agent.png"
-            alt="Single AI agent using tools over existing systems"
-            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
-            loading="lazy" decoding="async">
+          <img src="ai agent.png" alt="Single AI agent using tools over existing systems"
+               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
         </figure>
-
-        <p class="text-sm text-neutral-300">
-          Single agents plan, decide, and use tools. Great for unstructured inputs and adaptive routing—within a single-agent scope.
-        </p>
-
+        <p class="text-sm text-neutral-300">Single agents plan, decide, and use tools. Great for unstructured inputs and adaptive routing—within a single-agent scope.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
           <li>• Perceive → plan → act loops</li>
           <li>• Tool use on top of legacy systems</li>
@@ -388,27 +382,17 @@
         </ul>
       </article>
 
-      <!-- 3) Agentic Workflow -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">2025</h3>
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential</span>
         </div>
-
         <h4 class="text-lg font-semibold text-white mb-4">Agentic Workflow</h4>
-
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img
-            src="agentic workflow.png"
-            alt="Sequential chain of intelligent agents performing a multi-step process"
-            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
-            loading="lazy" decoding="async">
+          <img src="agentic workflow.png" alt="Sequential chain of intelligent agents performing a multi-step process"
+               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
         </figure>
-
-        <p class="text-sm text-neutral-300">
-          Multiple agents linked in steps to execute complex, multi-stage journeys—each step reasons, then hands off.
-        </p>
-
+        <p class="text-sm text-neutral-300">Multiple agents linked in steps to execute complex, multi-stage journeys—each step reasons, then hands off.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
           <li>• Step-level memory & evaluation</li>
           <li>• Human-in-the-loop approvals</li>
@@ -416,27 +400,17 @@
         </ul>
       </article>
 
-      <!-- 4) Agent Orchestration -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">2026 & Beyond</h3>
           <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
         </div>
-
         <h4 class="text-lg font-semibold text-white mb-4">Agent Orchestration</h4>
-
         <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img
-            src="agent orchestration.png"
-            alt="Coordinated orchestration across multiple AI workers and systems"
-            class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]"
-            loading="lazy" decoding="async">
+          <img src="agent orchestration.png" alt="Coordinated orchestration across multiple AI workers and systems"
+               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
         </figure>
-
-        <p class="text-sm text-neutral-300">
-          Coordinated teams of specialized agents share context, negotiate tasks, and collaborate—governed by policies and SLOs.
-        </p>
-
+        <p class="text-sm text-neutral-300">Coordinated teams of specialized agents share context, negotiate tasks, and collaborate—governed by policies and SLOs.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
           <li>• Multi-agent planning & role assignment</li>
           <li>• Shared memory, SLAs, & global guardrails</li>
@@ -460,50 +434,49 @@
         <p class="text-sm text-neutral-300">Global guardrails, shared memory, and SLOs drive reliable, end-to-end outcomes.</p>
       </div>
     </div>
-
-
+  </div>
 </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
-      <div class="text-center md:text-left">
-        <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
-        <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
+<!-- Footer -->
+<footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+    <div class="text-center md:text-left">
+      <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
+      <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
+      <div>
+        <p class="font-semibold text-white mb-2">Platform</p>
+        <ul class="space-y-1">
+          <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
+          <li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li>
+          <li><a href="platform.html#security" class="hover:underline">Security</a></li>
+        </ul>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
-        <div>
-          <p class="font-semibold text-white mb-2">Platform</p>
-          <ul class="space-y-1">
-            <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
-            <li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li>
-            <li><a href="platform.html#security" class="hover:underline">Security</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-white mb-2">Build</p>
-          <ul class="space-y-1">
-            <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
-            <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
-            <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-white mb-2">Resources</p>
-          <ul class="space-y-1">
-            <li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li>
-            <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
-            <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li>
-          </ul>
-        </div>
+      <div>
+        <p class="font-semibold text-white mb-2">Build</p>
+        <ul class="space-y-1">
+          <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
+          <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
+          <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-white mb-2">Resources</p>
+        <ul class="space-y-1">
+          <li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li>
+          <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
+          <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- Template and Create modals are below this point, omitted here for brevity -->
+<!-- Template and Create modals below (omitted) -->
 
-  <script src="script.js"></script>
- <script>
+<script src="script.js"></script>
+<script>
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 
@@ -519,71 +492,54 @@
 
   /* Workers (8 total) */
   const WORKERS = [
-    {
-      id:"it", title:"IT", subtitle:"AI Worker",
+    { id:"it", title:"IT", subtitle:"AI Worker",
       skills:["Onboarding/Offboarding","Identity and Access","Account unlock and password"],
       extraSkills:["SaaS license audit","Device lifecycle","Helpdesk Q&A"],
       apps:["servicenow","okta","google","slack","microsoft"],
       more:{ summary:"Automates JML, identity and Tier-0/1 helpdesk with safe approvals.",
-        playbooks:["Joiner/Mover/Leaver","Zero-touch provisioning","Access reviews","Software requests"] }
-    },
-    {
-      id:"procurement", title:"Procurement", subtitle:"AI Worker",
+        playbooks:["Joiner/Mover/Leaver","Zero-touch provisioning","Access reviews","Software requests"] } },
+    { id:"procurement", title:"Procurement", subtitle:"AI Worker",
       skills:["Vendor onboarding","Purchase request","PO tracking","Supplier finder"],
       extraSkills:["3-way match exceptions","Sourcing intake","Contract reminders"],
       apps:["quickbooks","netsuite","slack"],
       more:{ summary:"Guides requesters, validates suppliers, syncs PR→PO→Receipt.",
-        playbooks:["PR intake","Supplier due diligence","Catalog request"] }
-    },
-    {
-      id:"officeops", title:"Office Ops", subtitle:"AI Worker",
+        playbooks:["PR intake","Supplier due diligence","Catalog request"] } },
+    { id:"officeops", title:"Office Ops", subtitle:"AI Worker",
       skills:["Parental leave","Onboarding new employee","Gift package","Office parking"],
       extraSkills:["Visitor mgmt","Room bookings","Facilities tickets"],
       apps:["jira","google","slack"],
       more:{ summary:"Coordinates people ops actions across facilities, IT, and HR.",
-        playbooks:["New hire day-one","Leave of absence","Visitor flow"] }
-    },
-    {
-      id:"hr", title:"HR", subtitle:"AI Worker",
+        playbooks:["New hire day-one","Leave of absence","Visitor flow"] } },
+    { id:"hr", title:"HR", subtitle:"AI Worker",
       skills:["Employee onboarding","HR policy and benefits","Time off & leave"],
       extraSkills:["Comp letters","Performance cycle","People analytics"],
       apps:["workday","slack","google"],
       more:{ summary:"Runs compliant HR workflows and answers policy questions.",
-        playbooks:["Offer→Onboard","PTO / LOA","Policy assistant"] }
-    },
-    /* New 4 */
-    {
-      id:"finance", title:"Finance", subtitle:"AI Worker",
+        playbooks:["Offer→Onboard","PTO / LOA","Policy assistant"] } },
+    { id:"finance", title:"Finance", subtitle:"AI Worker",
       skills:["Invoice processing","Expense review","Cash application","Close checklist"],
       extraSkills:["Variance analysis","PO match","Aging follow-ups"],
       apps:["quickbooks","netsuite","google","slack"],
       more:{ summary:"Speeds AP/AR with smart matching, flags anomalies, and drives close tasks.",
-        playbooks:["3-way match","Monthly close","Expense policy enforcement"] }
-    },
-    {
-      id:"sales", title:"Sales", subtitle:"AI Worker",
+        playbooks:["3-way match","Monthly close","Expense policy enforcement"] } },
+    { id:"sales", title:"Sales", subtitle:"AI Worker",
       skills:["Lead qualification","CRM hygiene","Forecast rollup","Follow-up nudges"],
       extraSkills:["Battlecards","Call summaries","Territory routing"],
       apps:["salesforce","hubspot","outreach","slack"],
       more:{ summary:"Keeps pipeline clean, surfaces next actions, and drafts outreach.",
-        playbooks:["MQL→SQL triage","Next-best action","Renewal alerts"] }
-    },
-    {
-      id:"support", title:"Support", subtitle:"AI Worker",
+        playbooks:["MQL→SQL triage","Next-best action","Renewal alerts"] } },
+    { id:"support", title:"Support", subtitle:"AI Worker",
       skills:["Ticket triage","Self-serve answers","SLA alerts","Bug reproduction steps"],
       extraSkills:["CSAT analysis","Deflection reports"],
       apps:["zendesk","intercom","slack","jira"],
       more:{ summary:"Routes issues, suggests replies, and syncs product tasks to engineering.",
-        playbooks:["Auto-triage","Macro suggestion","Escalation policy"] }
-    },
-    {
-      id:"marketing", title:"Marketing", subtitle:"AI Worker",
+        playbooks:["Auto-triage","Macro suggestion","Escalation policy"] } },
+    { id:"marketing", title:"Marketing", subtitle:"AI Worker",
       skills:["Campaign calendar","Asset tagging","UTM guardrails","Attribution sanity-checks"],
       extraSkills:["Audience sync","Creative variants"],
       apps:["marketo","hubspot","mailchimp","slack"],
       more:{ summary:"Orchestrates launches, keeps taxonomy clean, and reports what moved the needle.",
-        playbooks:["Launch checklist","Audience orchestration","Weekly performance digest"] }
-    }
+        playbooks:["Launch checklist","Audience orchestration","Weekly performance digest"] } }
   ];
 
   /* Render helpers */
@@ -640,7 +596,6 @@
       const section = card.querySelector(".wc-more");
       const header  = card.querySelector(".wc-toggle");
 
-      // Ensure closed state styles
       section.style.height = "0px";
       section.style.opacity = "0";
 
@@ -653,16 +608,13 @@
 
   function toggleExpand(card, section){
     const isOpen = card.getAttribute("aria-expanded")==="true";
-
     if(isOpen){
-      // Collapse: lock to current height then animate to 0
       section.style.height = section.scrollHeight + "px";
-      section.getBoundingClientRect(); // force reflow
+      section.getBoundingClientRect();
       section.style.height = "0px";
       section.style.opacity = "0";
       card.setAttribute("aria-expanded","false");
     }else{
-      // Expand: from 0 to content height, then set to auto
       section.style.height = "0px";
       section.style.opacity = "1";
       card.setAttribute("aria-expanded","true");
@@ -693,7 +645,33 @@
   });
 
   renderCards();
-  </script>
+
+  // Spotlight + loader (per viewer)
+  document.querySelectorAll('[data-spotlight]').forEach((wrap) => {
+    const spot = wrap.querySelector('.spotlight');
+    const loader = wrap.querySelector('[data-spline-loader]');
+    const viewer = wrap.querySelector('spline-viewer');
+
+    const move = (e) => {
+      const r = wrap.getBoundingClientRect();
+      const x = e.clientX - r.left - spot.offsetWidth/2;
+      const y = e.clientY - r.top  - spot.offsetHeight/2;
+      spot.style.left = x + 'px';
+      spot.style.top  = y + 'px';
+    };
+
+    wrap.addEventListener('mouseenter', move);
+    wrap.addEventListener('mousemove', move);
+    wrap.addEventListener('mouseleave', () => {
+      spot.style.left = '-9999px';
+      spot.style.top  = '-9999px';
+    });
+
+    if (viewer && loader) {
+      viewer.addEventListener('load', () => loader.style.display = 'none');
+    }
+  });
+</script>
 
 </body>
 </html>

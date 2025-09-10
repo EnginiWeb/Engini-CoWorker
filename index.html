@@ -10,11 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet"/>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind (keep; CDN is fine) -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
 
   <style>
-    /* ======= Monochrome theme (no color accents) ======= */
     :root{
       --bg:#0B0C0E; --bg2:#0F1012; --card:#151618; --ink:#E7E7EA;
       --muted:#9CA3AF; --line:rgba(255,255,255,.10); --line-strong:rgba(255,255,255,.18);
@@ -24,70 +23,47 @@
     body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica Neue,Arial}
     .font-poppins{font-family:Poppins,Inter,ui-sans-serif,system-ui}
 
-    /* ======= Card micro styles ======= */
-    .wc-card{
-      background:var(--card); border:1px solid var(--line); border-radius:1.5rem;
-      padding:1.25rem; box-shadow:var(--shadow);
-      transition:transform .2s ease, border-color .2s ease;
-    }
+    /* Cards */
+    .wc-card{background:var(--card);border:1px solid var(--line);border-radius:1.5rem;padding:1.25rem;box-shadow:var(--shadow);transition:transform .2s ease,border-color .2s ease}
     .wc-card:hover{transform:translateY(-2px);border-color:var(--line-strong)}
-    .wc-avatar{
-      width:48px;height:48px;border-radius:999px;display:grid;place-items:center;
-      border:2px solid rgba(255,255,255,.85); box-shadow:0 0 0 4px rgba(255,255,255,.10) inset;
-    }
+    .wc-avatar{width:48px;height:48px;border-radius:999px;display:grid;place-items:center;border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(255,255,255,.10) inset}
     .wc-badge{letter-spacing:.16em;color:rgba(255,255,255,.55)}
     .wc-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
-    .wc-pill{
-      padding:.48rem .85rem;border-radius:9999px;border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06); font-size:.92rem; line-height:1; color:#E5E7EB; white-space:nowrap;
-    }
+    .wc-pill{padding:.48rem .85rem;border-radius:9999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);font-size:.92rem;line-height:1;color:#E5E7EB;white-space:nowrap}
     .wc-pill.dim{opacity:.6}
     .wc-app img{width:22px;height:22px;border-radius:6px;display:block}
-    .wc-app .fallback{
-      width:22px;height:22px;border-radius:6px;display:grid;place-items:center;
-      background:#0F1012;border:1px solid rgba(255,255,255,.15);font-size:.7rem;color:#fff
-    }
+    .wc-app .fallback{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:#0F1012;border:1px solid rgba(255,255,255,.15);font-size:.7rem;color:#fff}
     .wc-chev{transition:transform .24s ease}
     .wc-card[aria-expanded="true"] .wc-chev{transform:rotate(180deg)}
-    .wc-label{color:var(--muted)}
     .nav-chip{border:1px solid var(--line);background:rgba(255,255,255,.05)}
-    :focus{outline:none}
 
     /* Smooth expandable section */
-    .wc-more{
-      height:0; overflow:hidden; opacity:0;
-      transition: height .34s ease, opacity .24s ease;
-      will-change: height;
-    }
+    .wc-more{height:0;overflow:hidden;opacity:0;transition:height .34s ease,opacity .24s ease;will-change:height}
     .wc-card[aria-expanded="true"] .wc-more{opacity:1}
 
-    /* ======= Robot spotlight + loader (inline, no card) ======= */
-    .spotlight{
-      position:absolute; width:280px; height:280px; border-radius:9999px; pointer-events:none;
-      background:radial-gradient(circle at center, rgba(255,255,255,.26), rgba(255,255,255,0) 60%);
-      filter:blur(40px); opacity:0; transition:opacity .2s ease;
-      left:-9999px; top:-9999px;
-    }
-    
-    .spline-loader{ position:absolute; inset:0; display:grid; place-items:center; color:#A3A3A3; font-size:.9rem }
+    /* Spotlight */
+    .spotlight{position:absolute;width:280px;height:280px;border-radius:9999px;pointer-events:none;background:radial-gradient(circle at center, rgba(255,255,255,.26), rgba(255,255,255,0) 60%);filter:blur(40px);opacity:0;transition:opacity .2s ease;left:-9999px;top:-9999px}
+    .spline-loader{position:absolute;inset:0;display:grid;place-items:center;color:#A3A3A3;font-size:.9rem}
+
+    /* Evolution SVG helpers */
+    .era svg{display:block}
+    .era .panel{fill:#151618;stroke:rgba(255,255,255,.10)}
+    .era .node{fill:#1B1D22;stroke:rgba(255,255,255,.14)}
+    .era .label{fill:#E5E7EB}
+    .era .sub{fill:#A3A3A3}
+    .era .wire{stroke:url(#gradWire);stroke-width:2.5;fill:none;stroke-linecap:round;filter:url(#glow)}
+    .era .dashed{stroke-dasharray:12 10;animation:dash 8s linear infinite}
+    @keyframes dash{to{stroke-dashoffset:-600}}
   </style>
-
-  <!-- Spline web component -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
 
 <header class="sticky top-0 z-50 bg-transparent">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl mt-3 shadow-md">
-    <!-- Logo -->
     <a href="index.html" class="flex items-center space-x-2">
-      <img src="image.png" alt="Engini-logo" class="w-24 sm:w-28 h-auto" />
+      <img src="image.png" alt="Engini-logo" class="w-24 sm:w-28 h-auto" fetchpriority="high"/>
     </a>
 
-    <!-- Nav Center -->
     <div class="flex-grow flex justify-center">
       <div class="flex items-center space-x-6 text-sm font-medium text-neutral-300">
         <!-- Solutions -->
@@ -95,34 +71,31 @@
           <button class="hover:text-white transition-colors peer px-4 py-3">Solutions</button>
           <div class="absolute left-1/2 -translate-x-1/3 top-full mt-0 pt-2 w-[1000px] p-6 rounded-xl bg-[#1B1D22] border border-white/10 shadow-xl z-50 opacity-0 pointer-events-none transition duration-200 group-hover:opacity-100 group-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto">
             <div class="grid grid-cols-4 gap-8 text-white text-sm">
-              <!-- App Integrations -->
               <div>
                 <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">App Integrations</p>
                 <ul class="space-y-3">
-                  <li class="flex items-center gap-2"><img src="icons/salesforce.png" class="w-6 h-5" /><a href="app.html">Salesforce</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/slack.png" class="w-6 h-6" /><a href="app.html">Slack</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/marketo.png" class="w-6 h-6" /><a href="app.html">Marketo</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/netsuite.png" class="w-6 h-6" /><a href="app.html">NetSuite</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/servicenow.png" class="w-6 h-6" /><a href="app.html">ServiceNow</a></li>
-                  <li class="flex items-center gap-2"><img src="icons/workday.png" class="w- h-6" /><a href="app.html">Workday</a></li>
+                  <li class="flex items-center gap-2"><img loading="lazy" src="icons/salesforce.png" class="w-6 h-5" alt="Salesforce"/><a href="app.html">Salesforce</a></li>
+                  <li class="flex items-center gap-2"><img loading="lazy" src="icons/slack.png" class="w-6 h-6" alt="Slack"/><a href="app.html">Slack</a></li>
+                  <li class="flex items-center gap-2"><img loading="lazy" src="icons/marketo.png" class="w-6 h-6" alt="Marketo"/><a href="app.html">Marketo</a></li>
+                  <li class="flex items-center gap-2"><img loading="lazy" src="icons/netsuite.png" class="w-6 h-6" alt="NetSuite"/><a href="app.html">NetSuite</a></li>
+                  <li class="flex items-center gap-2"><img loading="lazy" src="icons/servicenow.png" class="w-6 h-6" alt="ServiceNow"/><a href="app.html">ServiceNow</a></li>
+                  <li class="flex items-center gap-2"><img loading="lazy" src="icons/workday.png" class="w-6 h-6" alt="Workday"/><a href="app.html">Workday</a></li>
                   <li><a href="app.html" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
                 </ul>
               </div>
-              <!-- By Function -->
               <div>
                 <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Function</p>
                 <ul class="space-y-2">
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">IT</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Finance</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Support</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">HR</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Marketing</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Sales</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Revenue Operations</a></li>
-                  <li><a href="https://engini.io/engini-agents/" class="hover:underline">Product (Embed)</a></li>
+                  <li><a href="functions.html#it" class="hover:underline">IT</a></li>
+                  <li><a href="functions.html#finance" class="hover:underline">Finance</a></li>
+                  <li><a href="functions.html#support" class="hover:underline">Support</a></li>
+                  <li><a href="functions.html#hr" class="hover:underline">HR</a></li>
+                  <li><a href="functions.html#marketing" class="hover:underline">Marketing</a></li>
+                  <li><a href="functions.html#sales" class="hover:underline">Sales</a></li>
+                  <li><a href="functions.html#revops" class="hover:underline">Revenue Operations</a></li>
+                  <li><a href="functions.html#product" class="hover:underline">Product (Embed)</a></li>
                 </ul>
               </div>
-              <!-- By Use Case -->
               <div>
                 <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Use Case</p>
                 <ul class="space-y-2">
@@ -134,7 +107,6 @@
                   <li><a href="use Cases.html#all" class="text-white underline hover:no-underline font-medium flex items-center gap-1">View all <span>↗</span></a></li>
                 </ul>
               </div>
-              <!-- By Industry -->
               <div>
                 <p class="uppercase text-xs font-semibold tracking-wide text-white/60 mb-4">By Industry</p>
                 <ul class="space-y-2">
@@ -190,7 +162,6 @@
           </div>
         </div>
 
-        <!-- Static Links -->
         <a href="#workspace-section" class="hover:text-white transition-colors px-3 py-3">Workspace</a>
         <a href="my-workers.html" class="hover:text-white transition-colors px-3 py-3">My Workers</a>
       </div>
@@ -201,74 +172,33 @@
 <!-- Hero + Chat -->
 <section class="relative flex flex-col items-center justify-start pt-12 sm:pt-20 pb-4 sm:pb-6 bg-gradient-to-b from-[#0B0C0E] via-[#0F1012] to-[#151618]">
   <div class="text-center max-w-3xl mx-auto px-4 mb-6">
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
-      AI Agent Orchestration.
-    </h1><br>
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight max-w-5xl mx-auto text-center">
-      Agentic Workforce Ready.
-    </h1>
-    <br>
-    <p class="text-base sm:text-lg text-neutral-300">
-      Integrate AI Agents Seamlessly Across Legacy, Cloud, and SaaS Systems.
-    </p>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight">AI Agent Orchestration.</h1>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-poppins font-semibold text-white leading-tight mt-1">Agentic Workforce Ready.</h1>
+    <p class="text-base sm:text-lg text-neutral-300 mt-4">Integrate AI Agents Seamlessly Across Legacy, Cloud, and SaaS Systems.</p>
   </div>
 
-  <!-- Buttons + Robot (same row) -->
+  <!-- Buttons + Robot -->
   <div class="flex flex-wrap lg:flex-nowrap gap-12 justify-center items-center my-16 px-4 relative">
-    <!-- AI Agents Orchestration Button -->
-    <a href="#ipass-evolution" 
-       class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] 
-              text-white rounded-3xl 
-              shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] 
-              border border-white/10 
-              hover:border-white/30 
-              text-2xl font-semibold 
-              transform hover:-translate-y-3 hover:scale-[1.07] 
-              hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] 
-              transition-all duration-300 ease-in-out 
-              flex items-center justify-center relative overflow-hidden text-center group"> 
-      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
+    <a href="#ipass-evolution" class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] text-white rounded-3xl shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] border border-white/10 hover:border-white/30 text-2xl font-semibold transform hover:-translate-y-3 hover:scale-[1.07] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden text-center group">
+      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all"></div>
       <div class="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-12 opacity-0 group-hover:opacity-40 group-hover:translate-x-16 transition-all duration-500"></div>
-      <div class="flex flex-col items-center justify-center h-full z-10 relative">
-        AI Agents
-        <span class="text-lg font-medium opacity-70">Orchestration</span>
-      </div>
+      <div class="z-10">AI Agents <span class="block text-lg font-medium opacity-70">Orchestration</span></div>
     </a>
 
-    <!-- Vertical Divider with subtle glow -->
     <div class="hidden md:block w-0.5 h-60 bg-gradient-to-b from-transparent via-white/30 to-transparent rounded"></div>
 
-    <!-- Enterprise Workers Button -->
-    <a href="#workspace-section" 
-       class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] 
-              text-white rounded-3xl 
-              shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] 
-              border border-white/10 
-              hover:border-white/30 
-              text-2xl font-semibold 
-              transform hover:-translate-y-3 hover:scale-[1.07] 
-              hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] 
-              transition-all duration-300 ease-in-out 
-              flex items-center justify-center relative overflow-hidden text-center group">
-      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
+    <a href="#workspace-section" class="w-72 h-64 bg-gradient-to-br from-[#1A1C20] via-[#23252A] to-[#101113] text-white rounded-3xl shadow-[0_10px_20px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] border border-white/10 hover:border-white/30 text-2xl font-semibold transform hover:-translate-y-3 hover:scale-[1.07] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_20px_rgba(142,122,239,0.35)] transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden text-center group">
+      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent rounded-3xl opacity-40 group-hover:opacity-70 transition-all"></div>
       <div class="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-12 opacity-0 group-hover:opacity-40 group-hover:translate-x-16 transition-all duration-500"></div>
-      <div class="z-10 text-center">
-        Enterprise <br />
-        <span class="text-lg font-medium opacity-70">Agentic Workers</span>
-      </div>
+      <div class="z-10 text-center">Enterprise<br/><span class="text-lg font-medium opacity-70">Agentic Workers</span></div>
     </a>
 
-    <!-- Robot (inline, no card) -->
-    <div class="relative w-[360px] h-[360px] md:w-[420px] md:h-[420px] lg:w-[520px] lg:h-[520px] shrink-0 rounded-3xl overflow-hidden" data-spotlight>
+    <!-- Spline container (lazy init) -->
+    <div class="relative w-[360px] h-[360px] md:w-[420px] md:h-[420px] lg:w-[520px] lg:h-[520px] shrink-0 rounded-3xl overflow-hidden" data-spotlight data-spline-url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode">
       <div class="spotlight" aria-hidden="true"></div>
       <div class="spline-loader" data-spline-loader>Loading 3D…</div>
-      <spline-viewer
-        url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-        class="absolute inset-0 w-full h-full"
-        events-target="global"
-      ></spline-viewer>
+      <div data-spline-mount class="absolute inset-0"></div>
 
-      <!-- Name + caption -->
       <div class="absolute left-4 bottom-4 px-3 py-2 rounded-xl border border-white/15 bg-white/10 backdrop-blur-md">
         <div class="text-white text-sm font-semibold">ARIA - Orchestration Bot</div>
         <div class="text-white/80 text-xs">Understands your stack. Plans. Executes. Reports.</div>
@@ -279,21 +209,11 @@
   <!-- Chat Shell -->
   <div class="w-full max-w-3xl px-4" id="chat-block">
     <div id="chat-shell" class="relative rounded-3xl shadow-2xl p-6 mt-2 sm:mt-3 flex flex-col justify-between border border-white/10 bg-[#0F1012]">
-      <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4">
-        <div class="flex justify-start"></div>
-      </div>
-
+      <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4"><div class="flex justify-start"></div></div>
       <form id="chat-form" class="relative">
-        <textarea id="chat-input" rows="2" placeholder="Ask Engini to create a Worker that..."
-          class="w-full p-4 pr-12 rounded-2xl bg-[#1B1D22] text-neutral-100 placeholder-neutral-500
-                 focus:outline-none focus:ring-2 focus:ring-[#8E7AEF] transition resize-none"></textarea>
-        <button type="submit" id="send-button"
-          class="absolute right-3 top-1/2 -translate-y-1/2 bg-white text-[#0B0C0E] p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] transition">
-          <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13" />
-            <polygon points="22 2 15 22 11 13 2 9 22 2" />
-          </svg>
+        <textarea id="chat-input" rows="2" placeholder="Ask Engini to create a Worker that..." class="w-full p-4 pr-12 rounded-2xl bg-[#1B1D22] text-neutral-100 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#8E7AEF] transition resize-none"></textarea>
+        <button type="submit" id="send-button" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white text-[#0B0C0E] p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] transition">
+          <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
           <div id="send-spin" class="spin hidden"></div>
         </button>
       </form>
@@ -307,15 +227,10 @@
     <div class="flex items-center justify-between mb-6">
       <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">Workspace</h2>
       <div class="relative">
-        <input id="search-input" class="w-72 max-w-[76vw] p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 placeholder-white/40"
-               placeholder="Search Workers...">
-        <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
+        <input id="search-input" class="w-72 max-w-[76vw] p-3 pl-10 rounded-2xl bg-[#151618] border border-white/10 text-neutral-200 placeholder-white/40" placeholder="Search Workers...">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </div>
     </div>
-
-    <!-- Cards -->
     <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
   </div>
 </section>
@@ -324,15 +239,11 @@
 <section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-20 bg-[#0B0C0E]">
   <div class="max-w-7xl mx-auto">
     <header class="text-center mb-14">
-      <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">
-        The Evolution of Automation & Orchestration
-      </h2>
-      <p class="text-white/70 max-w-3xl mx-auto mt-3">
-        From rigid, rule-based workflows to adaptive, multi-agent orchestration. Each step unlocks more autonomy, context, and business impact.
-      </p>
+      <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">The Evolution of Automation & Orchestration</h2>
+      <p class="text-white/70 max-w-3xl mx-auto mt-3">From rigid, rule-based workflows to adaptive, multi-agent orchestration. Each step unlocks more autonomy, context, and business impact.</p>
     </header>
 
-    <!-- Desktop stepper rail -->
+    <!-- Desktop rail -->
     <div class="relative hidden md:block mb-10">
       <div class="absolute inset-x-0 top-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div class="grid grid-cols-4 gap-6">
@@ -343,18 +254,45 @@
       </div>
     </div>
 
-    <!-- Era cards -->
+    <!-- Era cards with animated SVGs -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 text-white">
-      <!-- Cards ... (unchanged) -->
+      <!-- 1. iPaaS Era -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">1980–2023</h3>
-          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
+          <h3 class="text-xl font-semibold">1980–2023</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
         </div>
         <h4 class="text-lg font-semibold text-white mb-4">iPaaS Era</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img src="ipaas era.png" alt="Deterministic iPaaS style integration diagram"
-               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
+          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Deterministic pipes">
+            <defs>
+              <pattern id="grid1" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#BFC1C7"/><stop offset="100%" stop-color="#E5E7EB"/></linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#E5E7EB" flood-opacity=".55"/></filter>
+            </defs>
+            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid1)"/>
+            <g>
+              <rect class="node" x="28"  y="50"  width="120" height="48" rx="10"/><text class="label" x="88"  y="78" text-anchor="middle">App A</text>
+              <rect class="node" x="180" y="50"  width="120" height="48" rx="10"/><text class="label" x="240" y="78" text-anchor="middle">iPaaS</text>
+              <rect class="node" x="332" y="50"  width="120" height="48" rx="10"/><text class="label" x="392" y="78" text-anchor="middle">App B</text>
+
+              <rect class="node" x="28"  y="150" width="120" height="48" rx="10"/><text class="label" x="88"  y="178" text-anchor="middle">App C</text>
+              <rect class="node" x="332" y="150" width="120" height="48" rx="10"/><text class="label" x="392" y="178" text-anchor="middle">DB</text>
+            </g>
+
+            <!-- rigid pipes -->
+            <path id="p1" class="wire" d="M148 74 H180" />
+            <path id="p2" class="wire" d="M300 74 H332" />
+            <path id="p3" class="wire" d="M88 150 V98" />
+            <path id="p4" class="wire" d="M392 98 V150" />
+
+            <!-- moving packets -->
+            <circle r="3.5" fill="#fff"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+            <rect width="6" height="6" rx="1" fill="#fff"><animateMotion dur="6.4s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></rect>
+            <circle r="3.5" fill="#fff"><animateMotion dur="7.2s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+            <rect width="6" height="6" rx="1" fill="#fff"><animateMotion dur="7.6s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></rect>
+
+            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Triggers & pipes; strict mappings</text>
+          </svg>
         </figure>
         <p class="text-sm text-neutral-300">Rule-based flows connect systems with fixed logic and strict schemas. Reliable but brittle when requirements change.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
@@ -364,15 +302,48 @@
         </ul>
       </article>
 
+      <!-- 2. AI Agent -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">2024</h3>
-          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
+          <h3 class="text-xl font-semibold">2024</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
         </div>
         <h4 class="text-lg font-semibold text-white mb-4">AI Agents</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img src="ai agent.png" alt="Single AI agent using tools over existing systems"
-               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
+          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Single agent tool use">
+            <defs>
+              <pattern id="grid2" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#CFCFD3"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".5"/></filter>
+            </defs>
+            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid2)"/>
+
+            <!-- tools -->
+            <rect class="node" x="44"  y="46"  width="120" height="48" rx="10"/><text class="label" x="104" y="74" text-anchor="middle">CRM</text>
+            <rect class="node" x="316" y="46"  width="120" height="48" rx="10"/><text class="label" x="376" y="74" text-anchor="middle">ERP</text>
+            <rect class="node" x="44"  y="166" width="120" height="48" rx="10"/><text class="label" x="104" y="194" text-anchor="middle">Email</text>
+            <rect class="node" x="316" y="166" width="120" height="48" rx="10"/><text class="label" x="376" y="194" text-anchor="middle">Docs</text>
+
+            <!-- agent -->
+            <g>
+              <circle cx="240" cy="130" r="34" fill="#0F1012" stroke="rgba(255,255,255,.2)" />
+              <circle cx="240" cy="130" r="18" fill="#1B1D22" stroke="rgba(255,255,255,.15)"/>
+              <text class="label" x="240" y="135" text-anchor="middle" font-size="12">Agent</text>
+            </g>
+
+            <!-- wires -->
+            <path id="a1" class="wire dashed" d="M 140 70 H 206 Q 226 70 232 92" />
+            <path id="a2" class="wire dashed" d="M 278 92 Q 284 70 304 70 H 316" />
+            <path id="a3" class="wire dashed" d="M 140 190 H 206 Q 226 190 232 168" />
+            <path id="a4" class="wire dashed" d="M 278 168 Q 284 190 304 190 H 316" />
+
+            <!-- orbiting tasks -->
+            <circle r="3.5" fill="#fff"><animateMotion dur="6.5s" repeatCount="indefinite"><mpath href="#a1"/></animateMotion></circle>
+            <circle r="3.5" fill="#fff"><animateMotion dur="6.2s" repeatCount="indefinite"><mpath href="#a2"/></animateMotion></circle>
+            <circle r="3.5" fill="#fff"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#a3"/></animateMotion></circle>
+            <circle r="3.5" fill="#fff"><animateMotion dur="6.9s" repeatCount="indefinite"><mpath href="#a4"/></animateMotion></circle>
+
+            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Perceive → plan → act with tools</text>
+          </svg>
         </figure>
         <p class="text-sm text-neutral-300">Single agents plan, decide, and use tools. Great for unstructured inputs and adaptive routing—within a single-agent scope.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
@@ -382,33 +353,92 @@
         </ul>
       </article>
 
+      <!-- 3. Agentic Workflow -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">2025</h3>
-          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential</span>
+          <h3 class="text-xl font-semibold">2025</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential</span>
         </div>
         <h4 class="text-lg font-semibold text-white mb-4">Agentic Workflow</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img src="agentic workflow.png" alt="Sequential chain of intelligent agents performing a multi-step process"
-               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
+          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Sequential chain">
+            <defs>
+              <pattern id="grid3" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D0D4DA"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".5"/></filter>
+            </defs>
+            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid3)"/>
+
+            <!-- steps -->
+            <g>
+              <rect class="node" x="36"  y="106" width="90" height="52" rx="12"/><text class="label" x="81"  y="134" text-anchor="middle" font-size="12">Step 1</text>
+              <rect class="node" x="146" y="106" width="90" height="52" rx="12"/><text class="label" x="191" y="134" text-anchor="middle" font-size="12">Step 2</text>
+              <rect class="node" x="256" y="106" width="90" height="52" rx="12"/><text class="label" x="301" y="134" text-anchor="middle" font-size="12">Step 3</text>
+              <rect class="node" x="366" y="106" width="90" height="52" rx="12"/><text class="label" x="411" y="134" text-anchor="middle" font-size="12">Step 4</text>
+            </g>
+
+            <!-- rail -->
+            <path id="rail" class="wire dashed" d="M 81 160 C 120 160, 152 160, 191 160 S 262 160, 301 160 S 372 160, 411 160" />
+            <!-- motion along rail then up into each step -->
+            <path id="lift1" class="wire" d="M 81 160 V 142"/>
+            <path id="lift2" class="wire" d="M 191 160 V 142"/>
+            <path id="lift3" class="wire" d="M 301 160 V 142"/>
+            <path id="lift4" class="wire" d="M 411 160 V 142"/>
+
+            <circle r="3.5" fill="#fff"><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#rail"/></animateMotion></circle>
+
+            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Multi-step journey with checks & handoffs</text>
+          </svg>
         </figure>
         <p class="text-sm text-neutral-300">Multiple agents linked in steps to execute complex, multi-stage journeys—each step reasons, then hands off.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
           <li>• Step-level memory & evaluation</li>
           <li>• Human-in-the-loop approvals</li>
-          <li>• Better resilience with retries & rollbacks</li>
+          <li>• Retries & rollbacks</li>
         </ul>
       </article>
 
+      <!-- 4. Agent Orchestration -->
       <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">2026 & Beyond</h3>
-          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
+          <h3 class="text-xl font-semibold">2026 & Beyond</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
         </div>
         <h4 class="text-lg font-semibold text-white mb-4">Agent Orchestration</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10">
-          <img src="agent orchestration.png" alt="Coordinated orchestration across multiple AI workers and systems"
-               class="w-full h-auto aspect-[4/3] object-contain bg-[#151618]" loading="lazy" decoding="async">
+        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
+          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Hub-and-spoke mesh">
+            <defs>
+              <pattern id="grid4" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D8DBE1"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".55"/></filter>
+            </defs>
+            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid4)"/>
+
+            <!-- center -->
+            <circle id="hub" cx="240" cy="130" r="26" fill="#0F1012" stroke="rgba(255,255,255,.25)"/>
+            <text class="label" x="240" y="135" text-anchor="middle" font-size="12">Coordinator</text>
+
+            <!-- spokes nodes -->
+            <g>
+              <rect class="node" x="72"  y="38"  width="96" height="42" rx="10"/><text class="label" x="120" y="64" text-anchor="middle" font-size="12">IT</text>
+              <rect class="node" x="312" y="38"  width="96" height="42" rx="10"/><text class="label" x="360" y="64" text-anchor="middle" font-size="12">Finance</text>
+              <rect class="node" x="72"  y="180" width="96" height="42" rx="10"/><text class="label" x="120" y="206" text-anchor="middle" font-size="12">Sales</text>
+              <rect class="node" x="312" y="180" width="96" height="42" rx="10"/><text class="label" x="360" y="206" text-anchor="middle" font-size="12">Support</text>
+            </g>
+
+            <!-- mesh wires -->
+            <path id="s1" class="wire dashed" d="M 168 59 Q 204 59 240 130" />
+            <path id="s2" class="wire dashed" d="M 360 59 Q 316 59 240 130" />
+            <path id="s3" class="wire dashed" d="M 168 201 Q 204 201 240 130" />
+            <path id="s4" class="wire dashed" d="M 360 201 Q 316 201 240 130" />
+            <!-- cross-links -->
+            <path id="x1" class="wire" d="M 120 64 Q 240 10 360 64" />
+            <path id="x2" class="wire" d="M 120 206 Q 240 250 360 206" />
+
+            <!-- two travelers -->
+            <circle r="3.5" fill="#fff"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#x1"/></animateMotion></circle>
+            <circle r="3.5" fill="#fff"><animateMotion dur="7.2s" repeatCount="indefinite" begin="1s"><mpath href="#x2"/></animateMotion></circle>
+
+            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Coordinated teams; shared memory & SLOs</text>
+          </svg>
         </figure>
         <p class="text-sm text-neutral-300">Coordinated teams of specialized agents share context, negotiate tasks, and collaborate—governed by policies and SLOs.</p>
         <ul class="mt-4 text-sm text-neutral-300 space-y-2">
@@ -419,20 +449,11 @@
       </article>
     </div>
 
-    <!-- Key shifts summary -->
+    <!-- Key shifts -->
     <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5">
-        <p class="text-sm font-semibold mb-1">From Rules → Reasoning</p>
-        <p class="text-sm text-neutral-300">Static mappings give way to contextual reasoning, enabling robust handling of ambiguity.</p>
-      </div>
-      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5">
-        <p class="text-sm font-semibold mb-1">From Single → Multi-agent</p>
-        <p class="text-sm text-neutral-300">Specialized agents coordinate, parallelize work, and escalate when needed.</p>
-      </div>
-      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5">
-        <p class="text-sm font-semibold mb-1">From Pipes → Orchestration</p>
-        <p class="text-sm text-neutral-300">Global guardrails, shared memory, and SLOs drive reliable, end-to-end outcomes.</p>
-      </div>
+      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5"><p class="text-sm font-semibold mb-1">From Rules → Reasoning</p><p class="text-sm text-neutral-300">Static mappings give way to contextual reasoning, enabling robust handling of ambiguity.</p></div>
+      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5"><p class="text-sm font-semibold mb-1">From Single → Multi-agent</p><p class="text-sm text-neutral-300">Specialized agents coordinate, parallelize work, and escalate when needed.</p></div>
+      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5"><p class="text-sm font-semibold mb-1">From Pipes → Orchestration</p><p class="text-sm text-neutral-300">Global guardrails, shared memory, and SLOs drive reliable, end-to-end outcomes.</p></div>
     </div>
   </div>
 </section>
@@ -445,115 +466,47 @@
       <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
-      <div>
-        <p class="font-semibold text-white mb-2">Platform</p>
-        <ul class="space-y-1">
-          <li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li>
-          <li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li>
-          <li><a href="platform.html#security" class="hover:underline">Security</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="font-semibold text-white mb-2">Build</p>
-        <ul class="space-y-1">
-          <li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li>
-          <li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li>
-          <li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="font-semibold text-white mb-2">Resources</p>
-        <ul class="space-y-1">
-          <li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li>
-          <li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li>
-          <li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li>
-        </ul>
-      </div>
+      <div><p class="font-semibold text-white mb-2">Platform</p>
+        <ul class="space-y-1"><li><a href="platform.html#architecture" class="hover:underline">Architecture</a></li><li><a href="platform.html#agent-os" class="hover:underline">Agent OS</a></li><li><a href="platform.html#security" class="hover:underline">Security</a></li></ul></div>
+      <div><p class="font-semibold text-white mb-2">Build</p>
+        <ul class="space-y-1"><li><a href="platform.html#connectors" class="hover:underline">Connectors</a></li><li><a href="platform.html#workflows" class="hover:underline">Workflow Builder</a></li><li><a href="platform.html#playbooks" class="hover:underline">AI Playbooks</a></li></ul></div>
+      <div><p class="font-semibold text-white mb-2">Resources</p>
+        <ul class="space-y-1"><li><a href="https://engini.io/help/" class="hover:underline">Docs</a></li><li><a href="https://engini.io/blog/" class="hover:underline">Blog</a></li><li><a href="https://engini.io/become-a-partner/" class="hover:underline">Partners</a></li></ul></div>
     </div>
   </div>
 </footer>
 
-<!-- Template and Create modals below (omitted) -->
-
-<script src="script.js"></script>
-<script>
-  const $ = (s, r=document) => r.querySelector(s);
-  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+<!-- App scripts -->
+<script defer>
+  const $ = (s,r=document)=>r.querySelector(s);
+  const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 
   /* Icons map -> /icons/*.png */
-  const ICONS = {
-    servicenow:"icons/servicenow.png", okta:"icons/okta.png", google:"icons/google.png",
-    slack:"icons/slack.png", microsoft:"icons/microsoft.png", quickbooks:"icons/quickbooks.png",
-    netsuite:"icons/netsuite.png", jira:"icons/jira.png", workday:"icons/workday.png",
-    salesforce:"icons/salesforce.png", hubspot:"icons/hubspot.png",
-    zendesk:"icons/zendesk.png", intercom:"icons/intercom.png",
-    mailchimp:"icons/mailchimp.png", marketo:"icons/marketo.png", outreach:"icons/outreach.png"
-  };
+  const ICONS = {servicenow:"icons/servicenow.png",okta:"icons/okta.png",google:"icons/google.png",
+    slack:"icons/slack.png",microsoft:"icons/microsoft.png",quickbooks:"icons/quickbooks.png",
+    netsuite:"icons/netsuite.png",jira:"icons/jira.png",workday:"icons/workday.png",
+    salesforce:"icons/salesforce.png",hubspot:"icons/hubspot.png",zendesk:"icons/zendesk.png",
+    intercom:"icons/intercom.png",mailchimp:"icons/mailchimp.png",marketo:"icons/marketo.png",outreach:"icons/outreach.png"};
 
-  /* Workers (8 total) */
   const WORKERS = [
-    { id:"it", title:"IT", subtitle:"AI Worker",
-      skills:["Onboarding/Offboarding","Identity and Access","Account unlock and password"],
-      extraSkills:["SaaS license audit","Device lifecycle","Helpdesk Q&A"],
-      apps:["servicenow","okta","google","slack","microsoft"],
-      more:{ summary:"Automates JML, identity and Tier-0/1 helpdesk with safe approvals.",
-        playbooks:["Joiner/Mover/Leaver","Zero-touch provisioning","Access reviews","Software requests"] } },
-    { id:"procurement", title:"Procurement", subtitle:"AI Worker",
-      skills:["Vendor onboarding","Purchase request","PO tracking","Supplier finder"],
-      extraSkills:["3-way match exceptions","Sourcing intake","Contract reminders"],
-      apps:["quickbooks","netsuite","slack"],
-      more:{ summary:"Guides requesters, validates suppliers, syncs PR→PO→Receipt.",
-        playbooks:["PR intake","Supplier due diligence","Catalog request"] } },
-    { id:"officeops", title:"Office Ops", subtitle:"AI Worker",
-      skills:["Parental leave","Onboarding new employee","Gift package","Office parking"],
-      extraSkills:["Visitor mgmt","Room bookings","Facilities tickets"],
-      apps:["jira","google","slack"],
-      more:{ summary:"Coordinates people ops actions across facilities, IT, and HR.",
-        playbooks:["New hire day-one","Leave of absence","Visitor flow"] } },
-    { id:"hr", title:"HR", subtitle:"AI Worker",
-      skills:["Employee onboarding","HR policy and benefits","Time off & leave"],
-      extraSkills:["Comp letters","Performance cycle","People analytics"],
-      apps:["workday","slack","google"],
-      more:{ summary:"Runs compliant HR workflows and answers policy questions.",
-        playbooks:["Offer→Onboard","PTO / LOA","Policy assistant"] } },
-    { id:"finance", title:"Finance", subtitle:"AI Worker",
-      skills:["Invoice processing","Expense review","Cash application","Close checklist"],
-      extraSkills:["Variance analysis","PO match","Aging follow-ups"],
-      apps:["quickbooks","netsuite","google","slack"],
-      more:{ summary:"Speeds AP/AR with smart matching, flags anomalies, and drives close tasks.",
-        playbooks:["3-way match","Monthly close","Expense policy enforcement"] } },
-    { id:"sales", title:"Sales", subtitle:"AI Worker",
-      skills:["Lead qualification","CRM hygiene","Forecast rollup","Follow-up nudges"],
-      extraSkills:["Battlecards","Call summaries","Territory routing"],
-      apps:["salesforce","hubspot","outreach","slack"],
-      more:{ summary:"Keeps pipeline clean, surfaces next actions, and drafts outreach.",
-        playbooks:["MQL→SQL triage","Next-best action","Renewal alerts"] } },
-    { id:"support", title:"Support", subtitle:"AI Worker",
-      skills:["Ticket triage","Self-serve answers","SLA alerts","Bug reproduction steps"],
-      extraSkills:["CSAT analysis","Deflection reports"],
-      apps:["zendesk","intercom","slack","jira"],
-      more:{ summary:"Routes issues, suggests replies, and syncs product tasks to engineering.",
-        playbooks:["Auto-triage","Macro suggestion","Escalation policy"] } },
-    { id:"marketing", title:"Marketing", subtitle:"AI Worker",
-      skills:["Campaign calendar","Asset tagging","UTM guardrails","Attribution sanity-checks"],
-      extraSkills:["Audience sync","Creative variants"],
-      apps:["marketo","hubspot","mailchimp","slack"],
-      more:{ summary:"Orchestrates launches, keeps taxonomy clean, and reports what moved the needle.",
-        playbooks:["Launch checklist","Audience orchestration","Weekly performance digest"] } }
+    { id:"it", title:"IT", subtitle:"AI Worker", skills:["Onboarding/Offboarding","Identity and Access","Account unlock and password"], extraSkills:["SaaS license audit","Device lifecycle","Helpdesk Q&A"], apps:["servicenow","okta","google","slack","microsoft"], more:{ summary:"Automates JML, identity and Tier-0/1 helpdesk with safe approvals.", playbooks:["Joiner/Mover/Leaver","Zero-touch provisioning","Access reviews","Software requests"] } },
+    { id:"procurement", title:"Procurement", subtitle:"AI Worker", skills:["Vendor onboarding","Purchase request","PO tracking","Supplier finder"], extraSkills:["3-way match exceptions","Sourcing intake","Contract reminders"], apps:["quickbooks","netsuite","slack"], more:{ summary:"Guides requesters, validates suppliers, syncs PR→PO→Receipt.", playbooks:["PR intake","Supplier due diligence","Catalog request"] } },
+    { id:"officeops", title:"Office Ops", subtitle:"AI Worker", skills:["Parental leave","Onboarding new employee","Gift package","Office parking"], extraSkills:["Visitor mgmt","Room bookings","Facilities tickets"], apps:["jira","google","slack"], more:{ summary:"Coordinates people ops actions across facilities, IT, and HR.", playbooks:["New hire day-one","Leave of absence","Visitor flow"] } },
+    { id:"hr", title:"HR", subtitle:"AI Worker", skills:["Employee onboarding","HR policy and benefits","Time off & leave"], extraSkills:["Comp letters","Performance cycle","People analytics"], apps:["workday","slack","google"], more:{ summary:"Runs compliant HR workflows and answers policy questions.", playbooks:["Offer→Onboard","PTO / LOA","Policy assistant"] } },
+    { id:"finance", title:"Finance", subtitle:"AI Worker", skills:["Invoice processing","Expense review","Cash application","Close checklist"], extraSkills:["Variance analysis","PO match","Aging follow-ups"], apps:["quickbooks","netsuite","google","slack"], more:{ summary:"Speeds AP/AR with smart matching, flags anomalies, and drives close tasks.", playbooks:["3-way match","Monthly close","Expense policy enforcement"] } },
+    { id:"sales", title:"Sales", subtitle:"AI Worker", skills:["Lead qualification","CRM hygiene","Forecast rollup","Follow-up nudges"], extraSkills:["Battlecards","Call summaries","Territory routing"], apps:["salesforce","hubspot","outreach","slack"], more:{ summary:"Keeps pipeline clean, surfaces next actions, and drafts outreach.", playbooks:["MQL→SQL triage","Next-best action","Renewal alerts"] } },
+    { id:"support", title:"Support", subtitle:"AI Worker", skills:["Ticket triage","Self-serve answers","SLA alerts","Bug reproduction steps"], extraSkills:["CSAT analysis","Deflection reports"], apps:["zendesk","intercom","slack","jira"], more:{ summary:"Routes issues, suggests replies, and syncs product tasks to engineering.", playbooks:["Auto-triage","Macro suggestion","Escalation policy"] } },
+    { id:"marketing", title:"Marketing", subtitle:"AI Worker", skills:["Campaign calendar","Asset tagging","UTM guardrails","Attribution sanity-checks"], extraSkills:["Audience sync","Creative variants"], apps:["marketo","hubspot","mailchimp","slack"], more:{ summary:"Orchestrates launches, keeps taxonomy clean, and reports what moved the needle.", playbooks:["Launch checklist","Audience orchestration","Weekly performance digest"] } }
   ];
 
-  /* Render helpers */
-  const pill = (t, dim=false) => `<span class="wc-pill ${dim?'dim':''}">${t}</span>`;
-  const appIcon = (k) => ICONS[k]
-    ? `<img src="${ICONS[k]}" alt="${k}" loading="lazy" decoding="async"/>`
-    : `<div class="fallback">${(k||'?').slice(0,2).toUpperCase()}</div>`;
+  const pill = (t,dim=false)=>`<span class="wc-pill ${dim?'dim':''}">${t}</span>`;
+  const appIcon = (k)=> ICONS[k] ? `<img src="${ICONS[k]}" alt="${k}" loading="lazy" decoding="async"/>` : `<div class="fallback">${(k||'?').slice(0,2).toUpperCase()}</div>`;
 
   function cardTemplate(w){
     const primary = w.skills.map(s=>pill(s)).join("");
     const extra   = (w.extraSkills||[]).map(s=>pill(s,true)).join("");
     const apps    = (w.apps||[]).map(k=>`<span class="wc-app">${appIcon(k)}</span>`).join("");
     const id = `${w.id}-more`;
-
     return `
     <article class="wc-card" data-id="${w.id}" aria-expanded="false">
       <header class="wc-toggle flex items-start gap-3 cursor-pointer select-none">
@@ -579,99 +532,82 @@
 
       <section id="${id}" class="wc-more mt-5 pt-4 border-t border-white/10">
         <p class="text-sm text-white/80">${w.more?.summary||""}</p>
-        ${(w.more?.playbooks?.length?`
-        <div class="mt-3">
-          <p class="text-xs wc-badge mb-2">Playbooks</p>
-          <div class="flex flex-wrap gap-2">${w.more.playbooks.map(pill).join("")}</div>
-        </div>`:"")}
+        ${(w.more?.playbooks?.length?`<div class="mt-3"><p class="text-xs wc-badge mb-2">Playbooks</p><div class="flex flex-wrap gap-2">${w.more.playbooks.map(pill).join("")}</div></div>`:"")}
       </section>
     </article>`;
   }
 
   function renderCards(list=WORKERS){
     $("#worker-cards").innerHTML = list.map(cardTemplate).join("");
-
-    // Smooth expand handlers (header click only)
     $$("#worker-cards .wc-card").forEach(card=>{
       const section = card.querySelector(".wc-more");
       const header  = card.querySelector(".wc-toggle");
-
-      section.style.height = "0px";
-      section.style.opacity = "0";
-
-      header.addEventListener("click",(e)=>{
-        e.stopPropagation();
-        toggleExpand(card, section);
-      });
+      section.style.height = "0px"; section.style.opacity = "0";
+      header.addEventListener("click",(e)=>{e.stopPropagation();toggleExpand(card, section);});
     });
   }
-
-  function toggleExpand(card, section){
+  function toggleExpand(card,section){
     const isOpen = card.getAttribute("aria-expanded")==="true";
     if(isOpen){
-      section.style.height = section.scrollHeight + "px";
-      section.getBoundingClientRect();
-      section.style.height = "0px";
-      section.style.opacity = "0";
-      card.setAttribute("aria-expanded","false");
+      section.style.height = section.scrollHeight + "px"; section.getBoundingClientRect();
+      section.style.height = "0px"; section.style.opacity = "0"; card.setAttribute("aria-expanded","false");
     }else{
-      section.style.height = "0px";
-      section.style.opacity = "1";
-      card.setAttribute("aria-expanded","true");
-      const target = section.scrollHeight;
-      section.style.height = target + "px";
-      const onEnd = (ev)=>{
-        if(ev.propertyName!=="height") return;
-        section.style.height = "auto";
-        section.removeEventListener("transitionend", onEnd);
-      };
+      section.style.height = "0px"; section.style.opacity = "1"; card.setAttribute("aria-expanded","true");
+      const target = section.scrollHeight; section.style.height = target + "px";
+      const onEnd=(ev)=>{if(ev.propertyName!=="height") return; section.style.height="auto"; section.removeEventListener("transitionend", onEnd);};
       section.addEventListener("transitionend", onEnd);
     }
   }
 
   // Search
-  $("#search-input").addEventListener("input", (e)=>{
-    const q = e.target.value.toLowerCase().trim();
-    if(!q){renderCards();return;}
+  $("#search-input").addEventListener("input",(e)=>{
+    const q = e.target.value.toLowerCase().trim(); if(!q){renderCards();return;}
     const filtered = WORKERS.filter(w=>{
-      const hay = [
-        w.title, w.subtitle,
-        ...(w.skills||[]), ...(w.extraSkills||[]),
-        (w.more?.summary||""), ...(w.more?.playbooks||[])
-      ].join(" ").toLowerCase();
+      const hay=[w.title,w.subtitle,...(w.skills||[]),...(w.extraSkills||[]),(w.more?.summary||""),...(w.more?.playbooks||[])].join(" ").toLowerCase();
       return hay.includes(q);
     });
     renderCards(filtered);
   });
-
   renderCards();
 
-  // Spotlight + loader (per viewer)
-  document.querySelectorAll('[data-spotlight]').forEach((wrap) => {
+  // Spotlight + lazy Spline import
+  const loadSpline = async ()=>{
+    if(loadSpline.loaded) return; loadSpline.loaded = true;
+    await import("https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js");
+    const mount = document.querySelector("[data-spline-mount]");
+    const url = mount?.closest("[data-spline-url]")?.dataset.splineUrl;
+    if(mount && url){
+      const el = document.createElement("spline-viewer");
+      el.setAttribute("url", url); el.className="absolute inset-0 w-full h-full";
+      el.setAttribute("events-target","global"); mount.appendChild(el);
+      el.addEventListener("load", ()=>{ const l=mount.parentElement.querySelector("[data-spline-loader]"); if(l) l.style.display="none";});
+    }
+  };
+
+  const splineWrap = document.querySelector("[data-spotlight]");
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) { loadSpline(); io.disconnect(); } });
+    },{root:null,threshold:.2});
+    io.observe(splineWrap);
+  }
+  splineWrap.addEventListener("pointerenter", loadSpline);
+
+  // spotlight cursor
+  document.querySelectorAll('[data-spotlight]').forEach((wrap)=>{
     const spot = wrap.querySelector('.spotlight');
     const loader = wrap.querySelector('[data-spline-loader]');
-    const viewer = wrap.querySelector('spline-viewer');
-
-    const move = (e) => {
+    const move = (e)=>{
       const r = wrap.getBoundingClientRect();
       const x = e.clientX - r.left - spot.offsetWidth/2;
       const y = e.clientY - r.top  - spot.offsetHeight/2;
-      spot.style.left = x + 'px';
-      spot.style.top  = y + 'px';
+      spot.style.left = x + 'px'; spot.style.top = y + 'px'; spot.style.opacity = .9;
     };
-
     wrap.addEventListener('mouseenter', move);
     wrap.addEventListener('mousemove', move);
-    wrap.addEventListener('mouseleave', () => {
-      spot.style.left = '-9999px';
-      spot.style.top  = '-9999px';
-    });
-
-    if (viewer && loader) {
-      viewer.addEventListener('load', () => loader.style.display = 'none');
-    }
+    wrap.addEventListener('mouseleave', ()=>{spot.style.left='-9999px';spot.style.top='-9999px';spot.style.opacity=0;});
+    if (loader) wrap.addEventListener("spline-loaded", ()=> loader.style.display='none');
   });
 </script>
-
 </body>
 </html>

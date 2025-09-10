@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Engini · Industries</title>
+  <title>Engini · By Function</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet"/>
-    
+
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Site Styles (optional) -->
+  <!-- Site Styles -->
   <style>
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; }
     .font-poppins { font-family: Poppins, Inter, ui-sans-serif, system-ui; }
@@ -141,19 +141,18 @@
     </div>
   </nav>
 </header>
-
-  <!-- Local TOC -->
-  <nav class="sticky top-20 z-40 bg-[#0F1012]/70 backdrop-blur-md border-y border-white/10">
+  <!-- Local TOC (By Function) -->
+  <nav id="top" class="sticky top-20 z-40 bg-[#0F1012]/70 backdrop-blur-md border-y border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
       <ul class="flex gap-3 text-sm whitespace-nowrap">
-        <li><a href="Industries.html#manufacturing" class="px-3 py-2 rounded-xl hover:bg-white/10">Manufacturing</a></li>
-        <li><a href="Industries.html#financial-services" class="px-3 py-2 rounded-xl hover:bg-white/10">Financial services</a></li>
-        <li><a href="Industries.html#retail" class="px-3 py-2 rounded-xl hover:bg-white/10">Retail</a></li>
-        <li><a href="Industries.html#logistics" class="px-3 py-2 rounded-xl hover:bg-white/10">Logistics</a></li>
-        <li><a href="Industries.html#healthcare" class="px-3 py-2 rounded-xl hover:bg-white/10">Healthcare</a></li>
-        <li><a href="Industries.html#media" class="px-3 py-2 rounded-xl hover:bg-white/10">Media</a></li>
-        <li><a href="Industries.html#bpo" class="px-3 py-2 rounded-xl hover:bg-white/10">BPO</a></li>
-        <li><a href="Industries.html#nonprofit" class="px-3 py-2 rounded-xl hover:bg-white/10">Non-profit</a></li>
+        <li><a href="#it" class="px-3 py-2 rounded-xl hover:bg-white/10">IT</a></li>
+        <li><a href="#finance" class="px-3 py-2 rounded-xl hover:bg-white/10">Finance</a></li>
+        <li><a href="#support" class="px-3 py-2 rounded-xl hover:bg-white/10">Support</a></li>
+        <li><a href="#hr" class="px-3 py-2 rounded-xl hover:bg-white/10">HR</a></li>
+        <li><a href="#marketing" class="px-3 py-2 rounded-xl hover:bg-white/10">Marketing</a></li>
+        <li><a href="#sales" class="px-3 py-2 rounded-xl hover:bg-white/10">Sales</a></li>
+        <li><a href="#revops" class="px-3 py-2 rounded-xl hover:bg-white/10">Revenue Ops</a></li>
+        <li><a href="#product-embed" class="px-3 py-2 rounded-xl hover:bg-white/10">Product (Embed)</a></li>
       </ul>
     </div>
   </nav>
@@ -161,541 +160,520 @@
   <!-- Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
 
-    <!-- Helper: reusable mini-diagram (per industry we swap labels) -->
-    <!-- Use by copying this block and editing <text> labels & node positions as needed. -->
+    <!-- Helper: SVG arrow marker definition (reused) -->
+    <svg aria-hidden="true" class="hidden">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"></path>
+        </marker>
+      </defs>
+    </svg>
 
-    <!-- MANUFACTURING -->
-    <section id="manufacturing" class="scroll-mt-28">
+    <!-- IT -->
+    <section id="it" class="scroll-mt-28">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Manufacturing</h2>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">IT</h2>
           <p class="text-neutral-300 leading-relaxed">
-            Connect shop-floor realities with business outcomes. Engini coordinates signals from PLCs and MES with ERP, QMS, and Maintenance systems to reduce downtime and accelerate throughput.
+            Automate Joiner–Mover–Leaver, identity lifecycle, and Tier-0/1 helpdesk. Engini routes approvals, provisions access, and syncs ITSM with IdP and SaaS—safely and auditable.
           </p>
 
           <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">Top Automations</p>
               <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Condition-based maintenance & work order creation</li>
-                <li>Non-conformance capture → QMS CAPA workflow</li>
-                <li>Supplier ASN ingestion & inventory reconciliation</li>
+                <li>JML + zero-touch provisioning</li>
+                <li>Account unlock / password resets</li>
+                <li>Access requests w/ approvals</li>
               </ul>
             </div>
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">KPIs Moved</p>
               <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>OEE ↑, MTTR ↓, Scrap rate ↓</li>
-                <li>Schedule adherence ↑, First pass yield ↑</li>
+                <li>MTTR ↓, Ticket deflection ↑</li>
+                <li>Provisioning time ↓, Audit findings ↓</li>
               </ul>
             </div>
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">MES, SCADA/PLC, NetSuite/SAP, ServiceNow, Workday.</p>
+              <p class="text-sm text-neutral-300 mt-2">ServiceNow/Jira, Okta/Azure AD, Google Workspace, Slack, MDM.</p>
             </div>
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Downtime triage, quality deviation, parts shortage early-warn.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Visual -->
-        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Manufacturing workflow">
-            <defs>
-              <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/>
-              </marker>
-            </defs>
-            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
-            <!-- Nodes -->
-            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="40"  y="70"  width="180" height="54" rx="12"/><!-- Sensors/SCADA -->
-              <rect x="260" y="70"  width="180" height="54" rx="12"/><!-- MES -->
-              <rect x="480" y="70"  width="180" height="54" rx="12"/><!-- ERP -->
-              <rect x="260" y="180" width="180" height="54" rx="12"/><!-- QMS -->
-              <rect x="480" y="180" width="180" height="54" rx="12"/><!-- Maintenance -->
-            </g>
-            <!-- Labels -->
-            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="130" y="97">SCADA / Sensors</text>
-              <text x="350" y="97">MES</text>
-              <text x="570" y="97">ERP</text>
-              <text x="350" y="207">QMS</text>
-              <text x="570" y="207">Maintenance</text>
-            </g>
-            <!-- Edges -->
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" stroke-linecap="round" marker-end="url(#a1)">
-              <line x1="220" y1="97"  x2="260" y2="97"/>
-              <line x1="440" y1="97"  x2="480" y2="97"/>
-              <line x1="350" y1="124" x2="350" y2="180"/>
-              <path d="M 570 124 L 570 180"/>
-            </g>
-            <g fill="#A3A3A3" font-size="12">
-              <text x="260" y="88">Event bus</text>
-              <text x="350" y="170" text-anchor="middle">Non-conformance</text>
-              <text x="570" y="170" text-anchor="middle">Work order</text>
-            </g>
-          </svg>
-          <p class="text-xs text-white/60 mt-3">Signals → MES → ERP, with side-flows into QMS and Maintenance.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINANCIAL SERVICES -->
-    <section id="financial-services" class="scroll-mt-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Financial Services</h2>
-          <p class="text-neutral-300 leading-relaxed">
-            Reduce risk and cycle time with agents that triage KYC files, enrich with third-party data, and orchestrate AML cases across core banking, LOS, and CRM—under strict policy controls.
-          </p>
-
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Top Automations</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>KYC document intake & data extraction</li>
-                <li>Transaction monitoring → alert scoring → case</li>
-                <li>Loan pipeline updates & adverse media checks</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">KPIs Moved</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Time to decision ↓, False positives ↓</li>
-                <li>Agent productivity ↑, Compliance coverage ↑</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">Core banking, LOS, Salesforce, ServiceNow, sanctions/AML vendors.</p>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">KYC review, SAR drafting, collections outreach, fraud triage.</p>
+              <p class="text-sm text-neutral-300 mt-2">Joiner/Mover/Leaver, unlock/reset, software requests, access reviews.</p>
             </div>
           </div>
         </div>
 
         <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="FSI KYC/AML flow">
-            <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="IT JML flow">
             <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
             <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="50"  y="70"  width="180" height="54" rx="12"/><!-- Intake -->
-              <rect x="270" y="70"  width="200" height="54" rx="12"/><!-- OCR/Enrich -->
-              <rect x="520" y="70"  width="230" height="54" rx="12"/><!-- Case Mgmt -->
-              <rect x="270" y="180" width="200" height="54" rx="12"/><!-- Screening -->
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- HRIS -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- ITSM -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- IdP -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- SaaS -->
             </g>
             <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="140" y="97">KYC Intake</text>
-              <text x="370" y="97">Extract & Enrich</text>
-              <text x="635" y="97">AML / Case Management</text>
-              <text x="370" y="207">Sanctions & PEP</text>
+              <text x="160" y="97">HRIS</text>
+              <text x="400" y="97">ITSM</text>
+              <text x="640" y="97">IdP (Okta/AAD)</text>
+              <text x="400" y="207">SaaS & MDM</text>
             </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a2)" stroke-linecap="round">
-              <line x1="230" y1="97" x2="270" y2="97"/>
-              <line x1="470" y1="97" x2="520" y2="97"/>
-              <line x1="370" y1="124" x2="370" y2="180"/>
-              <path d="M 470 207 L 520 207"/>
-            </g>
-          </svg>
-          <p class="text-xs text-white/60 mt-3">KYC intake → extraction → screening → AML case with full audit.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- RETAIL -->
-    <section id="retail" class="scroll-mt-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Retail</h2>
-          <p class="text-neutral-300 leading-relaxed">
-            Unify ecommerce, POS, fulfillment, and service. Agents triage tickets, monitor orders, and prevent fraud—while orchestrating updates across OMS, WMS, and CRM.
-          </p>
-
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Top Automations</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Order status & exception handling</li>
-                <li>Return/RMA routing & refunds</li>
-                <li>Fraud signals & SCA follow-ups</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">KPIs Moved</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>FCR ↑, AHT ↓, Chargebacks ↓</li>
-                <li>Perfect order rate ↑</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">Shopify/Magento, OMS, WMS, Stripe/Adyen, Salesforce/Zoho.</p>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Where-is-my-order (WISMO), returns triage, fraud review.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Retail order flow">
-            <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
-            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="60"  y="70"  width="180" height="54" rx="12"/><!-- Web -->
-              <rect x="280" y="70"  width="180" height="54" rx="12"/><!-- OMS -->
-              <rect x="500" y="70"  width="180" height="54" rx="12"/><!-- WMS -->
-              <rect x="280" y="180" width="180" height="54" rx="12"/><!-- Payments -->
-              <rect x="500" y="180" width="180" height="54" rx="12"/><!-- CS -->
-            </g>
-            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="150" y="97">E-commerce</text>
-              <text x="370" y="97">OMS</text>
-              <text x="590" y="97">WMS</text>
-              <text x="370" y="207">Payments</text>
-              <text x="590" y="207">Service / CRM</text>
-            </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a3)" stroke-linecap="round">
-              <line x1="240" y1="97" x2="280" y2="97"/>
-              <line x1="460" y1="97" x2="500" y2="97"/>
-              <line x1="370" y1="124" x2="370" y2="180"/>
-              <line x1="590" y1="124" x2="590" y2="180"/>
-            </g>
-          </svg>
-          <p class="text-xs text-white/60 mt-3">Web → OMS → WMS with payment and support side-flows.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- LOGISTICS -->
-    <section id="logistics" class="scroll-mt-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Logistics</h2>
-          <p class="text-neutral-300 leading-relaxed">
-            Keep shipments on track with ETA prediction, exception management, and auto-notifications across TMS, WMS, and carrier networks—coordinated by Engini agents.
-          </p>
-
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Top Automations</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Carrier event ingestion & ETA recalculation</li>
-                <li>Exception routing (damage, delay, customs)</li>
-                <li>Proactive customer & warehouse alerts</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">KPIs Moved</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>On-time delivery ↑, Dwell time ↓</li>
-                <li>Dock utilization ↑, Claims ↓</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">TMS, WMS, carrier APIs/EDIs, customs brokers, CRM.</p>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Shipment exception, proof-of-delivery capture, shortage alerting.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Logistics exception flow">
-            <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
-            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- Carrier Events -->
-              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- TMS -->
-              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- WMS -->
-              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- CRM -->
-            </g>
-            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="160" y="97">Carrier Events</text>
-              <text x="400" y="97">TMS</text>
-              <text x="640" y="97">WMS</text>
-              <text x="400" y="207">CRM / Alerts</text>
-            </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a4)" stroke-linecap="round">
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
               <line x1="260" y1="97" x2="300" y2="97"/>
               <line x1="500" y1="97" x2="540" y2="97"/>
               <line x1="400" y1="124" x2="400" y2="180"/>
             </g>
           </svg>
-          <p class="text-xs text-white/60 mt-3">Carrier updates flow through TMS to WMS and customer notifications.</p>
+          <p class="text-xs text-white/60 mt-3">New hire → ITSM request → IdP groups → SaaS/MDM provisioning.</p>
         </div>
       </div>
     </section>
 
-    <!-- HEALTHCARE -->
-    <section id="healthcare" class="scroll-mt-28">
+    <!-- Finance -->
+    <section id="finance" class="scroll-mt-28">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Healthcare</h2>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Finance</h2>
           <p class="text-neutral-300 leading-relaxed">
-            Accelerate care operations with PHI-safe agents that pre-screen authorizations, synchronize EHR data, and handle revenue cycle tasks. Guardrails enforce policy and auditability.
+            Speed AP/AR and month-end close. Engini extracts data from invoices, matches POs/receipts, posts entries, and nudges owners on close tasks with a clear audit trail.
           </p>
 
           <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">Top Automations</p>
               <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Prior authorization intake & status checks</li>
-                <li>Eligibility & benefits verification</li>
-                <li>Claims correction & denial management</li>
+                <li>Invoice OCR + 3-way match</li>
+                <li>Cash application & remittance matching</li>
+                <li>Close checklist reminders & rollups</li>
               </ul>
             </div>
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">KPIs Moved</p>
               <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Days in AR ↓, Clean claim rate ↑</li>
-                <li>Auth approval time ↓</li>
+                <li>Days Payable/Receivable ↓</li>
+                <li>Close time ↓, Exceptions caught ↑</li>
               </ul>
             </div>
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">Epic/Cerner, clearinghouses, payer portals, ServiceNow.</p>
+              <p class="text-sm text-neutral-300 mt-2">NetSuite/SAP, QuickBooks, Coupa, Avalara, banks/remittance feeds.</p>
             </div>
             <div class="glass border border-white/10 rounded-2xl p-4">
               <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Prior auth, eligibility, charge review, denial appeals.</p>
+              <p class="text-sm text-neutral-300 mt-2">3-way match, expense policy enforcement, close checklist.</p>
             </div>
           </div>
         </div>
 
         <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Healthcare auth flow">
-            <defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Finance AP flow">
             <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
             <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="70"  y="70"  width="200" height="54" rx="12"/><!-- Intake -->
-              <rect x="310" y="70"  width="200" height="54" rx="12"/><!-- EHR -->
-              <rect x="550" y="70"  width="180" height="54" rx="12"/><!-- Payer -->
-              <rect x="310" y="180" width="200" height="54" rx="12"/><!-- RCM -->
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- Invoices -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- Match -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- ERP -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Payments -->
             </g>
             <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="170" y="97">Auth Intake</text>
-              <text x="410" y="97">EHR</text>
-              <text x="640" y="97">Payer Portal</text>
-              <text x="410" y="207">RCM</text>
+              <text x="160" y="97">Invoice Intake</text>
+              <text x="400" y="97">PO/Receipt Match</text>
+              <text x="640" y="97">ERP Posting</text>
+              <text x="400" y="207">Payment Run</text>
             </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a5)" stroke-linecap="round">
-              <line x1="270" y1="97" x2="310" y2="97"/>
-              <line x1="510" y1="97" x2="550" y2="97"/>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Invoice → 3-way match → ERP → payment run with exception loops.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section id="support" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Support</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Deflect, triage, and resolve faster. Agents classify tickets, suggest macros, reproduce steps, and sync bugs into engineering with SLA awareness.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Auto-triage & routing</li>
+                <li>Knowledge deflection & macro suggestions</li>
+                <li>Bug reproduction → Jira linkage</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>FCR ↑, AHT ↓, CSAT ↑</li>
+                <li>Backlog age ↓</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Zendesk/Intercom, Jira, Confluence, Slack.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Auto-triage, escalation policy, macro assist, bug escalation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Support flow">
+            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- Intake -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- Triage -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- Resolution -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Engineering -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="160" y="97">Tickets</text>
+              <text x="400" y="97">Intent & SLA</text>
+              <text x="640" y="97">Reply / Macro</text>
+              <text x="400" y="207">Jira Bug</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Intake → triage → macro reply, with escalations synced to engineering.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HR -->
+    <section id="hr" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">HR</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Run compliant people ops. Agents guide offers-to-onboarding, answer policy questions, and keep HRIS, IT, and payroll in sync with required approvals.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Offer → Onboard tasks</li>
+                <li>PTO/LOA intake & guidance</li>
+                <li>Policy Q&A & docs delivery</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Time-to-productivity ↑</li>
+                <li>HR ticket volume ↓</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Workday/BambooHR, ServiceNow/Jira, payroll, Google/Slack.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Offer→Onboard, PTO/LOA, policy assistant, comp letters.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="HR offer to onboard">
+            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- ATS -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- HRIS -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- IT/IdP -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Payroll -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="160" y="97">ATS</text>
+              <text x="400" y="97">HRIS</text>
+              <text x="640" y="97">IT / IdP</text>
+              <text x="400" y="207">Payroll</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Offer accepted → HRIS profile → IT access → payroll enrollment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketing -->
+    <section id="marketing" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Marketing</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Keep taxonomy clean and launches on track. Agents enforce UTM guardrails, sync audiences, and generate digests on what moved the needle.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Campaign calendar orchestration</li>
+                <li>Asset tagging & taxonomy checks</li>
+                <li>Audience sync (MAP ↔ CRM)</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>MQL quality ↑</li>
+                <li>Attribution accuracy ↑</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Marketo/HubSpot, Salesforce, Mailchimp, analytics & ad platforms.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Launch checklist, audience orchestration, weekly performance digest.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Marketing sync flow">
+            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- MAP -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- CRM -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- Ads/Analytics -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Storage/DAM -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="160" y="97">MAP</text>
+              <text x="400" y="97">CRM</text>
+              <text x="640" y="97">Ads / Analytics</text>
+              <text x="400" y="207">DAM / Assets</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">MAP ↔ CRM audiences; assets tracked; results pushed to analytics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sales -->
+    <section id="sales" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Sales</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Keep pipeline clean and reps focused. Agents qualify leads, enforce CRM hygiene, roll up forecasts, and nudge next best actions across channels.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>MQL → SQL triage</li>
+                <li>Stage/field validation & dedupe</li>
+                <li>Follow-up nudges & snippets</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Conversion rate ↑</li>
+                <li>Forecast accuracy ↑</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Salesforce/HubSpot, Outreach/Salesloft, Slack, email/calendar.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Next best action, renewal alerts, call summaries, territory routing.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Sales ops flow">
+            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="200" height="54" rx="12"/><!-- Leads -->
+              <rect x="300" y="70"  width="200" height="54" rx="12"/><!-- CRM -->
+              <rect x="540" y="70"  width="200" height="54" rx="12"/><!-- Sequencing -->
+              <rect x="300" y="180" width="200" height="54" rx="12"/><!-- Forecast -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="160" y="97">Leads</text>
+              <text x="400" y="97">CRM Hygiene</text>
+              <text x="640" y="97">Outreach</text>
+              <text x="400" y="207">Forecast Rollup</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="260" y1="97" x2="300" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
+              <line x1="400" y1="124" x2="400" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">Leads normalized → CRM hygiene → sequences → forecast insights.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Revenue Operations -->
+    <section id="revops" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Revenue Operations</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Align GTM systems end-to-end. Engini enforces data contracts, syncs metrics, and governs lifecycle from lead to renewal across CRM, MAP, billing, and CS.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Field mapping & enrichment policies</li>
+                <li>Hand-off checks (MQL→SQL→Opp)</li>
+                <li>Renewal risk scoring & alerts</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Data completeness ↑, Dupes ↓</li>
+                <li>Renewal rate ↑, Slippage ↓</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Salesforce/HubSpot, MAP, CPQ/Billing, CS tools (Gainsight).</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Lifecycle governance, attribution sanity, renewal risk alerts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="RevOps lifecycle">
+            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="180" height="54" rx="12"/><!-- MAP -->
+              <rect x="270" y="70"  width="200" height="54" rx="12"/><!-- CRM -->
+              <rect x="500" y="70"  width="240" height="54" rx="12"/><!-- Billing/CS -->
+              <rect x="270" y="180" width="200" height="54" rx="12"/><!-- Data Lake -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="150" y="97">MAP</text>
+              <text x="370" y="97">CRM</text>
+              <text x="620" y="97">CPQ / Billing / CS</text>
+              <text x="370" y="207">Data Lake / BI</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="240" y1="97" x2="270" y2="97"/>
+              <line x1="470" y1="97" x2="500" y2="97"/>
+              <line x1="370" y1="124" x2="370" y2="180"/>
+            </g>
+          </svg>
+          <p class="text-xs text-white/60 mt-3">MAP → CRM → CPQ/Billing/CS; governed metrics into BI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product (Embed) -->
+    <section id="product-embed" class="scroll-mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-white/60">By Function</span>
+          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Product (Embed)</h2>
+          <p class="text-neutral-300 leading-relaxed">
+            Ship customer-facing integrations fast. Engini’s embeddable agents handle auth, syncs, and error handling while your app focuses on UX and core logic.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Top Automations</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Connector scaffolds & OAuth handshakes</li>
+                <li>Schema mapping & data contracts</li>
+                <li>Sync retries, backoff, & replay queues</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">KPIs Moved</p>
+              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
+                <li>Time-to-integration ↓</li>
+                <li>Support tickets ↓, Adoption ↑</li>
+              </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Common Systems</p>
+              <p class="text-sm text-neutral-300 mt-2">Public APIs (CRM/ERP/ITSM), webhooks, event buses, feature flags.</p>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-4">
+              <p class="text-sm font-semibold">Playbooks</p>
+              <p class="text-sm text-neutral-300 mt-2">Embedded OAuth, tenant provisioning, health checks, billing usage.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
+          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Embedded integrations">
+            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
+              <rect x="60"  y="70"  width="220" height="54" rx="12"/><!-- Your App -->
+              <rect x="320" y="70"  width="180" height="54" rx="12"/><!-- Agent -->
+              <rect x="540" y="70"  width="230" height="54" rx="12"/><!-- External App -->
+              <rect x="320" y="180" width="180" height="54" rx="12"/><!-- Webhooks/Queue -->
+            </g>
+            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
+              <text x="170" y="97">Your Product</text>
+              <text x="410" y="97">Embedded Agent</text>
+              <text x="655" y="97">Customer’s System</text>
+              <text x="410" y="207">Webhooks / Replay</text>
+            </g>
+            <g stroke="#8E7AEF" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round" fill="none">
+              <line x1="280" y1="97" x2="320" y2="97"/>
+              <line x1="500" y1="97" x2="540" y2="97"/>
               <line x1="410" y1="124" x2="410" y2="180"/>
             </g>
           </svg>
-          <p class="text-xs text-white/60 mt-3">Auth intake ↔ EHR ↔ payer with RCM updates and audit trail.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MEDIA -->
-    <section id="media" class="scroll-mt-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Media</h2>
-          <p class="text-neutral-300 leading-relaxed">
-            Speed up content ops: rights validation, metadata enrichment, automated edits, and multi-channel distribution—linked to your DAM, MAM, and CMS.
-          </p>
-
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Top Automations</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Ingest → tag → QC → publish pipeline</li>
-                <li>Rights window checks & geo-rules</li>
-                <li>Auto-promo snippet creation</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">KPIs Moved</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Time-to-publish ↓, Metadata coverage ↑</li>
-                <li>Traffic & engagement ↑</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">DAM/MAM, CMS, ad servers, social APIs, analytics.</p>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Rights & metadata, promo generation, channel publishing.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Media pipeline">
-            <defs><marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
-            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="50"  y="70"  width="180" height="54" rx="12"/><!-- Ingest -->
-              <rect x="270" y="70"  width="200" height="54" rx="12"/><!-- Rights/Meta -->
-              <rect x="520" y="70"  width="230" height="54" rx="12"/><!-- Publish -->
-            </g>
-            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="140" y="97">Ingest</text>
-              <text x="370" y="97">Rights & Metadata</text>
-              <text x="635" y="97">Publish & Analytics</text>
-            </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a6)" stroke-linecap="round">
-              <line x1="230" y1="97" x2="270" y2="97"/>
-              <line x1="470" y1="97" x2="520" y2="97"/>
-            </g>
-          </svg>
-          <p class="text-xs text-white/60 mt-3">Accelerated ingest → rights/meta → omnichannel publish.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- BPO -->
-    <section id="bpo" class="scroll-mt-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">BPO</h2>
-          <p class="text-neutral-300 leading-relaxed">
-            Deliver consistent outcomes at scale. Agents triage intents, summarize interactions, and execute client-specific workflows across CRMs, ITSMs, and billing.
-          </p>
-
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Top Automations</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Omnichannel ticket triage & routing</li>
-                <li>Disposition & after-call work (ACW)</li>
-                <li>QA sampling & coaching prompts</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">KPIs Moved</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>AHT ↓, FCR ↑, CSAT ↑</li>
-                <li>Handle variance ↓</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">Zendesk, ServiceNow, Salesforce, Dialers, WFM tools.</p>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Intent triage, macro assist, summary & disposition, QA assist.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="BPO triage flow">
-            <defs><marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
-            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="70"  y="70"  width="180" height="54" rx="12"/><!-- Inbound -->
-              <rect x="290" y="70"  width="200" height="54" rx="12"/><!-- Triage -->
-              <rect x="530" y="70"  width="200" height="54" rx="12"/><!-- CRM/ITSM -->
-              <rect x="290" y="180" width="200" height="54" rx="12"/><!-- Summary -->
-            </g>
-            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="160" y="97">Inbound</text>
-              <text x="390" y="97">Intent Triage</text>
-              <text x="630" y="97">Execute Action</text>
-              <text x="390" y="207">ACW Summary</text>
-            </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a7)" stroke-linecap="round">
-              <line x1="250" y1="97" x2="290" y2="97"/>
-              <line x1="490" y1="97" x2="530" y2="97"/>
-              <line x1="390" y1="124" x2="390" y2="180"/>
-            </g>
-          </svg>
-          <p class="text-xs text-white/60 mt-3">Triage intent → execute in client system → summarize & dispose.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- NON-PROFIT -->
-    <section id="nonprofit" class="scroll-mt-28">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-white/60">By Industry</span>
-          <h2 class="text-3xl md:text-4xl font-poppins font-semibold mt-2 mb-2">Non-profit</h2>
-          <p class="text-neutral-300 leading-relaxed">
-            Maximize impact per dollar. Agents streamline donor onboarding, grant reporting, and volunteer coordination while keeping your CRM, finance, and email tools in sync.
-          </p>
-
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Top Automations</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Donor intake & receipting</li>
-                <li>Recurring gift dunning workflows</li>
-                <li>Grant milestone tracking & reporting</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">KPIs Moved</p>
-              <ul class="mt-2 text-sm text-neutral-300 list-disc pl-5 space-y-1">
-                <li>Donor retention ↑, Admin overhead ↓</li>
-                <li>Grant compliance ↑</li>
-              </ul>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Common Systems</p>
-              <p class="text-sm text-neutral-300 mt-2">Salesforce NPSP, Blackbaud, QuickBooks/ERP, Mailchimp.</p>
-            </div>
-            <div class="glass border border-white/10 rounded-2xl p-4">
-              <p class="text-sm font-semibold">Playbooks</p>
-              <p class="text-sm text-neutral-300 mt-2">Donor journey, lapsed recovery, grant reporting, volunteer ops.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#151618] border border-white/10 rounded-2xl p-6">
-          <svg viewBox="0 0 800 360" class="w-full h-auto" aria-label="Non-profit donor flow">
-            <defs><marker id="a8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8E7AEF"/></marker></defs>
-            <rect x="10" y="10" width="780" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="#1B1D22" stroke="rgba(255,255,255,0.12)">
-              <rect x="70"  y="70"  width="200" height="54" rx="12"/><!-- Forms -->
-              <rect x="310" y="70"  width="200" height="54" rx="12"/><!-- CRM -->
-              <rect x="550" y="70"  width="180" height="54" rx="12"/><!-- Email -->
-              <rect x="310" y="180" width="200" height="54" rx="12"/><!-- Finance -->
-            </g>
-            <g fill="#E5E7EB" font-size="14" text-anchor="middle" dominant-baseline="middle">
-              <text x="170" y="97">Donation Form</text>
-              <text x="410" y="97">Non-profit CRM</text>
-              <text x="640" y="97">Email / Outreach</text>
-              <text x="410" y="207">Finance / Receipt</text>
-            </g>
-            <g stroke="#8E7AEF" stroke-width="2" fill="none" marker-end="url(#a8)" stroke-linecap="round">
-              <line x1="270" y1="97" x2="310" y2="97"/>
-              <line x1="510" y1="97" x2="550" y2="97"/>
-              <line x1="410" y1="124" x2="410" y2="180"/>
-            </g>
-          </svg>
-          <p class="text-xs text-white/60 mt-3">Donor intake → CRM sync → receipt & nurture automations.</p>
+          <p class="text-xs text-white/60 mt-3">Your app ↔ embedded agent ↔ customer system, with reliable syncs.</p>
         </div>
       </div>
     </section>
 
   </main>
-
-
 
   <!-- Footer -->
   <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">

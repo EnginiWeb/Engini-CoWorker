@@ -234,17 +234,47 @@
     <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
   </div>
 </section>
-
 <!-- Evolution of Automation & Orchestration -->
-<section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-20 bg-[#0B0C0E]">
+<section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-24 bg-[#0B0C0E]">
+  <style>
+    /* ===== Scoped visuals for this section only ===== */
+    #ipass-evolution .era svg{width:100%;height:auto;display:block}
+    #ipass-evolution .era .panel{rx:16}
+    #ipass-evolution .era .node{
+      fill:#131418; stroke:rgba(255,255,255,.22); stroke-width:1.6;
+      filter:drop-shadow(0 6px 16px rgba(0,0,0,.35));
+    }
+    #ipass-evolution .era .label{fill:#E8E9ED;font-size:14px;font-weight:600;letter-spacing:.2px}
+    #ipass-evolution .era .sub{fill:#BFC3CA}
+    #ipass-evolution .era .wire{
+      stroke:url(#gradWire); stroke-width:2.6; fill:none; stroke-linecap:round; filter:url(#glow)
+    }
+    #ipass-evolution .era .wire.dashed{stroke-dasharray:8 8; opacity:.95}
+    #ipass-evolution .era .tick{fill:#fff}
+    /* Card polish */
+    #ipass-evolution .card{
+      background:#1C1E22; border:1px solid rgba(255,255,255,.12);
+      border-radius:1.25rem; padding:1.75rem; box-shadow:0 18px 40px rgba(0,0,0,.45);
+      transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    #ipass-evolution .card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.24);box-shadow:0 24px 64px rgba(0,0,0,.55)}
+    #ipass-evolution .card h4{font-size:1.125rem}
+    @media (prefers-reduced-motion: reduce){
+      #ipass-evolution .era animateMotion,
+      #ipass-evolution .era animateTransform { display:none }
+    }
+  </style>
+
   <div class="max-w-7xl mx-auto">
-    <header class="text-center mb-14">
-      <h2 class="text-3xl sm:text-4xl font-poppins font-semibold text-white">The Evolution of Automation & Orchestration</h2>
-      <p class="text-white/70 max-w-3xl mx-auto mt-3">From rigid, rule-based workflows to adaptive, multi-agent orchestration. Each step unlocks more autonomy, context, and business impact.</p>
+    <header class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-poppins font-semibold text-white">The Evolution of Automation &amp; Orchestration</h2>
+      <p class="text-white/70 max-w-3xl mx-auto mt-4 text-base md:text-lg">
+        From rigid, rule-based workflows to adaptive, multi-agent orchestration. Each step unlocks more autonomy, context, and business impact.
+      </p>
     </header>
 
-    <!-- Desktop rail -->
-    <div class="relative hidden md:block mb-10">
+    <!-- Subtle rail / milestones -->
+    <div class="relative hidden lg:block mb-12">
       <div class="absolute inset-x-0 top-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       <div class="grid grid-cols-4 gap-6">
         <div class="flex justify-center"><span class="w-4 h-4 rounded-full bg-white shadow-[0_0_0_6px_rgba(142,122,239,0.15)]"></span></div>
@@ -254,209 +284,313 @@
       </div>
     </div>
 
-    <!-- Era cards with animated SVGs -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 text-white">
-      <!-- 1. iPaaS Era -->
-      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">1980–2023</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
-        </div>
-        <h4 class="text-lg font-semibold text-white mb-4">iPaaS Era</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
-          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Deterministic pipes">
-            <defs>
-              <pattern id="grid1" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
-              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#BFC1C7"/><stop offset="100%" stop-color="#E5E7EB"/></linearGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#E5E7EB" flood-opacity=".55"/></filter>
-            </defs>
-            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid1)"/>
-            <g>
-              <rect class="node" x="28"  y="50"  width="120" height="48" rx="10"/><text class="label" x="88"  y="78" text-anchor="middle">App A</text>
-              <rect class="node" x="180" y="50"  width="120" height="48" rx="10"/><text class="label" x="240" y="78" text-anchor="middle">iPaaS</text>
-              <rect class="node" x="332" y="50"  width="120" height="48" rx="10"/><text class="label" x="392" y="78" text-anchor="middle">App B</text>
+    <!-- Bigger, 2-up layout for readability -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 text-white">
 
-              <rect class="node" x="28"  y="150" width="120" height="48" rx="10"/><text class="label" x="88"  y="178" text-anchor="middle">App C</text>
-              <rect class="node" x="332" y="150" width="120" height="48" rx="10"/><text class="label" x="392" y="178" text-anchor="middle">DB</text>
+      <!-- 1) Deterministic: Trigger → Action → Action → Result -->
+      <article class="card">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-semibold">1980–2023</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Deterministic</span>
+        </div>
+        <h4 class="font-semibold text-white mb-4">Block Flow</h4>
+
+        <figure class="mb-6 overflow-hidden rounded-2xl border border-white/10 era">
+          <svg viewBox="0 0 640 360" aria-label="Trigger to Actions to Result">
+            <defs>
+              <pattern id="grid-d" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#BFC1C7"/><stop offset="100%" stop-color="#E5E7EB"/>
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#E5E7EB" flood-opacity=".55"/>
+              </filter>
+              <marker id="arrow-d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#E5E7EB"/>
+              </marker>
+            </defs>
+
+            <rect class="panel" x="10" y="10" width="620" height="340" fill="url(#grid-d)"/>
+
+            <!-- Blocks -->
+            <g>
+              <!-- centers: Trigger(96,183) A1(258,183) A2(422,183) Result(558,183) -->
+              <rect class="node" x="36"  y="154" width="120" height="58" rx="14"/>
+              <text class="label" x="96"  y="183" text-anchor="middle" dominant-baseline="middle">Trigger</text>
+
+              <rect class="node" x="188" y="154" width="140" height="58" rx="14"/>
+              <text class="label" x="258" y="183" text-anchor="middle" dominant-baseline="middle">Action 1</text>
+
+              <rect class="node" x="352" y="154" width="140" height="58" rx="14"/>
+              <text class="label" x="422" y="183" text-anchor="middle" dominant-baseline="middle">Action 2</text>
+
+              <rect class="node" x="516" y="154" width="84" height="58" rx="14"/>
+              <text class="label" x="558" y="183" text-anchor="middle" dominant-baseline="middle">Result</text>
             </g>
 
-            <!-- rigid pipes -->
-            <path id="p1" class="wire" d="M148 74 H180" />
-            <path id="p2" class="wire" d="M300 74 H332" />
-            <path id="p3" class="wire" d="M88 150 V98" />
-            <path id="p4" class="wire" d="M392 98 V150" />
+            <!-- Single rigid pipe (aligned to centers) -->
+            <path id="flow-d" class="wire" d="M 96 183 H 258 H 422 H 558" marker-end="url(#arrow-d)"/>
 
-            <!-- moving packets -->
-            <circle r="3.5" fill="#fff"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
-            <rect width="6" height="6" rx="1" fill="#fff"><animateMotion dur="6.4s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></rect>
-            <circle r="3.5" fill="#fff"><animateMotion dur="7.2s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
-            <rect width="6" height="6" rx="1" fill="#fff"><animateMotion dur="7.6s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></rect>
+            <!-- Moving token -->
+            <circle class="tick" r="4.2">
+              <animateMotion dur="7s" repeatCount="indefinite"><mpath href="#flow-d"/></animateMotion>
+            </circle>
 
-            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Triggers & pipes; strict mappings</text>
+            <text class="sub" x="320" y="322" text-anchor="middle" dominant-baseline="middle" font-size="13">Trigger → Action → Action → Result</text>
           </svg>
         </figure>
-        <p class="text-sm text-neutral-300">Rule-based flows connect systems with fixed logic and strict schemas. Reliable but brittle when requirements change.</p>
-        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
-          <li>• Triggers & pipes; manual exception handling</li>
-          <li>• Heavy upfront mapping & maintenance</li>
-          <li>• Limited adaptability to unstructured inputs</li>
+
+        <p class="text-sm md:text-base text-neutral-300">Fixed, linear logic. Strong for stable rules—brittle on change or exceptions.</p>
+        <ul class="mt-4 text-sm md:text-base text-neutral-300 space-y-2">
+          <li>• Single, predefined path</li>
+          <li>• Manual exception handling</li>
+          <li>• Heavy mapping & maintenance</li>
         </ul>
       </article>
 
-      <!-- 2. AI Agent -->
-      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+      <!-- 2) AI Agent: Agent uses Planner, Memory, LLM, Workflow, Tools -->
+      <article class="card">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">2024</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
+          <h3 class="text-xl font-semibold">2024</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Autonomous</span>
         </div>
-        <h4 class="text-lg font-semibold text-white mb-4">AI Agents</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
-          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Single agent tool use">
+        <h4 class="font-semibold text-white mb-4">AI Agent</h4>
+
+        <figure class="mb-6 overflow-hidden rounded-2xl border border-white/10 era">
+          <svg viewBox="0 0 640 360" aria-label="Agent with planner, memory, LLM, workflow, tools">
             <defs>
-              <pattern id="grid2" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
-              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#CFCFD3"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".5"/></filter>
+              <pattern id="grid-a" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D0D2D8"/><stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".5"/>
+              </filter>
+              <marker id="arrow-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#E5E7EB"/>
+              </marker>
             </defs>
-            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid2)"/>
 
-            <!-- tools -->
-            <rect class="node" x="44"  y="46"  width="120" height="48" rx="10"/><text class="label" x="104" y="74" text-anchor="middle">CRM</text>
-            <rect class="node" x="316" y="46"  width="120" height="48" rx="10"/><text class="label" x="376" y="74" text-anchor="middle">ERP</text>
-            <rect class="node" x="44"  y="166" width="120" height="48" rx="10"/><text class="label" x="104" y="194" text-anchor="middle">Email</text>
-            <rect class="node" x="316" y="166" width="120" height="48" rx="10"/><text class="label" x="376" y="194" text-anchor="middle">Docs</text>
+            <rect class="panel" x="10" y="10" width="620" height="340" fill="url(#grid-a)"/>
 
-            <!-- agent -->
+            <!-- Agent -->
             <g>
-              <circle cx="240" cy="130" r="34" fill="#0F1012" stroke="rgba(255,255,255,.2)" />
-              <circle cx="240" cy="130" r="18" fill="#1B1D22" stroke="rgba(255,255,255,.15)"/>
-              <text class="label" x="240" y="135" text-anchor="middle" font-size="12">Agent</text>
+              <circle cx="320" cy="180" r="42" fill="#0F1012" stroke="rgba(255,255,255,.28)"/>
+              <circle cx="320" cy="180" r="28" fill="#1B1D22" stroke="rgba(255,255,255,.18)"/>
+              <text class="label" x="320" y="180" text-anchor="middle" dominant-baseline="middle">Agent</text>
+              <circle cx="320" cy="180" r="64" fill="none" stroke="rgba(255,255,255,.18)" stroke-dasharray="7 9">
+                <animateTransform attributeName="transform" type="rotate" from="0 320 180" to="360 320 180" dur="16s" repeatCount="indefinite"/>
+              </circle>
             </g>
 
-            <!-- wires -->
-            <path id="a1" class="wire dashed" d="M 140 70 H 206 Q 226 70 232 92" />
-            <path id="a2" class="wire dashed" d="M 278 92 Q 284 70 304 70 H 316" />
-            <path id="a3" class="wire dashed" d="M 140 190 H 206 Q 226 190 232 168" />
-            <path id="a4" class="wire dashed" d="M 278 168 Q 284 190 304 190 H 316" />
+            <!-- Modules (labels centered) -->
+            <g>
+              <rect class="node" x="280" y="42"  width="80" height="44" rx="12"/>
+              <text class="label" x="320" y="64"  text-anchor="middle" dominant-baseline="middle">Planner</text>
 
-            <!-- orbiting tasks -->
-            <circle r="3.5" fill="#fff"><animateMotion dur="6.5s" repeatCount="indefinite"><mpath href="#a1"/></animateMotion></circle>
-            <circle r="3.5" fill="#fff"><animateMotion dur="6.2s" repeatCount="indefinite"><mpath href="#a2"/></animateMotion></circle>
-            <circle r="3.5" fill="#fff"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#a3"/></animateMotion></circle>
-            <circle r="3.5" fill="#fff"><animateMotion dur="6.9s" repeatCount="indefinite"><mpath href="#a4"/></animateMotion></circle>
+              <rect class="node" x="96"  y="130" width="110" height="44" rx="12"/>
+              <text class="label" x="151" y="152" text-anchor="middle" dominant-baseline="middle">Memory</text>
 
-            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Perceive → plan → act with tools</text>
+              <rect class="node" x="454" y="130" width="110" height="44" rx="12"/>
+              <text class="label" x="509" y="152" text-anchor="middle" dominant-baseline="middle">LLM</text>
+
+              <rect class="node" x="120" y="244" width="102" height="44" rx="12"/>
+              <text class="label" x="171" y="266" text-anchor="middle" dominant-baseline="middle">Tools</text>
+
+              <rect class="node" x="418" y="244" width="120" height="44" rx="12"/>
+              <text class="label" x="478" y="266" text-anchor="middle" dominant-baseline="middle">Workflow</text>
+            </g>
+
+            <!-- Wires (to node edges/centers) -->
+            <path id="ap" class="wire dashed" d="M 320 146 V 86" marker-end="url(#arrow-a)"/>
+            <path id="am" class="wire dashed" d="M 292 180 H 206" marker-end="url(#arrow-a)"/>
+            <path id="al" class="wire dashed" d="M 348 180 H 454" marker-end="url(#arrow-a)"/>
+            <path id="at" class="wire dashed" d="M 300 206 L 221 244" marker-end="url(#arrow-a)"/>
+            <path id="aw" class="wire dashed" d="M 340 206 L 418 244" marker-end="url(#arrow-a)"/>
+
+            <!-- Tokens -->
+            <circle class="tick" r="4"><animateMotion dur="6.2s" repeatCount="indefinite"><mpath href="#ap"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.5s" repeatCount="indefinite"><mpath href="#am"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.4s" repeatCount="indefinite"><mpath href="#al"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#at"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="7s"   repeatCount="indefinite"><mpath href="#aw"/></animateMotion></circle>
+
+            <text class="sub" x="320" y="322" text-anchor="middle" dominant-baseline="middle" font-size="13">Agent uses Planner, Memory, LLM, Tools &amp; Workflow</text>
           </svg>
         </figure>
-        <p class="text-sm text-neutral-300">Single agents plan, decide, and use tools. Great for unstructured inputs and adaptive routing—within a single-agent scope.</p>
-        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
-          <li>• Perceive → plan → act loops</li>
-          <li>• Tool use on top of legacy systems</li>
-          <li>• Early guardrails & policy enforcement</li>
+
+        <p class="text-sm md:text-base text-neutral-300">The agent perceives, plans, and acts—calling tools and workflows while retaining context in memory.</p>
+        <ul class="mt-4 text-sm md:text-base text-neutral-300 space-y-2">
+          <li>• Planning loop with tool use</li>
+          <li>• Context memory + LLM reasoning</li>
+          <li>• Executes or triggers workflows</li>
         </ul>
       </article>
 
-      <!-- 3. Agentic Workflow -->
-      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+      <!-- 3) Agentic Workflow: trigger -> (Agent A || Action) -> join -> Agent B -> result -->
+      <article class="card">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">2025</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential</span>
+          <h3 class="text-xl font-semibold">2025</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Sequential + Parallel</span>
         </div>
-        <h4 class="text-lg font-semibold text-white mb-4">Agentic Workflow</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
-          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Sequential chain">
+        <h4 class="font-semibold text-white mb-4">Agentic Workflow</h4>
+
+        <figure class="mb-6 overflow-hidden rounded-2xl border border-white/10 era">
+          <svg viewBox="0 0 640 360" aria-label="Parallel branches with agents">
             <defs>
-              <pattern id="grid3" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
-              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D0D4DA"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".5"/></filter>
+              <pattern id="grid-w" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D0D4DA"/><stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".5"/>
+              </filter>
+              <marker id="arrow-w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#E5E7EB"/>
+              </marker>
             </defs>
-            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid3)"/>
 
-            <!-- steps -->
-            <g>
-              <rect class="node" x="36"  y="106" width="90" height="52" rx="12"/><text class="label" x="81"  y="134" text-anchor="middle" font-size="12">Step 1</text>
-              <rect class="node" x="146" y="106" width="90" height="52" rx="12"/><text class="label" x="191" y="134" text-anchor="middle" font-size="12">Step 2</text>
-              <rect class="node" x="256" y="106" width="90" height="52" rx="12"/><text class="label" x="301" y="134" text-anchor="middle" font-size="12">Step 3</text>
-              <rect class="node" x="366" y="106" width="90" height="52" rx="12"/><text class="label" x="411" y="134" text-anchor="middle" font-size="12">Step 4</text>
-            </g>
+            <rect class="panel" x="10" y="10" width="620" height="340" fill="url(#grid-w)"/>
 
-            <!-- rail -->
-            <path id="rail" class="wire dashed" d="M 81 160 C 120 160, 152 160, 191 160 S 262 160, 301 160 S 372 160, 411 160" />
-            <!-- motion along rail then up into each step -->
-            <path id="lift1" class="wire" d="M 81 160 V 142"/>
-            <path id="lift2" class="wire" d="M 191 160 V 142"/>
-            <path id="lift3" class="wire" d="M 301 160 V 142"/>
-            <path id="lift4" class="wire" d="M 411 160 V 142"/>
+            <!-- Centers: Trigger(88,183) A(292,103) Act(292,239) B(444,183) Res(576,183) -->
+            <rect class="node" x="32" y="158" width="112" height="50" rx="14"/>
+            <text class="label" x="88" y="183" text-anchor="middle" dominant-baseline="middle">Trigger</text>
+            <path id="split" class="wire" d="M 144 183 H 210" marker-end="url(#arrow-w)"/>
 
-            <circle r="3.5" fill="#fff"><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#rail"/></animateMotion></circle>
+            <rect class="node" x="232" y="78" width="120" height="50" rx="14"/>
+            <text class="label" x="292" y="103" text-anchor="middle" dominant-baseline="middle">Agent A</text>
+            <path id="bTop" class="wire dashed" d="M 210 183 Q 252 150 232 103" />
 
-            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Multi-step journey with checks & handoffs</text>
+            <rect class="node" x="232" y="214" width="120" height="50" rx="14"/>
+            <text class="label" x="292" y="239" text-anchor="middle" dominant-baseline="middle">Action 1</text>
+            <path id="bBot" class="wire dashed" d="M 210 183 Q 252 216 232 239" />
+
+            <rect class="node" x="384" y="158" width="120" height="50" rx="14"/>
+            <text class="label" x="444" y="183" text-anchor="middle" dominant-baseline="middle">Agent B</text>
+            <path id="jTop" class="wire" d="M 352 103 Q 372 143 384 183" marker-end="url(#arrow-w)"/>
+            <path id="jBot" class="wire" d="M 352 239 Q 372 213 384 183" marker-end="url(#arrow-w)"/>
+
+            <rect class="node" x="532" y="158" width="88" height="50" rx="14"/>
+            <text class="label" x="576" y="183" text-anchor="middle" dominant-baseline="middle">Result</text>
+            <path id="toRes" class="wire" d="M 504 183 H 532" marker-end="url(#arrow-w)"/>
+
+            <!-- Tokens -->
+            <circle class="tick" r="4"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#split"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#bTop"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#bBot"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" begin="1s" repeatCount="indefinite"><mpath href="#jTop"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" begin="1s" repeatCount="indefinite"><mpath href="#jBot"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" begin="2s" repeatCount="indefinite"><mpath href="#toRes"/></animateMotion></circle>
+
+            <text class="sub" x="320" y="322" text-anchor="middle" dominant-baseline="middle" font-size="13">Trigger → (Agent A ∥ Action 1) → Agent B → Result</text>
           </svg>
         </figure>
-        <p class="text-sm text-neutral-300">Multiple agents linked in steps to execute complex, multi-stage journeys—each step reasons, then hands off.</p>
-        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
-          <li>• Step-level memory & evaluation</li>
-          <li>• Human-in-the-loop approvals</li>
-          <li>• Retries & rollbacks</li>
+
+        <p class="text-sm md:text-base text-neutral-300">Sequences that branch and rejoin—agents execute alongside actions with policy checks and handoffs.</p>
+        <ul class="mt-4 text-sm md:text-base text-neutral-300 space-y-2">
+          <li>• Parallel &amp; sequential steps</li>
+          <li>• Human/agent checkpoints</li>
+          <li>• Retries, rollbacks, joins</li>
         </ul>
       </article>
 
-      <!-- 4. Agent Orchestration -->
-      <article class="group bg-[#1C1E22] border border-white/10 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-white/20 transition">
+      <!-- 4) Orchestration (center with arms to Dev, SaaS, Builder, Workflows, Workspace Agent, AI Engine) -->
+      <article class="card">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">2026 & Beyond</h3><span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
+          <h3 class="text-xl font-semibold">2026 &amp; Beyond</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Orchestrated</span>
         </div>
-        <h4 class="text-lg font-semibold text-white mb-4">Agent Orchestration</h4>
-        <figure class="mb-5 overflow-hidden rounded-xl border border-white/10 era">
-          <svg viewBox="0 0 480 260" class="w-full h-auto" aria-label="Hub-and-spoke mesh">
+        <h4 class="font-semibold text-white mb-4">Agent Orchestration</h4>
+
+        <figure class="mb-6 overflow-hidden rounded-2xl border border-white/10 era">
+          <svg viewBox="0 0 640 360" aria-label="Orchestrator with arms to agents and systems">
             <defs>
-              <pattern id="grid4" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/></pattern>
-              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D8DBE1"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".55"/></filter>
+              <pattern id="grid-o" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M24 0H0M0 24V0" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="gradWire" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D8DBE1"/><stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#FFFFFF" flood-opacity=".55"/>
+              </filter>
+              <marker id="arrow-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#E5E7EB"/>
+              </marker>
             </defs>
-            <rect class="panel" x="8" y="8" width="464" height="244" rx="14" fill="url(#grid4)"/>
 
-            <!-- center -->
-            <circle id="hub" cx="240" cy="130" r="26" fill="#0F1012" stroke="rgba(255,255,255,.25)"/>
-            <text class="label" x="240" y="135" text-anchor="middle" font-size="12">Coordinator</text>
+            <rect class="panel" x="10" y="10" width="620" height="340" fill="url(#grid-o)"/>
 
-            <!-- spokes nodes -->
+            <!-- Orchestrator -->
             <g>
-              <rect class="node" x="72"  y="38"  width="96" height="42" rx="10"/><text class="label" x="120" y="64" text-anchor="middle" font-size="12">IT</text>
-              <rect class="node" x="312" y="38"  width="96" height="42" rx="10"/><text class="label" x="360" y="64" text-anchor="middle" font-size="12">Finance</text>
-              <rect class="node" x="72"  y="180" width="96" height="42" rx="10"/><text class="label" x="120" y="206" text-anchor="middle" font-size="12">Sales</text>
-              <rect class="node" x="312" y="180" width="96" height="42" rx="10"/><text class="label" x="360" y="206" text-anchor="middle" font-size="12">Support</text>
+              <circle cx="320" cy="180" r="36" fill="#0F1012" stroke="rgba(255,255,255,.3)"/>
+              <text class="label" x="320" y="180" text-anchor="middle" dominant-baseline="middle">Orchestrator</text>
+              <circle cx="320" cy="180" r="72" fill="none" stroke="rgba(255,255,255,.16)" stroke-dasharray="9 11">
+                <animateTransform attributeName="transform" type="rotate" from="0 320 180" to="-360 320 180" dur="18s" repeatCount="indefinite"/>
+              </circle>
             </g>
 
-            <!-- mesh wires -->
-            <path id="s1" class="wire dashed" d="M 168 59 Q 204 59 240 130" />
-            <path id="s2" class="wire dashed" d="M 360 59 Q 316 59 240 130" />
-            <path id="s3" class="wire dashed" d="M 168 201 Q 204 201 240 130" />
-            <path id="s4" class="wire dashed" d="M 360 201 Q 316 201 240 130" />
-            <!-- cross-links -->
-            <path id="x1" class="wire" d="M 120 64 Q 240 10 360 64" />
-            <path id="x2" class="wire" d="M 120 206 Q 240 250 360 206" />
+            <!-- Arms / Capabilities (all endpoints aligned to node edges/centers) -->
+            <!-- Dev Agent (node center 133,58 ; right edge 194,58) -->
+            <rect class="node" x="72" y="36" width="122" height="44" rx="12"/>
+            <text class="label" x="133" y="58" text-anchor="middle" dominant-baseline="middle">Dev Agent</text>
+            <path id="arm-dev" class="wire dashed" d="M 282 164 Q 220 110 194 58" marker-end="url(#arrow-o)"/>
 
-            <!-- two travelers -->
-            <circle r="3.5" fill="#fff"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#x1"/></animateMotion></circle>
-            <circle r="3.5" fill="#fff"><animateMotion dur="7.2s" repeatCount="indefinite" begin="1s"><mpath href="#x2"/></animateMotion></circle>
+            <!-- SaaS Agents (left edge 434,48) -->
+            <rect class="node" x="434" y="26" width="144" height="44" rx="12"/>
+            <text class="label" x="506" y="48" text-anchor="middle" dominant-baseline="middle">SaaS Agents</text>
+            <path id="arm-saas" class="wire dashed" d="M 360 164 Q 432 120 434 48" marker-end="url(#arrow-o)"/>
 
-            <text class="sub" x="240" y="236" text-anchor="middle" font-size="12">Coordinated teams; shared memory & SLOs</text>
+            <!-- Agent Builder (right edge 202,274) -->
+            <rect class="node" x="62" y="252" width="140" height="44" rx="12"/>
+            <text class="label" x="132" y="274" text-anchor="middle" dominant-baseline="middle">Agent Builder</text>
+            <path id="arm-builder" class="wire dashed" d="M 280 200 Q 210 230 202 274" marker-end="url(#arrow-o)"/>
+
+            <!-- Workflows (left edge 434,274) -->
+            <rect class="node" x="434" y="252" width="140" height="44" rx="12"/>
+            <text class="label" x="504" y="274" text-anchor="middle" dominant-baseline="middle">Workflows</text>
+            <path id="arm-workflows" class="wire dashed" d="M 360 200 Q 432 230 434 274" marker-end="url(#arrow-o)"/>
+
+            <!-- Workspace Agent (right edge 194,158) -->
+            <rect class="node" x="72" y="136" width="122" height="44" rx="12"/>
+            <text class="label" x="133" y="158" text-anchor="middle" dominant-baseline="middle">Workspace Agent</text>
+            <path id="arm-workspace" class="wire dashed" d="M 284 180 Q 220 180 194 158" marker-end="url(#arrow-o)"/>
+
+            <!-- AI Engine (left edge 450,162) -->
+            <rect class="node" x="450" y="140" width="122" height="44" rx="12"/>
+            <text class="label" x="511" y="162" text-anchor="middle" dominant-baseline="middle">AI Engine</text>
+            <path id="arm-ai" class="wire dashed" d="M 360 190 Q 430 175 450 162" marker-end="url(#arrow-o)"/>
+
+            <!-- Moving tokens -->
+            <circle class="tick" r="4"><animateMotion dur="7s"  repeatCount="indefinite"><mpath href="#arm-dev"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.6s" repeatCount="indefinite"><mpath href="#arm-saas"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="7.2s" repeatCount="indefinite"><mpath href="#arm-builder"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#arm-workflows"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.8s" repeatCount="indefinite"><mpath href="#arm-workspace"/></animateMotion></circle>
+            <circle class="tick" r="4"><animateMotion dur="6.9s" repeatCount="indefinite"><mpath href="#arm-ai"/></animateMotion></circle>
+
+            <text class="sub" x="320" y="322" text-anchor="middle" dominant-baseline="middle" font-size="13">Central policy, shared memory, SLO-driven multi-agent coordination</text>
           </svg>
         </figure>
-        <p class="text-sm text-neutral-300">Coordinated teams of specialized agents share context, negotiate tasks, and collaborate—governed by policies and SLOs.</p>
-        <ul class="mt-4 text-sm text-neutral-300 space-y-2">
-          <li>• Multi-agent planning & role assignment</li>
-          <li>• Shared memory, SLAs, & global guardrails</li>
-          <li>• Cross-system, cross-function execution</li>
+
+        <p class="text-sm md:text-base text-neutral-300">A coordinating brain assigns roles, enforces policy, and routes work across specialized agents and workflows.</p>
+        <ul class="mt-4 text-sm md:text-base text-neutral-300 space-y-2">
+          <li>• Orchestrator with global guardrails</li>
+          <li>• Dev, SaaS, Builder, Workspace agents + workflows</li>
+          <li>• Shared memory/SLOs across the mesh</li>
         </ul>
       </article>
-    </div>
 
-    <!-- Key shifts -->
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5"><p class="text-sm font-semibold mb-1">From Rules → Reasoning</p><p class="text-sm text-neutral-300">Static mappings give way to contextual reasoning, enabling robust handling of ambiguity.</p></div>
-      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5"><p class="text-sm font-semibold mb-1">From Single → Multi-agent</p><p class="text-sm text-neutral-300">Specialized agents coordinate, parallelize work, and escalate when needed.</p></div>
-      <div class="bg-[#14161A] border border-white/10 rounded-2xl p-5"><p class="text-sm font-semibold mb-1">From Pipes → Orchestration</p><p class="text-sm text-neutral-300">Global guardrails, shared memory, and SLOs drive reliable, end-to-end outcomes.</p></div>
     </div>
   </div>
 </section>
+
 
 <!-- Footer -->
 <footer class="bg-[#1B1D22] border-t border-white/10 py-10 mt-12 text-sm">

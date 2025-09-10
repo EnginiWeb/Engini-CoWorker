@@ -177,82 +177,6 @@ chatForm?.addEventListener('submit', async (e) => {
   }, 800);
 });
 
-/* ----------------- DEFAULT WORKERS ----------------- */
-const defaultWorkers = [
-  {
-    id: "it",
-    department: "IT",
-    overview: "Automates IT ops, reduces ticket load, and powers self-serve support.",
-    skills: ["Onboarding/Offboarding", "IAM", "Password reset", "Helpdesk Q&A"],
-    workflows: ["User Provisioning", "Software License Management", "Tier-1 Ticket Resolution"],
-    systems: ["Active Directory", "Jira", "ServiceNow"],
-    tasks: ["Create user", "Reset password", "Assign software", "Check asset inventory"],
-    onboarding: "1–3 months with a dedicated Engini engineer assigned to configure system integrations and workflows.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M12 20v-2"/></svg>`
-  },
-  {
-    id: "hr",
-    department: "HR",
-    overview: "Handles repetitive HR tasks, provides instant support to employees, and helps them self-serve.",
-    skills: ["Employee onboarding", "Policy Q&A", "Training", "Leave management"],
-    workflows: ["New Hire Automation", "Policy Lookup", "Leave Request Processing"],
-    systems: ["Workday", "SAP SuccessFactors", "Slack"],
-    tasks: ["Create employee profile", "Answer policy question", "Update training record", "Process leave request"],
-    onboarding: "1–2 months for initial setup, with ongoing support for new policies and procedures.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg>`
-  },
-  {
-    id: "sales",
-    department: "Sales",
-    overview: "Automates administrative tasks across the pipeline so reps can focus on closing deals.",
-    skills: ["Lead qualification", "CRM entry", "Sales reporting", "Follow-up reminders"],
-    workflows: ["Automated Lead Scoring", "CRM Data Synchronization", "Sales Forecast Reporting"],
-    systems: ["Salesforce", "HubSpot", "Slack", "Outreach"],
-    tasks: ["Log new lead", "Update CRM record", "Generate sales report", "Send follow-up email"],
-    onboarding: "2–3 months to integrate with your existing CRM and sales platforms.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>`
-  },
-  {
-    id: "marketing",
-    department: "Marketing",
-    overview: "Enhances marketing efforts by automating content distribution, data analysis, and lead management.",
-    skills: ["Content scheduling", "Social media management", "Campaign reporting", "Lead capture"],
-    workflows: ["Social Media Content Automation", "Marketing Campaign Performance Analysis", "Lead Nurturing Sequences"],
-    systems: ["Marketo", "Mailchimp", "Sprout Social"],
-    tasks: ["Schedule social media post", "Track campaign metrics", "Capture lead info", "Send personalized email"],
-    onboarding: "1–2 months to integrate with your marketing platforms and define content strategies.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2zm0-8h2v6h-2z" /></svg>`
-  },
-  {
-    id: "legal",
-    department: "Legal",
-    overview: "Automates routine legal tasks, improving efficiency and ensuring compliance with regulations and internal policies.",
-    skills: ["Contract review", "Compliance checks", "Document drafting", "NDA management"],
-    workflows: ["Automated NDA Generation", "Contract Clause Review", "Regulatory Compliance Reporting"],
-    systems: ["DocuSign", "Ironclad", "LegalZoom"],
-    tasks: ["Draft legal document", "Review contract for key terms", "Check for compliance", "Generate report"],
-    onboarding: "3–5 months for complex legal integrations and defining specific compliance workflows.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><path d="M13 2v7h7" /><path d="M16 13H8M16 17H8M10 9H8" /></svg>`
-  },
-  {
-    id: "support",
-    department: "Support",
-    overview: "Automates customer service tasks, providing quick responses and efficient ticket management to improve satisfaction.",
-    skills: ["Ticket triaging", "Customer Q&A", "Issue tracking", "Knowledge base search"],
-    workflows: ["Automated Ticket Triage", "Self-service Knowledge Base"],
-    systems: ["Zendesk", "Freshdesk", "Intercom"],
-    tasks: ["Triage support ticket", "Answer common questions", "Log issue", "Find knowledge base article"],
-    onboarding: "2–3 months to integrate with your helpdesk and define support workflows.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>`
-  },
-  {
-    id: "create",
-    department: "Create Your Own",
-    overview: "Start from a blank template. Describe role, source systems, and repetitive tasks to automate.",
-    isCustom: true,
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-neutral-200" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`
-  }
-];
 
 /* ----------------- RENDER FUNCTIONS ----------------- */
 /**
@@ -274,41 +198,6 @@ function saveCustomWorker(worker) {
   const arr = loadCustomWorkers();
   arr.push(worker);
   localStorage.setItem('customWorkers', JSON.stringify(arr));
-}
-
-/**
- * Renders the worker cards in the workspace.
- * @param {Array<Object>} workers - Optional array of workers to render.
- */
-function renderCards(workers = null) {
-  workerCardsContainer.innerHTML = '';
-  const all = workers || [...defaultWorkers, ...loadCustomWorkers()];
-  all.forEach(worker => {
-    const isCustom = !!worker.isCustom;
-    const card = document.createElement('div');
-    card.className = "rounded-2xl border border-white/10 bg-[#151618] p-5 flex flex-col shadow-lg transition-transform hover:scale-[1.02] cursor-pointer";
-    card.innerHTML = `
-      <div class="flex items-center gap-3 mb-3">
-        <div class="w-10 h-10 grid place-items-center bg-[#222326] rounded-full">${worker.icon}</div>
-        <h3 class="font-poppins font-semibold text-white">${worker.department}</h3>
-      </div>
-      <p class="text-sm text-neutral-400 mb-3">${worker.overview || ''}</p>
-      <button class="mt-auto bg-neutral-200 text-[#0B0C0E] rounded-xl px-3 py-2 w-full font-semibold">${isCustom ? 'Start Customization' : 'View Details'}</button>
-    `;
-    card.addEventListener("click", () => {
-      if (isCustom) {
-        // If it's a "Create Your Own" card, reset and start a new chat flow
-        chatMsgs.innerHTML = '';
-        draftWorker = {};
-        convoStep = 0;
-        addMsg("ai", "Let's build a new Worker together! " + steps[0]);
-      } else {
-        // If it's a default worker, show the detail view
-        renderDetailView(worker);
-      }
-    });
-    workerCardsContainer.appendChild(card);
-  });
 }
 
 /**

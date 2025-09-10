@@ -18,7 +18,6 @@
       --bg:#0B0C0E; --bg2:#0F1012; --card:#151618; --ink:#E7E7EA;
       --muted:#9CA3AF; --line:rgba(255,255,255,.10); --line-strong:rgba(255,255,255,.18);
       --shadow:0 16px 40px rgba(0,0,0,.45);
-      --accent:#8E7AEF;
     }
     html,body{background:var(--bg);color:var(--ink)}
     body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica Neue,Arial}
@@ -54,15 +53,6 @@
     .era .wire{stroke:url(#gradWire);stroke-width:2.5;fill:none;stroke-linecap:round;filter:url(#glow)}
     .era .dashed{stroke-dasharray:12 10;animation:dash 8s linear infinite}
     @keyframes dash{to{stroke-dashoffset:-600}}
-
-    /* Chat extras */
-    .typing{background:#151618;border:1px solid rgba(255,255,255,.10);padding:.5rem .75rem;border-radius:1rem;display:flex;gap:.3rem;align-items:center}
-    .typing .dot{width:6px;height:6px;border-radius:9999px;background:#a3a3a3;opacity:.6;animation:dot 1.2s infinite}
-    .typing .dot:nth-child(2){animation-delay:.2s}
-    .typing .dot:nth-child(3){animation-delay:.4s}
-    @keyframes dot{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-4px)}}
-    .spin{width:18px;height:18px;border-radius:9999px;border:2px solid #0B0C0E;border-top-color:#fff;animation:spin 1s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
   </style>
 </head>
 <body class="min-h-screen flex flex-col bg-[#0B0C0E] text-neutral-200">
@@ -218,12 +208,10 @@
   <!-- Chat Shell -->
   <div class="w-full max-w-3xl px-4" id="chat-block">
     <div id="chat-shell" class="relative rounded-3xl shadow-2xl p-6 mt-2 sm:mt-3 flex flex-col justify-between border border-white/10 bg-[#0F1012]">
-      <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4 max-h-[48vh] overflow-y-auto">
-        <div class="flex justify-start"></div>
-      </div>
-      <form id="chat-form" class="relative" novalidate autocomplete="off">
+      <div id="chat-messages" class="chat-messages flex flex-col space-y-4 mb-4"><div class="flex justify-start"></div></div>
+      <form id="chat-form" class="relative">
         <textarea id="chat-input" rows="2" placeholder="Ask Engini to create a Worker that..." class="w-full p-4 pr-12 rounded-2xl bg-[#1B1D22] text-neutral-100 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#8E7AEF] transition resize-none"></textarea>
-        <button type="button" id="send-button" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white text-[#0B0C0E] p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] hover:text-white transition">
+        <button type="submit" id="send-button" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white text-[#0B0C0E] p-2 rounded-xl shadow-md hover:bg-[#7c6ae6] transition">
           <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
           <div id="send-spin" class="spin hidden"></div>
         </button>
@@ -245,7 +233,6 @@
     <div id="worker-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
   </div>
 </section>
-
 <!-- Evolution of Automation & Orchestration -->
 <section id="ipass-evolution" class="px-4 sm:px-8 lg:px-10 py-24 bg-[#0B0C0E]">
   <style>
@@ -328,6 +315,7 @@
 
             <!-- Blocks -->
             <g>
+              <!-- centers: Trigger(96,183) A1(258,183) A2(422,183) Result(558,183) -->
               <rect class="node" x="36"  y="154" width="120" height="58" rx="14"/>
               <text class="label" x="96"  y="183" text-anchor="middle" dominant-baseline="middle">Trigger</text>
 
@@ -361,7 +349,7 @@
         </ul>
       </article>
 
-      <!-- 2) AI Agent -->
+      <!-- 2) AI Agent: Agent uses Planner, Memory, LLM, Workflow, Tools -->
       <article class="card">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">2024</h3>
@@ -398,7 +386,7 @@
               </circle>
             </g>
 
-            <!-- Modules -->
+            <!-- Modules (labels centered) -->
             <g>
               <rect class="node" x="280" y="42"  width="80" height="44" rx="12"/>
               <text class="label" x="320" y="64"  text-anchor="middle" dominant-baseline="middle">Planner</text>
@@ -416,13 +404,14 @@
               <text class="label" x="478" y="266" text-anchor="middle" dominant-baseline="middle">Workflow</text>
             </g>
 
-            <!-- Wires -->
+            <!-- Wires (to node edges/centers) -->
             <path id="ap" class="wire dashed" d="M 320 146 V 86" marker-end="url(#arrow-a)"/>
             <path id="am" class="wire dashed" d="M 292 180 H 206" marker-end="url(#arrow-a)"/>
             <path id="al" class="wire dashed" d="M 348 180 H 454" marker-end="url(#arrow-a)"/>
             <path id="at" class="wire dashed" d="M 300 206 L 221 244" marker-end="url(#arrow-a)"/>
             <path id="aw" class="wire dashed" d="M 340 206 L 418 244" marker-end="url(#arrow-a)"/>
 
+            <!-- Tokens -->
             <circle class="tick" r="4"><animateMotion dur="6.2s" repeatCount="indefinite"><mpath href="#ap"/></animateMotion></circle>
             <circle class="tick" r="4"><animateMotion dur="6.5s" repeatCount="indefinite"><mpath href="#am"/></animateMotion></circle>
             <circle class="tick" r="4"><animateMotion dur="6.4s" repeatCount="indefinite"><mpath href="#al"/></animateMotion></circle>
@@ -441,7 +430,7 @@
         </ul>
       </article>
 
-      <!-- 3) Agentic Workflow -->
+      <!-- 3) Agentic Workflow: trigger -> (Agent A || Action) -> join -> Agent B -> result -->
       <article class="card">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">2025</h3>
@@ -510,7 +499,7 @@
         </ul>
       </article>
 
-      <!-- 4) Orchestration -->
+      <!-- 4) Orchestration (center with arms to Dev, SaaS, Builder, Workflows, Workspace Agent, AI Engine) -->
       <article class="card">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-xl font-semibold">2026 &amp; Beyond</h3>
@@ -546,27 +535,33 @@
               </circle>
             </g>
 
-            <!-- Arms / Capabilities -->
+            <!-- Arms / Capabilities (all endpoints aligned to node edges/centers) -->
+            <!-- Dev Agent (node center 133,58 ; right edge 194,58) -->
             <rect class="node" x="72" y="36" width="122" height="44" rx="12"/>
             <text class="label" x="133" y="58" text-anchor="middle" dominant-baseline="middle">Dev Agent</text>
             <path id="arm-dev" class="wire dashed" d="M 282 164 Q 220 110 194 58" marker-end="url(#arrow-o)"/>
 
+            <!-- SaaS Agents (left edge 434,48) -->
             <rect class="node" x="434" y="26" width="144" height="44" rx="12"/>
             <text class="label" x="506" y="48" text-anchor="middle" dominant-baseline="middle">SaaS Agents</text>
             <path id="arm-saas" class="wire dashed" d="M 360 164 Q 432 120 434 48" marker-end="url(#arrow-o)"/>
 
+            <!-- Agent Builder (right edge 202,274) -->
             <rect class="node" x="62" y="252" width="140" height="44" rx="12"/>
             <text class="label" x="132" y="274" text-anchor="middle" dominant-baseline="middle">Agent Builder</text>
             <path id="arm-builder" class="wire dashed" d="M 280 200 Q 210 230 202 274" marker-end="url(#arrow-o)"/>
 
+            <!-- Workflows (left edge 434,274) -->
             <rect class="node" x="434" y="252" width="140" height="44" rx="12"/>
             <text class="label" x="504" y="274" text-anchor="middle" dominant-baseline="middle">Workflows</text>
             <path id="arm-workflows" class="wire dashed" d="M 360 200 Q 432 230 434 274" marker-end="url(#arrow-o)"/>
 
+            <!-- Workspace Agent (right edge 194,158) -->
             <rect class="node" x="72" y="136" width="122" height="44" rx="12"/>
             <text class="label" x="133" y="158" text-anchor="middle" dominant-baseline="middle">Workspace Agent</text>
             <path id="arm-workspace" class="wire dashed" d="M 284 180 Q 220 180 194 158" marker-end="url(#arrow-o)"/>
 
+            <!-- AI Engine (left edge 450,162) -->
             <rect class="node" x="450" y="140" width="122" height="44" rx="12"/>
             <text class="label" x="511" y="162" text-anchor="middle" dominant-baseline="middle">AI Engine</text>
             <path id="arm-ai" class="wire dashed" d="M 360 190 Q 430 175 450 162" marker-end="url(#arrow-o)"/>
@@ -601,7 +596,7 @@
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
     <div class="text-center md:text-left">
       <img src="image.png" alt="Engini logo" class="w-28 h-auto mx-auto md:mx-0" loading="lazy" decoding="async"/>
-      <p class="text-white/50 mt-3">© <span id="current-year">2025</span> Engini. All rights reserved.</p>
+      <p class="text-white/50 mt-3">© 2025 Engini. All rights reserved.</p>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-white/70">
       <div><p class="font-semibold text-white mb-2">Platform</p>
@@ -616,217 +611,122 @@
 
 <!-- App scripts -->
 <script defer>
-  /** ================== CONFIG ================== **/
-  window.GEMINI_API_KEY = window.GEMINI_API_KEY || "AIzaSyCwGOKtGr5G2NdmRRwwTZeREYVFheQ5Se0"; // insert your API key here if needed
-  const GEMINI_MODEL = "gemini-1.5-flash";
-
-  /** ================== DOM HELPERS ================== **/
-  const $  = (s,r=document)=>r.querySelector(s);
-  const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+  const $ = (s,r=document)=>r.querySelector(s);
+  const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 
   /* Icons map -> /icons/*.png */
-  const ICONS = {
-    servicenow:"icons/servicenow.png", okta:"icons/okta.png", google:"icons/google.png",
-    slack:"icons/slack.png", microsoft:"icons/microsoft.png", quickbooks:"icons/quickbooks.png",
-    netsuite:"icons/netsuite.png", jira:"icons/jira.png", workday:"icons/workday.png",
-    salesforce:"icons/salesforce.png", hubspot:"icons/hubspot.png", zendesk:"icons/zendesk.png",
-    intercom:"icons/intercom.png", mailchimp:"icons/mailchimp.png", marketo:"icons/marketo.png",
-    outreach:"icons/outreach.png"
-  };
+  const ICONS = {servicenow:"icons/servicenow.png",okta:"icons/okta.png",google:"icons/google.png",
+    slack:"icons/slack.png",microsoft:"icons/microsoft.png",quickbooks:"icons/quickbooks.png",
+    netsuite:"icons/netsuite.png",jira:"icons/jira.png",workday:"icons/workday.png",
+    salesforce:"icons/salesforce.png",hubspot:"icons/hubspot.png",zendesk:"icons/zendesk.png",
+    intercom:"icons/intercom.png",mailchimp:"icons/mailchimp.png",marketo:"icons/marketo.png",outreach:"icons/outreach.png"};
 
-  /** ================== WORKERS MOCK DATA ================== **/
   const WORKERS = [
-    { id:"it", title:"IT", subtitle:"AI Worker", skills:["Onboarding/Offboarding","Identity and Access","Account unlock"], apps:["servicenow","okta","google","slack"], more:{ summary:"Automates JML, identity and helpdesk.", playbooks:["Joiner/Mover/Leaver","Access reviews"] } },
-    { id:"finance", title:"Finance", subtitle:"AI Worker", skills:["Invoice processing","Expense review"], apps:["quickbooks","netsuite","slack"], more:{ summary:"Speeds AP/AR with smart matching.", playbooks:["3-way match","Monthly close"] } }
+    { id:"it", title:"IT", subtitle:"AI Worker", skills:["Onboarding/Offboarding","Identity and Access","Account unlock and password"], extraSkills:["SaaS license audit","Device lifecycle","Helpdesk Q&A"], apps:["servicenow","okta","google","slack","microsoft"], more:{ summary:"Automates JML, identity and Tier-0/1 helpdesk with safe approvals.", playbooks:["Joiner/Mover/Leaver","Zero-touch provisioning","Access reviews","Software requests"] } },
+    { id:"procurement", title:"Procurement", subtitle:"AI Worker", skills:["Vendor onboarding","Purchase request","PO tracking","Supplier finder"], extraSkills:["3-way match exceptions","Sourcing intake","Contract reminders"], apps:["quickbooks","netsuite","slack"], more:{ summary:"Guides requesters, validates suppliers, syncs PR→PO→Receipt.", playbooks:["PR intake","Supplier due diligence","Catalog request"] } },
+    { id:"officeops", title:"Office Ops", subtitle:"AI Worker", skills:["Parental leave","Onboarding new employee","Gift package","Office parking"], extraSkills:["Visitor mgmt","Room bookings","Facilities tickets"], apps:["jira","google","slack"], more:{ summary:"Coordinates people ops actions across facilities, IT, and HR.", playbooks:["New hire day-one","Leave of absence","Visitor flow"] } },
+    { id:"hr", title:"HR", subtitle:"AI Worker", skills:["Employee onboarding","HR policy and benefits","Time off & leave"], extraSkills:["Comp letters","Performance cycle","People analytics"], apps:["workday","slack","google"], more:{ summary:"Runs compliant HR workflows and answers policy questions.", playbooks:["Offer→Onboard","PTO / LOA","Policy assistant"] } },
+    { id:"finance", title:"Finance", subtitle:"AI Worker", skills:["Invoice processing","Expense review","Cash application","Close checklist"], extraSkills:["Variance analysis","PO match","Aging follow-ups"], apps:["quickbooks","netsuite","google","slack"], more:{ summary:"Speeds AP/AR with smart matching, flags anomalies, and drives close tasks.", playbooks:["3-way match","Monthly close","Expense policy enforcement"] } },
+    { id:"sales", title:"Sales", subtitle:"AI Worker", skills:["Lead qualification","CRM hygiene","Forecast rollup","Follow-up nudges"], extraSkills:["Battlecards","Call summaries","Territory routing"], apps:["salesforce","hubspot","outreach","slack"], more:{ summary:"Keeps pipeline clean, surfaces next actions, and drafts outreach.", playbooks:["MQL→SQL triage","Next-best action","Renewal alerts"] } },
+    { id:"support", title:"Support", subtitle:"AI Worker", skills:["Ticket triage","Self-serve answers","SLA alerts","Bug reproduction steps"], extraSkills:["CSAT analysis","Deflection reports"], apps:["zendesk","intercom","slack","jira"], more:{ summary:"Routes issues, suggests replies, and syncs product tasks to engineering.", playbooks:["Auto-triage","Macro suggestion","Escalation policy"] } },
+    { id:"marketing", title:"Marketing", subtitle:"AI Worker", skills:["Campaign calendar","Asset tagging","UTM guardrails","Attribution sanity-checks"], extraSkills:["Audience sync","Creative variants"], apps:["marketo","hubspot","mailchimp","slack"], more:{ summary:"Orchestrates launches, keeps taxonomy clean, and reports what moved the needle.", playbooks:["Launch checklist","Audience orchestration","Weekly performance digest"] } }
   ];
 
-  const pill    = (t,dim=false)=>`<span class="wc-pill ${dim?'dim':''}">${t}</span>`;
-  const appIcon = (k)=> ICONS[k] ? `<img src="${ICONS[k]}" alt="${k}" loading="lazy"/>` : `<div class="fallback">${(k||'?').slice(0,2).toUpperCase()}</div>`;
+  const pill = (t,dim=false)=>`<span class="wc-pill ${dim?'dim':''}">${t}</span>`;
+  const appIcon = (k)=> ICONS[k] ? `<img src="${ICONS[k]}" alt="${k}" loading="lazy" decoding="async"/>` : `<div class="fallback">${(k||'?').slice(0,2).toUpperCase()}</div>`;
 
   function cardTemplate(w){
     const primary = w.skills.map(s=>pill(s)).join("");
+    const extra   = (w.extraSkills||[]).map(s=>pill(s,true)).join("");
     const apps    = (w.apps||[]).map(k=>`<span class="wc-app">${appIcon(k)}</span>`).join("");
+    const id = `${w.id}-more`;
     return `
-      <article class="wc-card" data-id="${w.id}" aria-expanded="false">
-        <header class="wc-toggle flex items-start gap-3 cursor-pointer">
-          <div class="wc-avatar"><div class="w-2 h-2 rounded-full bg-white/80"></div></div>
-          <div><h3 class="text-xl font-semibold">${w.title}</h3><p class="text-white/60">${w.subtitle}</p></div>
-        </header>
-        <div class="mt-4 flex flex-wrap gap-2">${primary}</div>
-        <div class="wc-divider my-3"></div>
-        <div class="flex items-center gap-2">${apps}</div>
-        <section class="wc-more mt-4 pt-3 border-t border-white/10">
-          <p class="text-sm text-white/80">${w.more?.summary||""}</p>
-          ${(w.more?.playbooks?.length?`<div class="mt-2"><p class="text-xs wc-badge mb-1">Playbooks</p><div class="flex flex-wrap gap-2">${w.more.playbooks.map(pill).join("")}</div></div>`:"")}
-        </section>
-      </article>`;
+    <article class="wc-card" data-id="${w.id}" aria-expanded="false">
+      <header class="wc-toggle flex items-start gap-3 cursor-pointer select-none">
+        <div class="wc-avatar"><div class="w-2 h-2 rounded-full bg-white/80"></div></div>
+        <div class="pt-0.5">
+          <h3 class="text-xl font-semibold text-white">${w.title}</h3>
+          <p class="text-white/60 -mt-0.5">${w.subtitle}</p>
+        </div>
+        <div class="ml-auto flex items-center gap-2 text-white/70">
+          <span class="wc-plus" aria-hidden="true">+</span>
+          <svg class="wc-chev h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.5 7.5l4.5 4.5 4.5-4.5"/></svg>
+        </div>
+      </header>
+
+      <div class="mt-6 wc-badge text-xs">AI SKILLS</div>
+      <div class="wc-divider my-2"></div>
+      <div class="flex flex-wrap gap-2">${primary}</div>
+      ${extra ? `<div class="mt-2 flex flex-wrap gap-2">${extra}</div>` : ""}
+
+      <div class="wc-divider my-4"></div>
+      <div class="text-xs wc-badge mb-2">APPS</div>
+      <div class="flex items-center gap-2">${apps}</div>
+
+      <section id="${id}" class="wc-more mt-5 pt-4 border-t border-white/10">
+        <p class="text-sm text-white/80">${w.more?.summary||""}</p>
+        ${(w.more?.playbooks?.length?`<div class="mt-3"><p class="text-xs wc-badge mb-2">Playbooks</p><div class="flex flex-wrap gap-2">${w.more.playbooks.map(pill).join("")}</div></div>`:"")}
+      </section>
+    </article>`;
   }
 
   function renderCards(list=WORKERS){
     $("#worker-cards").innerHTML = list.map(cardTemplate).join("");
+    $$("#worker-cards .wc-card").forEach(card=>{
+      const section = card.querySelector(".wc-more");
+      const header  = card.querySelector(".wc-toggle");
+      section.style.height = "0px"; section.style.opacity = "0";
+      header.addEventListener("click",(e)=>{e.stopPropagation();toggleExpand(card, section);});
+    });
   }
+  function toggleExpand(card,section){
+    const isOpen = card.getAttribute("aria-expanded")==="true";
+    if(isOpen){
+      section.style.height = section.scrollHeight + "px"; section.getBoundingClientRect();
+      section.style.height = "0px"; section.style.opacity = "0"; card.setAttribute("aria-expanded","false");
+    }else{
+      section.style.height = "0px"; section.style.opacity = "1"; card.setAttribute("aria-expanded","true");
+      const target = section.scrollHeight; section.style.height = target + "px";
+      const onEnd=(ev)=>{if(ev.propertyName!=="height") return; section.style.height="auto"; section.removeEventListener("transitionend", onEnd);};
+      section.addEventListener("transitionend", onEnd);
+    }
+  }
+
+  // Search
+  $("#search-input").addEventListener("input",(e)=>{
+    const q = e.target.value.toLowerCase().trim(); if(!q){renderCards();return;}
+    const filtered = WORKERS.filter(w=>{
+      const hay=[w.title,w.subtitle,...(w.skills||[]),...(w.extraSkills||[]),(w.more?.summary||""),...(w.more?.playbooks||[])].join(" ").toLowerCase();
+      return hay.includes(q);
+    });
+    renderCards(filtered);
+  });
   renderCards();
 
-  /** ================== CHAT UI ================== **/
-  const shell     = $('#chat-shell');
-  const chatMsgs  = $('#chat-messages');
-  const chatForm  = $('#chat-form');
-  const chatInput = $('#chat-input');
-  const sendBtn   = $('#send-button');
-  const sendIcon  = $('#send-icon');
-  const sendSpin  = $('#send-spin');
-
-  function addMsg(sender, text) {
-    const wrap = document.createElement('div');
-    wrap.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
-
-    const bubble = document.createElement('div');
-    bubble.className = `relative p-3 rounded-2xl max-w-[80%] shadow-lg whitespace-pre-wrap
-                        ${sender === 'user'
-                            ? 'bg-[var(--accent)] text-[#0B0C0E] rounded-br-none'
-                            : 'bg-[#151618] text-neutral-300 rounded-bl-none'}`;
-
-    wrap.appendChild(bubble);
-    chatMsgs.appendChild(wrap);
-
-    if (sender === 'ai') {
-      let i=0; const speed=15;
-      const iv=setInterval(()=> {
-        bubble.textContent=text.substring(0,i++);
-        chatMsgs.scrollTop=chatMsgs.scrollHeight;
-        if(i>text.length) clearInterval(iv);
-      }, speed);
-    } else {
-      bubble.textContent=text;
-      chatMsgs.scrollTop=chatMsgs.scrollHeight;
+  // Spotlight + lazy Spline import
+  const loadSpline = async ()=>{
+    if(loadSpline.loaded) return; loadSpline.loaded = true;
+    await import("https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js");
+    const mount = document.querySelector("[data-spline-mount]");
+    const url = mount?.closest("[data-spline-url]")?.dataset.splineUrl;
+    if(mount && url){
+      const el = document.createElement("spline-viewer");
+      el.setAttribute("url", url); el.className="absolute inset-0 w-full h-full";
+      el.setAttribute("events-target","global"); mount.appendChild(el);
+      el.addEventListener("load", ()=>{ const l=mount.parentElement.querySelector("[data-spline-loader]"); if(l) l.style.display="none";});
     }
+  };
+
+  const splineWrap = document.querySelector("[data-spotlight]");
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) { loadSpline(); io.disconnect(); } });
+    },{root:null,threshold:.2});
+    io.observe(splineWrap);
   }
+  splineWrap.addEventListener("pointerenter", loadSpline);
 
-  function typingDots(){
-    const wrap=document.createElement('div');
-    wrap.className='flex justify-start';
-    wrap.innerHTML=`<div class="typing"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
-    return wrap;
-  }
 
-  function setGenerating(on){
-    shell?.classList.toggle('generating',on);
-    chatInput.disabled=on; sendBtn.disabled=on;
-    sendIcon.classList.toggle('hidden',on);
-    sendSpin.classList.toggle('hidden',!on);
-  }
-
-  /** Animated Placeholder **/
-  const PLACEHOLDERS=[
-    "…provisions new hires across Okta, Slack, and Google",
-    "…triages Zendesk tickets and escalates to Jira",
-    "…keeps Salesforce pipeline clean and nudges reps",
-    "…runs 3-way match for AP invoices in NetSuite",
-    "…onboards employees and answers HR policies"
-  ];
-  function cyclePlaceholder(el,lines=PLACEHOLDERS){
-    let idx=0,phase='type',i=0,holdTimer;
-    const tick=()=>{
-      const full=lines[idx];
-      if(phase==='type'){
-        el.setAttribute('placeholder','Ask Engini to create a Worker that '+full.slice(0,i++));
-        if(i>full.length){phase='hold';holdTimer=setTimeout(()=>{phase='erase';tick();},1400);return;}
-      }else if(phase==='erase'){
-        el.setAttribute('placeholder','Ask Engini to create a Worker that '+full.slice(0,--i));
-        if(i<=0){phase='type';idx=(idx+1)%lines.length;}
-      }
-      setTimeout(tick,phase==='type'?28:18);
-    };
-    tick();
-  }
-  cyclePlaceholder(chatInput);
-
-  /** ================== GEMINI LAYER ================== **/
-  async function geminiReply(prompt, context=""){
-    if(!window.GEMINI_API_KEY){
-      await new Promise(r=>setTimeout(r,400));
-      return `(mock reply) ${prompt.slice(0,200)}…`;
-    }
-    const url=`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(window.GEMINI_API_KEY)}`;
-    const body={
-      contents:[{role:"user",parts:[{text:
-`You are Engini’s friendly AI coworker. 
-Act conversational, curious, and natural—like a colleague guiding the user.
-Acknowledge what they said, then smoothly ask the next step.
-Be concise, supportive, and vary tone (👍, 🚀, 👌). 
-
-Context: ${context}
-
-User: ${prompt}`}]}]
-    };
-    const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(!res.ok) throw new Error('Gemini error: '+res.status);
-    const data=await res.json();
-    return data?.candidates?.[0]?.content?.parts?.map(p=>p.text).join("") || "Hmm, I couldn’t think of a good next step.";
-  }
-
-  /** ================== GUIDED BUILDER ================== **/
-  let draftWorker={department:"",team:"",deliverable:"",workflows:[],tasks:[],systems:[],overview:"",onboarding:""};
-  let step=0;
-  const steps=[
-    "Which department is this Worker for?",
-    "Which team inside that department?",
-    "What’s the key deliverable this worker should own?",
-    "List 2–3 workflows to automate (comma separated).",
-    "What are the main tasks? (comma separated).",
-    "Which core systems should it integrate with? (comma separated).",
-    "Write a short overview of this worker.",
-    "Describe the onboarding plan briefly."
-  ];
-
-  function finalizeWorker(){
-    const worker={...draftWorker,id:'custom-'+Date.now()};
-    const arr=JSON.parse(localStorage.getItem('customWorkers')||'[]');
-    arr.push(worker); localStorage.setItem('customWorkers',JSON.stringify(arr));
-    addMsg("ai","✅ Your Worker has been created and saved! Check it out under 'My Workers'.");
-    draftWorker={department:"",team:"",deliverable:"",workflows:[],tasks:[],systems:[],overview:"",onboarding:""};
-    step=0;
-  }
-
-  /** Auto-grow textarea **/
-  function autoGrow(){
-    chatInput.style.height='auto';
-    chatInput.style.height=Math.min(chatInput.scrollHeight,220)+'px';
-  }
-  chatInput.addEventListener('input',autoGrow);
-
-  /** Handle Send **/
-  async function handleSend(){
-    const text=chatInput.value.trim(); if(!text) return;
-    addMsg('user',text); chatInput.value=''; autoGrow();
-    setGenerating(true); const dots=typingDots(); chatMsgs.appendChild(dots); chatMsgs.scrollTop=chatMsgs.scrollHeight;
-
-    try{
-      switch(step){
-        case 0: draftWorker.department=text; break;
-        case 1: draftWorker.team=text; break;
-        case 2: draftWorker.deliverable=text; break;
-        case 3: draftWorker.workflows=text.split(',').map(s=>s.trim()).filter(Boolean); break;
-        case 4: draftWorker.tasks=text.split(',').map(s=>s.trim()).filter(Boolean); break;
-        case 5: draftWorker.systems=text.split(',').map(s=>s.trim()).filter(Boolean); break;
-        case 6: draftWorker.overview=text; break;
-        case 7: draftWorker.onboarding=text; finalizeWorker(); dots.remove(); setGenerating(false); return;
-      }
-
-      const nextQ=steps[step]||"Anything else?";
-      const ctx=JSON.stringify(draftWorker,null,2);
-      const reply=await geminiReply(`User just answered step #${step}: "${text}". Next step: "${nextQ}"`,ctx);
-
-      dots.remove(); addMsg('ai',reply||`Got it! ${nextQ}`); step++;
-    }catch(err){
-      console.error(err); dots.remove();
-      addMsg('ai',`Got it! ${steps[step]||"Let's continue…"}`); step++;
-    }finally{ setGenerating(false); }
-  }
-
-  chatForm.addEventListener('submit',(e)=>{e.preventDefault();});
-  sendBtn.addEventListener('click',handleSend);
 </script>
-
 </body>
 </html>
